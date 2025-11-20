@@ -4,7 +4,7 @@
 >
   <div class="max-w-7xl mx-auto px-6">
     <h2
-      class="text-6xl md:text-5xl w-[100%] text-center text-[#b6a8e1] font-semibold mb-12"
+      class="text-4xl md:text-5xl w-[100%] text-center text font-semibold mb-12"
     >
       Features
     </h2>
@@ -101,6 +101,49 @@
           >
             Stable breaks spend down to reads, writes, storage, and transfer for
             each resource. No more guessing which lever to really pull.
+          </p>
+        </div>
+      </article>
+
+      <!-- Coming Soon / Real-time alerts (right) -->
+      <article
+        class="md:grid md:grid-cols-2 md:items-start gap-8 md:flex-row-reverse"
+      >
+        <div class="relative flex items-center justify-center">
+          <div
+            class="icon-card w-28 h-28 md:w-32 md:h-32 rounded-2xl flex items-center justify-center"
+          >
+            <!-- small notification bubble -->
+            <div class="absolute -top-2 -right-3">
+              <span class="badge px-3 py-1 rounded-full text-xs font-medium"
+                >Coming Soon</span
+              >
+            </div>
+            <div class="notif-dot absolute -top-3 -left-1">2</div>
+
+            <!-- cloud icon -->
+            <svg
+              width="44"
+              height="44"
+              viewBox="0 0 24 24"
+              class="w-12 bg-gradient-to-b fill-current text-purple-200/90 from-[#b6a8e1] to-[rgba(255,255,255,0.01)] rounded-2xl h-12 md:w-16 md:h-16 object-contain"
+            >
+              <path d="M19 18H6a4 4 0 01.2-8 5 5 0 019.8 0 3 3 0 01.2 6z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+
+        <div class="text-left">
+          <h3 class="text-2xl text-white/90 font-semibold mb-3">
+            Real-time, smart alerts
+          </h3>
+          <p
+            class="text-sm md:text-base text-white/60 leading-relaxed max-w-prose"
+          >
+            Stable constantly monitors your AWS estate 24/7 and pings you the
+            instant a rogue/botched deployment or usage spike threatens your
+            budget.
           </p>
         </div>
       </article>

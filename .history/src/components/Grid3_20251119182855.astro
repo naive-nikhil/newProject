@@ -1,0 +1,63 @@
+---
+// src/components/PricingSection.astro
+---
+
+<section class="py-16 md:py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-5xl font-extrabold text-gray-900 mb-16 md:mb-20">
+      Pricing
+    </h2>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8 items-start">
+      <div class="space-y-4">
+        <p class="text-2xl font-bold text-gray-800">1. Autonomous Stable</p>
+        <p class="text-lg text-gray-600 leading-relaxed">
+          You connect and manage Stable yourself.
+        </p>
+        <p class="text-xl font-semibold text-gray-800">
+          Price: <span class="text-gray-900">1.9% of your annual AWS bill</span>
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        <p class="text-2xl font-bold text-gray-800">2. Get Stable for free</p>
+        <p class="text-lg text-gray-600 leading-relaxed">
+          Unicorne’s FinOps team manages Stable for you.
+        </p>
+        <p class="text-xl font-semibold text-gray-800">
+          Price: Opt for a
+          <a href="#" class="text-indigo-600 hover:underline"
+            >Unicorne Cloud Managed Services package</a
+          >.
+        </p>
+      </div>
+
+      <div class="flex justify-center lg:justify-end">
+        <div
+          class="bg-gray-50 p-6 md:p-8 rounded-2xl shadow-lg
+                    text-center w-full max-w-xs lg:max-w-sm
+                    border border-gray-100 flex flex-col items-center"
+        >
+          <div
+            class="w-20 h-20 bg-purple-100 rounded-2xl flex items-center justify-center
+                        mb-6 shadow-md"
+          >
+            <svg
+              class="w-10 h-10 text-purple-600"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path d="M13 1.01L6 17h6v6l7-16h-6V1.01z"></path>
+            </svg>
+          </div>
+          <a
+            href="#"
+            class="text-purple-600 hover:text-purple-800 hover:underline text-lg font-medium"
+          >
+            Contact us for more information
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

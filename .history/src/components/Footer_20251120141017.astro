@@ -1,0 +1,30 @@
+---
+// Define the link for the button if needed, otherwise it's just a placeholder '#'
+const trialLink = "#";
+---
+
+<section class="py-24 md:py-32 bg-gray-50/50">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    <h1 class="text-5xl md:text-6xl font-semibold text-gray-900 mb-10">
+      Start your
+      <span
+        class="text-transparent"
+        style="background-image: linear-gradient(to right, #805AD5, #6B46C1); /* Purple Gradient */
+                   -webkit-background-clip: text;
+                   background-clip: text;"
+      >
+        free trial
+      </span>
+      now
+    </h1>
+
+    <a
+      href={trialLink}
+      class="inline-block px-10 py-4 text-white font-medium rounded-lg transition duration-300 transform hover:scale-105 shadow-xl"
+      style="background-color: #6B46C1; /* A deep purple */
+              background-image: linear-gradient(to right, #805AD5, #6B46C1);"
+    >
+      Get it
+    </a>
+  </div>
+</section>

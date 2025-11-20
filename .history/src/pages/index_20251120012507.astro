@@ -9,9 +9,6 @@ import FAQ from "../components/FAQ.astro";
 import Clients from "../components/Clients.astro";
 import Grid from "../components/Grid3.astro";
 import Bills from "../components/Bills.astro";
-import Work from "../components/Work.astro";
-import Unicorn from "../components/Unicorn.astro";
-import Footer from "../components/Footer.astro";
 
 // Pricing Options Type
 type PricingOption = {
@@ -57,16 +54,11 @@ const contact: ContactCard = {
 <Layout>
   <Header />
   <Welcome />
-  <Grid title="Pricing" pricingOptions={options} contactCard={contact} />
   <Features />
   <Trail />
   <Grid title="Pricing" pricingOptions={options} contactCard={contact} />
   <Bills />
   <Clients />
-  <Grid title="Pricing" pricingOptions={options} contactCard={contact} />
-  <Work />
-  <Unicorn />
   <FAQ />
   <Contact />
-  <Footer />
 </Layout>

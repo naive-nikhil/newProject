@@ -1,0 +1,76 @@
+---
+// src/components/HeroTrial.astro
+
+// Define the custom gradient for the button
+const buttonGradientStyle = {
+  background: "linear-gradient(to right, #8B5CF6, #A78BFA)", // Tailwind purple-500 to purple-400
+  boxShadow: "0 4px 14px 0 rgba(167, 139, 250, 0.5)", // Custom shadow for depth
+};
+---
+
+<section class="relative bg-white pt-16 pb-32 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div
+      class="flex flex-col md:flex-row items-center justify-between mb-16 md:mb-24"
+    >
+      <h1
+        class="text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-8 md:mb-0"
+      >
+        Get Free Trial
+      </h1>
+      <a
+        href="/sign-up"
+        class="px-8 py-3 text-lg font-semibold rounded-full text-white
+                flex items-center space-x-2 transition-all duration-300
+                hover:opacity-90 transform hover:scale-105"
+        style={buttonGradientStyle}
+      >
+        <span>See now</span>
+        <svg
+          class="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+
+    <img src="" alt="" />
+  </div>
+</section>
+
+<style>
+  /* Tailwind Utility Classes (Custom Configuration Recommended) 
+        If you don't define these in your tailwind.config.js, 
+        you need to add them here using standard CSS @keyframes.
+    */
+  @keyframes blob {
+    0% {
+      transform: translate(0px, 0px) scale(1);
+    }
+    33% {
+      transform: translate(30px, -50px) scale(1.1);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+    100% {
+      transform: translate(0px, 0px) scale(1);
+    }
+  }
+
+  /* Assign animation to a utility class */
+  .animate-blob {
+    animation: blob 7s infinite cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  }
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+</style>

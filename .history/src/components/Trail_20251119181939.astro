@@ -1,0 +1,105 @@
+---
+// src/components/HeroTrial.astro
+
+// Define the custom gradient for the button
+const buttonGradientStyle = {
+  background: "linear-gradient(to right, #8B5CF6, #A78BFA)", // Tailwind purple-500 to purple-400
+  boxShadow: "0 4px 14px 0 rgba(167, 139, 250, 0.5)", // Custom shadow for depth
+};
+---
+
+<section class="relative bg-white pt-16 pb-32 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div
+      class="flex flex-col md:flex-row items-center justify-between mb-16 md:mb-24"
+    >
+      <h1
+        class="text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-8 md:mb-0"
+      >
+        Get Free Trial
+      </h1>
+     ---
+// src/components/SeeHowButton.astro
+
+// Define the custom gradient for the button background
+const buttonGradientStyle = {
+    background: 'linear-gradient(to right, #8B5CF6, #A78BFA)', // Tailwind purple-500 to purple-400 equivalent
+    boxShadow: '0 4px 14px 0 rgba(167, 139, 250, 0.5)', // Custom shadow for depth
+};
+---
+
+<a href="#" class="
+    inline-flex items-center justify-center
+    relative overflow-hidden
+    px-7 py-3 text-lg font-semibold rounded-full text-white 
+    group transition-all duration-300 transform 
+    hover:scale-105 hover:opacity-95 focus:outline-none focus:ring-4 focus:ring-purple-300
+    pr-14 md:pr-16
+" style={buttonGradientStyle}>
+    
+    <span class="z-10 relative">See how</span>
+
+    <span class="
+        absolute right-0 top-0 bottom-0 w-12 md:w-16 
+        bg-white/20 backdrop-filter backdrop-blur-sm 
+        flex items-center justify-center 
+        rounded-r-full
+        group-hover:bg-white/30 transition-all duration-300
+        clip-path-custom-arrow
+    ">
+        <svg class="w-6 h-6 ml-1 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+    </span>
+</a>
+
+<style>
+    /* Define a custom clip-path for the angled right edge of the play button part */
+    .clip-path-custom-arrow {
+        clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 20% 100%, 0% 50%);
+    }
+
+    /* Adjust padding for smaller screens if needed */
+    @media (max-width: 768px) {
+        .clip-path-custom-arrow {
+            clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
+        }
+    }
+</style>
+    </div>
+
+    <img
+      src="https://www.stableapp.cloud/app/uploads/2025/08/img-cta-horizontal.png.webp"
+      alt=""
+    />
+  </div>
+</section>
+
+<style>
+  /* Tailwind Utility Classes (Custom Configuration Recommended) 
+        If you don't define these in your tailwind.config.js, 
+        you need to add them here using standard CSS @keyframes.
+    */
+  @keyframes blob {
+    0% {
+      transform: translate(0px, 0px) scale(1);
+    }
+    33% {
+      transform: translate(30px, -50px) scale(1.1);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+    100% {
+      transform: translate(0px, 0px) scale(1);
+    }
+  }
+
+  /* Assign animation to a utility class */
+  .animate-blob {
+    animation: blob 7s infinite cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  }
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+</style>

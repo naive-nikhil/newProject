@@ -1,0 +1,80 @@
+---
+// src/components/PricingSection.astro
+
+// 1. Define the TypeScript interface for the data structure
+export interface PricingOption {
+  title: string;
+  description: string;
+  priceHtml: string; // Use HTML string to allow for links/spans within the price text
+}
+
+export interface ContactCard {
+  iconPath: string; // SVG path data (like the lightning bolt) or Tailwind icon name
+  iconColorClass: string;
+  iconBgClass: string;
+  linkText: string;
+  linkHref: string;
+}
+
+export interface Props {
+  title: string;
+  pricingOptions: PricingOption[];
+  contactCard: ContactCard;
+}
+
+// 2. Destructure the props
+const { title, pricingOptions, contactCard } = Astro.props;
+---
+
+<section class="py-16 md:py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-5xl font-extrabold text-gray-900 mb-16 md:mb-20">
+      {title}
+    </h2>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8 items-start">
+      {
+        pricingOptions.map((option) => (
+          <div class="space-y-4">
+            <p class="text-2xl font-bold text-gray-800">{option.title}</p>
+            <p class="text-lg text-gray-600 leading-relaxed">
+              {option.description}
+            </p>
+            <p class="text-xl font-semibold text-gray-800">
+              <Fragment set:html={option.priceHtml} />
+            </p>
+          </div>
+        ))
+      }
+
+      <div class="flex justify-center lg:justify-end">
+        <div
+          class="bg-gray-50 p-6 md:p-8 rounded-2xl shadow-lg
+                    text-center w-full max-w-xs lg:max-w-sm
+                    border border-gray-100 flex flex-col items-center"
+        >
+          <div
+            class={`
+                        w-20 h-20 ${contactCard.iconBgClass} rounded-2xl flex items-center justify-center 
+                        mb-6 shadow-md
+                    `}
+          >
+            <svg
+              class={`w-10 h-10 ${contactCard.iconColorClass}`}
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path d="M13 1.01L6 17h6v6l7-16h-6V1.01z"></path>
+            </svg>
+          </div>
+          <a
+            href={contactCard.linkHref}
+            class="text-purple-600 hover:text-purple-800 hover:underline text-lg font-medium"
+          >
+            {contactCard.linkText}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

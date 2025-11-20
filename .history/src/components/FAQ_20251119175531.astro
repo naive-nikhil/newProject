@@ -1,0 +1,70 @@
+const faqs = [
+    {
+        question: "How do I choose the AWS pricing model that best fits my needs?",
+        answer: "Details on AWS pricing models...",
+    },
+    {
+        question: "How can I customize AWS services to my specific context?",
+        answer: "Details on customizing AWS services...",
+    },
+    {
+        question: "How do I eliminate unused resources?",
+        answer: "Details on eliminating unused resources...",
+    },
+    {
+        question: "What's the best way to manage my snapshots?",
+        answer: "Details on managing snapshots...",
+    },
+    {
+        question: "How can I optimize my EBS volumes?",
+        answer: "Details on optimizing EBS volumes...",
+    },
+    {
+        question: "How do I right-size my resources?",
+        answer: "Details on right-sizing your resources...",
+    },
+];
+---
+
+<div class="max-w-6xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    <h2 class="text-4xl sm:text-5xl font-extrabold text-center text-gray-900 mb-16 leading-tight">
+        FAQs on optimizing your AWS costs
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {faqs.map((faq) => (
+            <div class="
+                bg-purple-50/70 p-6 md:p-8 rounded-2xl shadow-lg 
+                hover:shadow-xl transition-shadow duration-300
+                flex flex-col justify-between cursor-pointer
+                min-h-[150px]
+            ">
+                
+                <div class="flex items-start justify-between">
+                    <p class="text-lg font-semibold text-gray-800 leading-relaxed pr-4">
+                        {faq.question}
+                    </p>
+
+                    <div class="flex-shrink-0">
+                        <div class="
+                            w-8 h-8 rounded-full border-2 border-purple-300 text-purple-600 
+                            flex items-center justify-center transition-all duration-300
+                            hover:bg-purple-200 hover:border-purple-400
+                        ">
+                            <svg 
+                                class="w-5 h-5" 
+                                fill="none" 
+                                stroke="currentColor" 
+                                viewBox="0 0 24 24" 
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+        ))}
+    </div>
+</div>

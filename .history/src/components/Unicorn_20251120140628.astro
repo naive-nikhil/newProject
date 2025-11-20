@@ -1,0 +1,52 @@
+---
+// This is the Astro component's frontmatter (JavaScript/TypeScript)
+// In a simple static component like this, it's often empty.
+// We can define variables or import other components here.
+---
+
+<section class="p-4 md:p-8">
+  <div
+    class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center space-y-8 lg:space-y-0 lg:space-x-12"
+  >
+    <div class="bg-white p-6 md:p-10 rounded-xl shadow-lg w-full lg:w-3/5">
+      <h2 class="text-4xl font-bold text-gray-900 mb-6">About Unicorne</h2>
+
+      <p class="text-gray-700 leading-relaxed mb-8">
+        <a
+          href="#"
+          class="font-semibold text-purple-700 hover:text-purple-800 transition duration-150"
+          >Unicorne</a
+        >
+        is an <strong class="font-semibold"
+          >AWS-certified Advanced Partner</strong
+        > headquartered in Canada and razor-focused on <strong
+          class="font-semibold">Amazon Web Services</strong
+        >. Our certified team covers the full cloud journey—architecting and
+        migrating workloads, running 24/7 managed services, and building
+        cloud-native SaaS and data-driven applications. Unicorne delivers
+        end-to-end AWS expertise that enables SMBs to innovate faster, scale
+        sanely, and trim operational drag.
+      </p>
+
+      <button
+        class="px-8 py-3 text-white font-medium rounded-lg transition duration-300 transform hover:scale-105"
+        style="background-color: #6B46C1; /* A deep purple */
+                     background-image: linear-gradient(to right, #6B46C1, #805AD5);"
+      >
+        Discover more
+      </button>
+    </div>
+
+    <div
+      class="w-full lg:w-2/5 aspect-square max-w-sm lg:max-w-none rounded-2xl p-6 md:p-10 flex items-center justify-center shadow-2xl"
+      style="background-color: #1A202C; /* fallback dark color */
+                background-image: radial-gradient(circle at 70% 30%, #4C1D95 0%, #171923 100%);"
+    >
+      <span
+        class="text-5xl md:text-6xl font-sans font-semibold text-white tracking-widest uppercase"
+      >
+        unicorne
+      </span>
+    </div>
+  </div>
+</section>

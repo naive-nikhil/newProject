@@ -1,0 +1,51 @@
+const buttonGradientStyle = {
+    background: 'linear-gradient(to right, #8B5CF6, #A78BFA)', // Tailwind purple-500 to purple-400 equivalent
+    boxShadow: '0 4px 14px 0 rgba(167, 139, 250, 0.5)', // Custom shadow for depth
+};
+
+// Optionally accept an href prop
+interface Props {
+    href?: string;
+}
+
+const { href = "#" } = Astro.props;
+---
+
+<a href={href} class="
+    inline-flex items-center justify-center
+    relative overflow-hidden
+    px-7 py-3 text-lg font-semibold rounded-full text-white 
+    group transition-all duration-300 transform 
+    hover:scale-105 hover:opacity-95 focus:outline-none focus:ring-4 focus:ring-purple-300
+    pr-14 md:pr-16
+" style={buttonGradientStyle}>
+    
+    <span class="z-10 relative">See how</span>
+
+    <span class="
+        absolute right-0 top-0 bottom-0 w-12 md:w-16 
+        bg-white/20 backdrop-filter backdrop-blur-sm 
+        flex items-center justify-center 
+        rounded-r-full
+        group-hover:bg-white/30 transition-all duration-300
+        clip-path-custom-arrow
+    ">
+        <svg class="w-6 h-6 ml-1 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+    </span>
+</a>
+
+<style>
+    /* Define a custom clip-path for the angled right edge of the play button part */
+    .clip-path-custom-arrow {
+        clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 20% 100%, 0% 50%);
+    }
+
+    /* Adjust padding for smaller screens if needed */
+    @media (max-width: 768px) {
+        .clip-path-custom-arrow {
+            clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
+        }
+    }
+</style>

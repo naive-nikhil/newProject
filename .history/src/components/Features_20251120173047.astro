@@ -1,3 +1,4 @@
+<!-- Features Section (Tailwind + small custom CSS) -->
 <section
   class="min-h-screen py-20 bg-gradient-to-b rounded-b-4xl from-[#07040b] via-[#10071a] to-[#0b0720]"
 >
@@ -8,20 +9,23 @@
       Features
     </h2>
 
-    <div class="grid grid-cols-2 gap-y-10 md:gap-y-10">
+    <div class="grid grid-cols-2 gap-y-10 md:gap-y-14">
+      <!-- Feature item template - copy/modify for each feature -->
       <article class="md:grid md:grid-cols-2 md:items-start gap-8">
+        <!-- icon -->
         <div class="relative flex items-center justify-center">
           <div
-            class="icon-card w-24 h-24 md:w-28 md:h-28 rounded-2xl flex items-center justify-center"
+            class="icon-card w-28 h-28 md:w-32 md:h-32 rounded-2xl flex items-center justify-center"
           >
             <img
               src="https://www.stableapp.cloud/app/uploads/2025/07/icon-recommandations-for-cost-2x.png.webp"
               alt="icon"
-              class="w-10 bg-gradient-to-b border-2 border-zinc-600 from-[#b6a8e1] to-[rgba(255,255,255,0.01)] rounded-2xl h-10 md:w-14 md:h-14 object-contain"
+              class="w-12 bg-gradient-to-b from-[#b6a8e1] to-[rgba(255,255,255,0.01)] rounded-2xl h-12 md:w-16 md:h-16 object-contain"
             />
           </div>
         </div>
 
+        <!-- text -->
         <div class="text-left">
           <h3 class="text-2xl text-white/90 font-semibold mb-3">
             Prioritized recommendations for cost optimization
@@ -35,18 +39,20 @@
         </div>
       </article>
 
+      <!-- Alternate layout example (text left, icon right) -->
       <article
         class="md:grid md:grid-cols-2 md:items-start gap-8 md:flex-row-reverse"
       >
         <div class="relative flex items-center justify-center">
           <div
-            class="icon-card w-24 h-24 md:w-28 md:h-28 rounded-2xl flex items-center justify-center"
+            class="icon-card w-28 h-28 md:w-32 md:h-32 rounded-2xl flex items-center justify-center"
           >
+            <!-- lightning icon placeholder -->
             <svg
               width="44"
               height="44"
               viewBox="0 0 24 24"
-              class="w-10 bg-gradient-to-b fill-current border-2 border-zinc-600 text-purple-200/70 from-[#b6a8e1] to-[rgba(255,255,255,0.01)] rounded-2xl h-10 md:w-14 md:h-14 object-contain"
+              class="w-12 bg-gradient-to-b fill-current text-purple-200/70 from-[#b6a8e1] to-[rgba(255,255,255,0.01)] rounded-2xl h-12 md:w-16 md:h-16 object-contain"
             >
               <path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"></path>
             </svg>
@@ -67,16 +73,17 @@
         </div>
       </article>
 
+      <!-- Cost exploration (left) -->
       <article class="md:grid md:grid-cols-2 md:items-start gap-8">
         <div class="relative flex items-center justify-center">
           <div
-            class="icon-card w-48 h-48 md:w-28 md:h-28 rounded-2xl flex items-center justify-center"
+            class="icon-card w-28 h-28 md:w-32 md:h-32 rounded-2xl flex items-center justify-center"
           >
             <svg
               width="44"
               height="44"
               viewBox="0 0 24 24"
-              class="w-10 bg-gradient-to-b fill-current border-2 border-zinc-600 text-purple-200/70 from-[#b6a8e1] to-[rgba(255,255,255,0.01)] rounded-2xl h-10 md:w-14 md:h-14 object-contain"
+              class="w-12 bg-gradient-to-b fill-current text-purple-200/70 from-[#b6a8e1] to-[rgba(255,255,255,0.01)] rounded-2xl h-12 md:w-16 md:h-16 object-contain"
             >
               <path
                 d="M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm7-2l5 5-1.5 1.5L15.5 17.5 17 16z"
@@ -97,6 +104,8 @@
           </p>
         </div>
       </article>
+
+      <!-- Add more features by copying one article block above -->
     </div>
   </div>
 </section>

@@ -1,0 +1,125 @@
+---
+/* Pure Astro + Tailwind component — no extra JS needed */
+---
+
+<section class="bg-white">
+  <div class="max-w-screen-xl mx-auto">
+    <!-- Top hero area: logo + tagline + main visual -->
+    <div
+      class="flex flex-col items-center justify-center w-full rounded-b-[2.5rem] pb-8 md:pb-12"
+    >
+      <div
+        class="h-[46vh] md:h-[55vh] w-full flex flex-col items-center justify-center px-6 md:px-8"
+      >
+        <img
+          class="h-12 md:h-14 mb-3"
+          src="https://www.stableapp.cloud/app/themes/shape/assets/dist/img/svg/logo.svg"
+          alt="Stable logo"
+        />
+        <h1
+          class="text-2xl md:text-4xl lg:text-5xl font-semibold text-center text-zinc-800 leading-tight"
+        >
+          Where no AWS waste can hide
+        </h1>
+      </div>
+
+      <!-- main visual (laptop) -->
+      <div class="w-full flex justify-center px-6 md:px-8 -mt-4 md:-mt-8">
+        <img
+          class="max-w-[92%] sm:max-w-[80%] md:max-w-[70%] lg:max-w-[60%] h-auto"
+          src="https://www.stableapp.cloud/app/uploads/2025/07/hero-laptop-asset.png.webp"
+          alt="Hero laptop asset"
+          loading="lazy"
+        />
+      </div>
+
+      <!-- Content section -->
+      <div class="w-full flex justify-center px-6 md:px-8 mt-8">
+        <div
+          class="w-full max-w-[1400px] py-10 md:py-16 flex flex-col lg:flex-row items-start gap-10"
+        >
+          <!-- LEFT heading -->
+          <div class="w-full lg:w-2/5">
+            <h2
+              class="text-3xl md:text-4xl lg:text-[4rem] font-medium text-[#474747] leading-tight"
+            >
+              Crush<br class="hidden md:block" />your AWS<br
+                class="md:hidden lg:block"
+              />cost creep
+            </h2>
+          </div>
+
+          <!-- RIGHT: paragraph + video card -->
+          <div class="w-full lg:w-3/5 flex flex-col gap-6">
+            <!-- paragraph aligned top -->
+            <p
+              class="max-w-full md:max-w-[85%] text-base md:text-lg text-zinc-500 leading-7"
+            >
+              Discover Stable, your go-to solution for AWS cloud savings. Stable
+              slashes runaway spend and resource sprawl across every layer of
+              your AWS ecosystems—delivering FinOps-level savings straight to
+              your bottom line.
+            </p>
+
+            <!-- video card (rounded pale container) -->
+            <div
+              class="relative self-start w-full sm:w-[460px] md:w-[420px] lg:w-[480px] h-[220px] md:h-[260px] rounded-3xl bg-[rgba(231,226,244,0.85)] p-4 md:p-6 flex items-center gap-4"
+            >
+              <!-- inner purple rounded preview -->
+              <div
+                class="w-[40%] md:w-[46%] lg:w-[48%] h-full rounded-2xl bg-gradient-to-b from-[#2b0f4a] to-[#7441d6] flex items-center justify-center overflow-hidden shadow-2xl"
+              >
+                <!-- local poster image (uploaded file) -->
+                <img
+                  class="w-[78%] h-[78%] object-cover rounded-xl"
+                  src="/mnt/data/ca2c2a79-29ae-4936-b69f-1b5de423f723.png"
+                  alt="preview"
+                  loading="lazy"
+                />
+              </div>
+
+              <!-- right column inside the card -->
+              <div
+                class="flex-1 pr-2 md:pr-4 h-full flex flex-col justify-between"
+              >
+                <div class="pt-2">
+                  <span class="text-sm text-zinc-500">See how</span>
+                  <h3
+                    class="mt-2 text-lg md:text-xl font-semibold text-zinc-800"
+                  >
+                    Watch Stable in action
+                  </h3>
+                  <p class="mt-2 text-sm text-zinc-600 hidden md:block">
+                    A quick tour of how Stable finds savings across accounts and
+                    services.
+                  </p>
+                </div>
+
+                <!-- circular purple play button -->
+                <button
+                  aria-label="Play demo"
+                  class="self-end mt-2 md:mt-0 w-12 h-12 md:w-14 md:h-14 rounded-xl bg-gradient-to-b from-[#6b3bd1] to-[#3b146a] flex items-center justify-center shadow-xl transform hover:scale-105 transition"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M7 5v14l11-7L7 5z" fill="white"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Optional: small caption under card on mobile -->
+            <p class="text-xs text-zinc-500 md:hidden mt-2">
+              Tap play to view a short demo.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,116 @@
+---
+/* Single frontmatter block only — put all JS data here */
+const faqs = [
+  {
+    question: "How do I choose the AWS pricing model that best fits my needs?",
+    answer:
+      "AWS offers three main models: On-Demand, Savings Plans, and Reserved Instances. Savings Plans give the best flexibility and cost reduction.",
+  },
+  {
+    question: "How can I customize AWS services to my specific context?",
+    answer:
+      "Use the right instance family, serverless options like Lambda, and proper S3 tiers such as IA or Glacier.",
+  },
+  {
+    question: "How do I eliminate unused resources?",
+    answer:
+      "Audit regularly for zombie resources like unattached EBS volumes, unused load balancers, and idle EC2 instances.",
+  },
+  {
+    question: "What's the best way to manage my snapshots?",
+    answer:
+      "Use AWS DLM to automate snapshot deletion and keep only necessary backups.",
+  },
+  {
+    question: "How can I optimize my EBS volumes?",
+    answer:
+      "Use gp3 over gp2, monitor I/O, and resize volumes based on utilization.",
+  },
+  {
+    question: "How do I right-size my resources?",
+    answer:
+      "Use AWS Compute Optimizer and CloudWatch metrics to identify over-provisioned resources.",
+  },
+];
+---
+
+<!-- AlpineJS (safe to put in body) -->
+<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+<div class="font-sans py-16 bg-white">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+    <div class="p-4 lg:p-0">
+      <h2 class="text-5xl border-b pb-3 border-zinc-300 sm:text-5xl font-medium text-[#474747] mb-12">
+        How it works
+      </h2>
+
+      <ol class="list-none space-y-8">
+        <li class="flex items-start border-b border-zinc-300 pb-6">
+          <span class="text-2xl font-semibold text-gray-600 w-8 flex-shrink-0 mt-1">1</span>
+          <p class="text-base text-zinc-800 ml-6">Start your free trial.</p>
+        </li>
+        <li class="flex items-start border-b border-zinc-300 pb-6">
+          <span class="text-2xl font-semibold text-gray-600 w-8 flex-shrink-0 mt-1">2</span>
+          <p class="text-base text-zinc-800 ml-6">Connect Stable to your AWS account. *</p>
+        </li>
+        <li class="flex items-start border-b border-zinc-300 pb-6">
+          <span class="text-2xl font-semibold text-gray-600 w-8 flex-shrink-0 mt-1">3</span>
+          <p class="text-base text-zinc-800 ml-6">Start monitoring and saving! **</p>
+        </li>
+      </ol>
+
+      <div class="mt-12 pt-6 text-sm text-gray-600 space-y-2">
+        <p class="font-medium">
+          * AWS requires a few days to authorize syncing between your account and Stable. Stable will alert you when everything is ready to start scrutinizing your AWS expenses.
+        </p>
+      </div>
+    </div>
+
+    <div class="relative min-h-[400px] overflow-hidden rounded-2xl shadow-2xl">
+      <div class="absolute inset-0" style="background: linear-gradient(135deg, #070411 0%, #1d1141 100%);"></div>
+
+      <div class="absolute top-1/2 right-0 w-2/3 h-1/2 bg-purple-500 opacity-30 transform -translate-y-1/2 blur-3xl rounded-full"></div>
+      <div class="absolute bottom-0 left-0 w-1/2 h-1/3 bg-white opacity-10 blur-3xl rounded-full"></div>
+
+      <!-- local uploaded image (keep this path if you have the file) -->
+      <img
+        src="https://www.stableapp.cloud/app/uploads/2025/08/img-steps-2x.png.webp"
+        alt="Onboarding steps diagram"
+        class="relative z-10 w-full h-[90%] mt-6 object-contain"
+      />
+    </div>
+  </div>
+</div>
+
+<div class="max-w-7xl mx-auto px-6 lg:px-8 mt-16">
+  <h3 class="text-5xl lg:text-6xl font-medium text-[#474747] mb-8">Who is Stable for</h3>
+
+  <p class="hidden lg:block text-lg text-gray-700 leading-relaxed font-light mb-6">
+    Trust us, your CFO, board, and investors will thank you.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {faqs.map((faq) => (
+      <div
+        x-data="{ open: false }"
+        x-on:click="open = !open"
+        class="bg-purple-50/70 p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl cursor-pointer transition"
+      >
+        <div class="flex items-start justify-between">
+          <p class="text-lg font-semibold text-gray-800 leading-relaxed pr-4">{faq.question}</p>
+
+          <div
+            class="w-8 h-8 rounded-full border-2 border-purple-300 flex items-center justify-center text-purple-600 transition transform"
+            :class="{ 'rotate-45': open }"
+          >
+            +
+          </div>
+        </div>
+
+        <div x-show="open" x-collapse class="mt-4 pt-4 border-t border-purple-200 text-gray-700">
+          {faq.answer}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>

@@ -1,0 +1,4 @@
+@import "tailwindcss";
+[data-scroll-container] {
+  will-change: transform;
+}

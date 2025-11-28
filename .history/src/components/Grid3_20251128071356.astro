@@ -1,0 +1,107 @@
+---
+// src/components/PricingSection.astro
+
+export interface PricingOption {
+  title: string;
+  description: string;
+  priceHtml: string;
+}
+
+export interface ContactCard {
+  iconPath: string;
+  iconColorClass: string;
+  iconBgClass: string;
+  linkText: string;
+  linkHref: string;
+}
+
+export interface Props {
+  title: string;
+  pricingOptions: PricingOption[];
+  contactCard: ContactCard;
+}
+
+const { title, pricingOptions, contactCard } = Astro.props;
+---
+
+<style>
+  /* flat media queries — valid CSS */
+  @media (min-width: 780px) {
+    .mainDiv h2 {
+      font-size: 2.75rem;
+      line-height: 4.25rem;
+      text-align: left;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .mainDiv h2 {
+      font-size: 2rem;
+      text-align: left;
+    }
+  }
+
+  @media (min-width: 1600px) {
+    .mainDiv h2 {
+      font-size: 4rem;
+    }
+  }
+</style>
+
+<section
+  class="py-16 md:py-24 bg-white"
+  data-scroll-speed="1"
+  data-scroll
+  data-scroll-offset="100"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mainDiv">
+    <h2
+      class="text-[2.5rem] lg:text-[4rem] leading-[1.1] font-medium text-[#474747] mb-16 md:mb-20"
+      data-scroll
+      data-scroll-speed="1.2"
+    >
+      {title}
+    </h2>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8 items-start">
+      {
+        pricingOptions.map((option) => (
+          <div class="space-y-4">
+            <p class="text-2xl font-normal text-gray-500">{option.title}</p>
+            <p class="text-lg text-gray-600 leading-relaxed">
+              {option.description}
+            </p>
+            <p class="text-xl font-semibold text-gray-500">
+              <div set:html={option.priceHtml} />
+            </p>
+          </div>
+        ))
+      }
+
+      <div class="flex justify-center lg:justify-end">
+        <div
+          class="bg-gray-50 p-6 md:p-8 rounded-2xl shadow-lg
+                 text-center w-full max-w-xs lg:max-w-sm
+                 border border-gray-100 flex flex-col items-center"
+        >
+          <div
+            class={`w-28 h-28 ${contactCard.iconBgClass} rounded-2xl flex items-center justify-center mb-6 shadow-md border-2 border-zinc-500`}
+          >
+            <img
+              class="w-[85%] h-[85%] object-contain"
+              src="https://www.stableapp.cloud/app/themes/shape/assets/dist/img/icon-bolts-2x.webp"
+              alt="Bolt icon"
+            />
+          </div>
+
+          <a
+            href={contactCard.linkHref}
+            class="text-zinc-600 underline text-sm font-medium"
+          >
+            {contactCard.linkText}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

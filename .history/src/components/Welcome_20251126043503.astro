@@ -1,0 +1,133 @@
+<div
+  class="flex justify-center items-center w-full rounded-b-4xl flex-col pb-5 overflow-x-hidden"
+>
+  <div
+    class="w-full py-10 lg:h-[55vh] flex justify-center mx-auto items-center flex-col px-4"
+  >
+    <img
+      class="max-w-[538px] w-full h-auto lg:w-[25vw]"
+      src="https://www.stableapp.cloud/app/themes/shape/assets/dist/img/svg/logo.svg"
+      alt="Stable Logo"
+    />
+    <h1
+      class="text-[1.75rem] leading-[2.375rem] max-w-[900px] sm:text-4xl py-2 mt-[23px] font-[500] text-center"
+    >
+      Where no AWS waste can hide
+    </h1>
+  </div>
+
+  <!-- Make hero image responsive with max-width so it won't overflow -->
+  <img
+    class="max-w-[1020px] w-[95%] sm:w-[80%] md:w-[70%] h-auto"
+    src="https://www.stableapp.cloud/app/uploads/2025/07/hero-laptop-asset.png.webp"
+    alt="Stable App Dashboard Preview"
+  />
+
+  <section class="w-[95vw] lg:w-[80vw] mx-auto py-10">
+    <div
+      class="max-w-[1400px] mx-auto flex flex-col lg:flex-row items-start gap-8 lg:gap-12"
+    >
+      <!-- Left: heading -->
+      <div class="w-full lg:w-2/5">
+        <h2
+          class="text-[2.75rem] font-medium text-[#474747] leading-[3rem] lg:leading-[4.25rem] whitespace-nowrap lg:whitespace-normal"
+        >
+          Crush your AWS cost creep
+        </h2>
+      </div>
+
+      <!-- Right: paragraph + video button -->
+      <div class="w-full lg:w-3/5 flex flex-col gap-8">
+        <p class="w-full lg:max-w-[95%] text-[1.25rem] text-zinc-500 leading-8">
+          Discover <strong>Stable</strong>, your go-to solution for AWS cloud
+          savings. Stable slashes runaway spend and resource sprawl across every
+          layer of your AWS ecosystems—delivering the kind of <strong
+            >FinOps-level savings</strong
+          > straight to your bottom line.
+        </p>
+
+        <!-- video callout / play card -->
+        <div class="flex justify-end w-full">
+          <button
+            class="relative group w-full max-w-[400px] h-[250px] rounded-[24px] bg-[rgba(231,226,244,0.8)] p-0 overflow-hidden flex items-stretch"
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#two-columns-text-block-with-video-0"
+            aria-label="Open video modal"
+          >
+            <!-- preview area (video) -->
+            <span class="absolute inset-0">
+              <video
+                class="autoplay-video object-cover w-full h-full"
+                autoplay
+                loop
+                muted
+                playsinline
+                aria-hidden="true"
+              >
+                <source
+                  type="video/mp4"
+                  src="https://www.stableapp.cloud/app/uploads/2025/07/short-stable.mp4"
+                />
+                <source
+                  type="video/webm"
+                  src="https://www.stableapp.cloud/app/uploads/2025/07/short-stable.webm"
+                />
+              </video>
+
+              <!-- fallback image (picture) shown for browsers where video can't play -->
+              <picture class="hidden md:block absolute inset-0">
+                <source
+                  media="(min-width:768px)"
+                  srcset="https://www.stableapp.cloud/app/uploads/2025/07/video-preview-2x.png.webp 1x, https://www.stableapp.cloud/app/uploads/2025/07/video-preview-2x.png.webp 2x"
+                  type="image/webp"
+                />
+                <source
+                  media="(min-width:768px)"
+                  srcset="https://www.stableapp.cloud/app/uploads/2025/07/video-preview-2x.png 1x, https://www.stableapp.cloud/app/uploads/2025/07/video-preview-2x.png 2x"
+                />
+                <source
+                  srcset="https://www.stableapp.cloud/app/uploads/2025/07/video-preview-2x.png.webp 1x, https://www.stableapp.cloud/app/uploads/2025/07/video-preview-2x.png.webp 2x"
+                  type="image/webp"
+                />
+                <img
+                  class="block img-fluid object-cover w-full h-full"
+                  src="https://www.stableapp.cloud/app/uploads/2025/07/video-preview-2x.png"
+                  alt="Video preview"
+                  width="318"
+                  height="327"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
+            </span>
+
+            <!-- content column (right side overlay) -->
+            <span class="relative z-10 flex flex-col flex-1 text-start p-4">
+              <span class="hidden md:block text-sm text-zinc-600">See how</span>
+
+              <span class="mt-auto flex justify-end">
+                <span
+                  class="inline-flex items-center justify-center w-[56px] h-[56px] rounded-[14px] bg-gradient-to-b from-[#6b3bd1] to-[#3b146a] shadow-xl"
+                >
+                  <img
+                    src="https://www.stableapp.cloud/app/themes/shape/assets/dist/img/svg/icon-play.svg"
+                    alt="Play"
+                    width="34"
+                    height="34"
+                    class="block"
+                  />
+                </span>
+              </span>
+            </span>
+
+            <!-- hover & focus effect -->
+            <span
+              class="absolute inset-0 bg-black/6 opacity-0 group-hover:opacity-10 transition-opacity pointer-events-none"
+            ></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

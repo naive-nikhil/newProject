@@ -1,0 +1,9 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"],
+   "safelist": [
+    "-mt-1", "-mt-2", "-mt-3", "-mt-4", "-mt-5", "-mt-6",
+    "md:-mt-8", "lg:-mt-0"
+  ]
+}

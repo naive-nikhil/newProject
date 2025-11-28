@@ -1,0 +1,90 @@
+---
+// src/components/FAQGridInteractive.astro
+
+// Define the data for the FAQ cards
+const faqs = [
+    {
+        question: "How do I choose the AWS pricing model that best fits my needs?",
+        // Providing a real answer now for the example
+        answer: "AWS offers three main models: On-Demand (pay-as-you-go, no commitment), Savings Plans (commit to a consistent amount of compute usage, in USD/hour, for 1 or 3 years for discounts), and Reserved Instances (commit to specific instance types/regions for 1 or 3 years for major discounts). Use **Savings Plans** for the best balance of flexibility and cost reduction.",
+    },
+    {
+        question: "How can I customize AWS services to my specific context?",
+        answer: "Customization is key to cost efficiency. This usually involves choosing the correct instance family (e.g., compute-optimized, memory-optimized), leveraging serverless options like **AWS Lambda** where possible to only pay per request, and using tailored storage tiers (like S3 Infrequent Access or Glacier).",
+    },
+    {
+        question: "How do I eliminate unused resources?",
+        answer: "Regular audits are crucial. Look for **zombie resources** like unattached EBS volumes, old Load Balancers that aren't routing traffic, unassociated Elastic IP addresses, and EC2 instances that are stopped but still incurring storage costs. Tools like AWS Trusted Advisor can help identify these quickly.",
+    },
+    {
+        question: "What's the best way to manage my snapshots?",
+        answer: "Snapshots can be costly. Implement a clear **retention policy** using **AWS Data Lifecycle Manager (DLM)** to automatically delete older, unneeded snapshots. Consider cross-region replication only for critical disaster recovery needs.",
+    },
+    {
+        question: "How can I optimize my EBS volumes?",
+        answer: "Ensure your EBS volumes are the correct type (e.g., **gp3** is often cheaper and faster than gp2) and size. Use CloudWatch metrics to monitor I/O utilization; if a volume is consistently underutilized, you can downsize its provisioned IOPS or reduce its storage capacity.",
+    },
+    {
+        question: "How do I right-size my resources?",
+        answer: "**Right-sizing** means matching the resource capacity to the actual demand. Use tools like **AWS Compute Optimizer** or CloudWatch metrics over a 14-day period to identify resources (like EC2 instances or RDS databases) that are over-provisioned (low CPU/memory utilization) and move them to smaller, cheaper instance types.",
+    },
+];
+---
+
+<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+<div class="max-w-6xl mx-auto py-12 px-4 sm:px-6 lg:px-8" x-data>
+    <h2 class="text-[2.75rem] mb-10  font-medium text-center text-[#474747]  leading-[2.75rem]">
+        FAQs on optimizing your AWS costs
+    </h2>
+
+    <div class="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {faqs.map((faq) => (
+            <div 
+                x-data="{ open: false }" 
+                x-on:click="open = !open"
+                class="
+                    bg-[#f5f5f6] p-6 md:p-8 rounded-2xl shadow-lg 
+                    hover:shadow-xl mt-[-60px] md:mt-8-[-18px] lg:mt-0 transition-shadow duration-300
+                    flex flex-col justify-between cursor-pointer
+                    min-h-[150px]
+                "
+            >
+                
+                <div class="flex items-start justify-between">
+                    <p class="text-lg font-semibold text-[#745ac6] leading-relaxed pr-4">
+                        {faq.question}
+                    </p>
+
+                    <div class="flex-shrink-0">
+                        <div class="
+                            w-8 h-8 rounded-full border-2 border-purple-300 text-purple-600 
+                            flex items-center justify-center transition-all duration-300
+                            hover:bg-purple-200 hover:border-purple-400
+                            transform"
+                            :class="{ 'rotate-45': open }" 
+                        >
+                            <svg 
+                                class="w-5 h-5" 
+                                fill="none" 
+                                stroke="currentColor" 
+                                viewBox="0 0 24 24" 
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div 
+                    x-show="open" 
+                    x-collapse
+                    class="mt-4 pt-4 border-t  border-purple-200 text-gray-700 text-base"
+                >
+                    <p>{faq.answer}</p>
+                </div>
+            </div>
+        ))}
+    </div>
+</div>

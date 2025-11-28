@@ -1,0 +1,102 @@
+---
+const features = [
+  {
+    title: "Prioritized recommendations for cost optimization",
+    description:
+      "Stable categorizes fixes into Easy, Medium and Hard, along with the cold hard numbers of the dollars you can save.",
+    iconSrc:
+      "https://www.stableapp.cloud/app/uploads/2025/07/icon-recommandations-for-cost-2x.png.webp",
+    alt: "Optimization icon",
+    layout: "default",
+  },
+  {
+    title: "Impact assessment",
+    description:
+      "Stable will give you the details on the impact of a change you'll make to reduce a service- or resource-specific cost.",
+    // store only the path string; we'll inject it into the SVG below using set:html
+    iconSvg: `<path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"></path>`,
+    alt: "Impact icon",
+    layout: "reversed",
+  },
+  
+];
+---
+
+<style>
+  @media (max-width: 780px) {
+    .mainDiv h2 {
+      font-size: 1.5rem;
+     
+    }
+  }
+</style>
+
+
+<section
+  data-scroll-speed="1"
+  data-scroll
+  data-scroll-offset="100"
+  class="min-h-screen py-20 rounded-b-4xl bg-gradient-to-b from-[#07040b] via-[#10071a] to-[#0b0720]"
+>
+  <div class="max-w-7xl mainDiv mx-auto px-6">
+    <h2
+      class="text-[2.75rem] leading-[4.25rem] w-full text-center text-[#b6a8e1] font-semibold mb-12"
+    >
+      Features
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-x-16 lg:gap-x-20">
+      <!-- Map over the features array to generate the articles -->
+      {features.map((feature) => (
+        <article
+          class="flex gap-5 justify-between px-[1.87rem] lg:px-[3.5rem]"
+        >
+           <!-- Icon Block -->
+          <div
+            class={`relative flex items-center justify-center mb-4 md:mb-0`}
+          >
+            <div class="icon-card w-24 h-24 md:w-28 md:h-28 rounded-2xl border-2 border-zinc-600 flex items-center justify-center bg-gradient-to-tr from-[#261e33] to-[#9d90c3]">
+              {feature.iconSrc ? (
+                <img
+                  src={feature.iconSrc}
+                  alt={feature.alt}
+                  class="w-10 h-10 md:w-14 md:h-14 object-contain rounded-2xl"
+                />
+              ) : (
+                /* Inject the path string into the SVG using set:html so the AST stays valid */
+                <svg
+                  width="44"
+                  height="44"
+                  viewBox="0 0 24 24"
+                  class="w-10 h-10 md:w-14 md:h-14 fill-current text-purple-200/70 rounded-2xl"
+                  aria-hidden="true"
+                >
+                  <g set:html={feature.iconSvg} />
+                </svg>
+              )}
+            </div>
+          </div>
+
+          <!-- Text Block -->
+          <div
+          class=""
+          >
+            <h3 class="text-[1rem] lg:text-[1.50rem] wrap-normal leading-[1.5rem] md:text-2xl text-white/90  mb-3">
+              {feature.title}
+            </h3>
+            <p
+              class={`text-[0.75rem] md:text-base text-white/60 leading-relaxed max-w-prose mx-auto ${feature.layout === "reversed" ? "md:ml-auto md:mr-0" : "md:mx-0"}`}
+            >
+              {feature.description}
+            </p>
+          </div>
+
+         
+        </article>
+      ))}
+
+      <!-- Placeholder to balance the grid (if features.length is odd) -->
+      <article class="hidden md:block"></article>
+    </div>
+  </div>
+</section>

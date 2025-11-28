@@ -84,15 +84,15 @@ const features = [
                   onerror="window.dispatchEvent(new Event('locomotive:update'))"
                 />
               ) : (
-                  <img
-    src="https://www.stableapp.cloud/app/themes/shape/assets/dist/img/svg/stable-shape-1.svg"
-    alt=""
-    width="682"
-    height="616"
-    data-speed="clamp(0.5)"
-    data-lag="0"
-    class="block absolute -right-[7vw] w-full h-auto max-w-[500px] max-h-[500px] transform translate-x-0 translate-y-0 rotate-0 scale-100 opacity-100 will-change-[transform]"
-  />
+                <svg
+                  width="44"
+                  height="44"
+                  viewBox="0 0 24 24"
+                  class="w-10 h-10 md:w-14 md:h-14 fill-current text-purple-200/70 rounded-2xl"
+                  aria-hidden="true"
+                >
+                  <g set:html={feature.iconSvg} />
+                </svg>
               )}
             </div>
           </div>

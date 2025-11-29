@@ -1,0 +1,51 @@
+<style>
+  @media (min-width: 780px) {
+    .mainDiv h2 {
+      font-size: 2.75rem;
+      line-height: 4.25rem;
+    }
+    @media (min-width: 1200px) {
+      .mainDiv h2 {
+        font-size: 2rem;
+      }
+    }
+  }
+</style>
+
+<script type="module" defer>
+  import gsap from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/index.js";
+  import { ScrollTrigger } from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/ScrollTrigger.min.js"; // 1. Register the ScrollTrigger plugin
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const blob = document.querySelector("#blob1"); // 2. Corrected gsap.fromTo syntax
+  const hero = document.querySelector("#hero-root"); // 2. Corrected gsap.fromTo syntax
+
+  if (blob) {
+    gsap.fromTo(
+      blob,
+      {
+        // FROM state (initial state)
+        y: 0,
+        opacity: 1,
+        scale: 1,
+      },
+      {
+        // TO state (end state)
+        y: 100,
+        opacity: 1,
+        scale: 0.98,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: hero,
+          start: "top bottom",
+          toggleActions: "play none none reverse",
+          end: "bottom top",
+          scrub: true, // Add scrub for smooth, scroll-linked animation
+          markers: true, // Uncomment this line to see the trigger points
+        },
+      }
+    );
+  }
+</script>

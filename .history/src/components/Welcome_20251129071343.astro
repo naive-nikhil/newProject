@@ -26,7 +26,8 @@
       height="616"
       data-speed="clamp(0.5)"
       data-lag="0"
-      class="absolute blob1 -left-[16vw] w-full h-auto max-w-[682px] max-h-[616px] transform translate-x-0 translate-y-0 rotate-0 scale-100 opacity-100 will-change-[transform]"
+      id="blob1"
+      class="absolute -left-[16vw] w-full h-auto max-w-[682px] max-h-[616px] transform translate-x-0 translate-y-0 rotate-0 scale-100 opacity-100 will-change-[transform]"
     />
     <img
       class="max-w-[538px] z-30 h-auto lg:w-[25vw]"
@@ -46,7 +47,7 @@
       height="616"
       data-speed="clamp(0.5)"
       data-lag="0"
-      class="absolute blob1 -right-[7vw] h-auto max-w-[682px] max-h-[616px] transform translate-x-0 translate-y-0 rotate-0 scale-100 opacity-100 will-change-[transform]"
+      class="absolute -right-[7vw] h-auto max-w-[682px] max-h-[616px] transform translate-x-0 translate-y-0 rotate-0 scale-100 opacity-100 will-change-[transform]"
     />
   </div>
   <!-- Make hero image responsive with max-width so it won't overflow -->
@@ -129,42 +130,14 @@
   import gsap from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/index.js";
   import { ScrollTrigger } from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/ScrollTrigger.min.js";
 
-  gsap.registerPlugin(ScrollTrigger);
+  const blob = document.querySelector("#blob1");
 
-  const blob = document.querySelector(".blob1");
-  const hero = document.querySelector("#hero-root"); // The trigger element
-  // CRITICAL FIX: Check that BOTH elements exist before calling gsap.fromTo
-
-  if (blob && hero) {
-    gsap.fromTo(
-      blob,
-      {
-        // FROM state
-        y: 0,
-        opacity: 1,
-        scale: 1,
-      },
-      {
-        // TO state (Using clearer visibility settings)
-        y: 350, // Move 250px down
-        opacity: 0.2, // Fully fade out
-        scale: 0.8, // Scale down noticeably
-        duration: 1,
-        ease: "power3.out",
-
-        scrollTrigger: {
-          trigger: hero,
-          start: "top top", // Starts when the top of the container hits the top of the viewport
-          end: "bottom top", // Ends when the bottom of the container leaves the top of the viewport
-          scrub: true,
-          markers: true,
-          toggleActions: "play none none reverse", // The default actions for a scrubbed timeline
-        },
-      }
-    );
-  } else {
-    console.warn(
-      "GSAP/ScrollTrigger failed: 'blob' or 'hero' element not found."
-    );
-  }
+  gsap.fromTo;
+  blob,
+    {
+      y: 0,
+      opacity: 1,
+      scale: 1,
+    },
+    {};
 </script>

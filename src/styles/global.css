@@ -6,3 +6,7 @@
 [data-scroll-container] {
   will-change: transform;
 }
+
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+}

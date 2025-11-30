@@ -59,7 +59,7 @@ const faqs = [
 <div class="font-sans py-16 bg-white px-[1.5rem]"   data-scroll-speed="1"
   data-scroll
   data-scroll-offset="100">
-  <div id="hero" class="max-w-6xl mx-auto  grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
     <div class="p-4 mainDiv lg:p-0">
         <img
       src="https://www.stableapp.cloud/app/themes/shape/assets/dist/img/svg/stable-shape-1.svg"
@@ -183,7 +183,7 @@ const faqs = [
 
   gsap.registerPlugin(ScrollTrigger);
 
-  const blob = document.querySelector(".blob");
+  const blob = document.querySelectorAll(".blob");
   const hero = document.querySelector("#hero");
 
   if (blob && hero) {
@@ -197,7 +197,7 @@ const faqs = [
       },
       {
         // TO state (Using clearer visibility settings)
-        y: 100,
+        y: 200,
         opacity: 0,
         scale: 0.8,
         duration: 2,

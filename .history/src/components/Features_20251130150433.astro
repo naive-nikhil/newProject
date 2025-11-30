@@ -47,7 +47,6 @@ const features = [
 </style>
 
 <section
-id="hero"
   data-scroll
   data-scroll-speed="1"
   data-scroll-offset="100"
@@ -85,7 +84,7 @@ id="hero"
                   onerror="window.dispatchEvent(new Event('locomotive:update'))"
                 />
               ) : (
-                 <></>
+                 
               )}
             </div>
           </div>
@@ -114,57 +113,14 @@ id="hero"
  <img
     src="https://www.stableapp.cloud/app/themes/shape/assets/dist/img/svg/stable-shape-1.svg"
     alt=""
-    width="602"
+    width="682"
     height="616"
     data-speed="clamp(0.5)"
     data-lag="0"
-    class="block absolute blob -left-[7vw] w-full h-auto max-w-[500px] max-h-[500px] transform translate-x-0 translate-y-0 rotate-0 scale-100 opacity-100 will-change-[transform]"
+    class="block absolute -right-[7vw] w-full h-auto max-w-[500px] max-h-[500px] transform translate-x-0 translate-y-0 rotate-0 scale-100 opacity-100 will-change-[transform]"
   />
       <!-- Placeholder to balance the grid (if features.length is odd) -->
       <article class="hidden md:block" aria-hidden="true"></article>
     </div>
   </div>
 </section>
-
-
-<script type="module" defer>
-  import gsap from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/index.js";
-  import { ScrollTrigger } from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/ScrollTrigger.min.js";
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  const blob = document.querySelector(".blob");
-  const hero = document.querySelector("#hero");
-
-  if (blob && hero) {
-    gsap.fromTo(
-      blob,
-      {
-        // FROM state
-        y: 0,
-        opacity: 1,
-        scale: 1,
-      },
-      {
-        // TO state (Using clearer visibility settings)
-        y: 100,
-        opacity: 0,
-        scale: 0.8,
-        duration: 3,
-        ease: "power1.out",
-
-        scrollTrigger: {
-          trigger: hero,
-          start: "top mid",
-          end: "bottom top",
-          markers: true,
-          toggleActions: "play none none reverse",
-        },
-      }
-    );
-  } else {
-    console.warn(
-      "GSAP/ScrollTrigger failed: 'blob' or 'hero' element not found."
-    );
-  }
-</script>

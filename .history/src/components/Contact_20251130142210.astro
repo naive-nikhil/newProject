@@ -18,7 +18,7 @@
 </style>
 
 <div
-  id="hero"
+  id="hero-root"
   class="bg-white mainDiv overflow-x-hidden p-6 md:p-12 lg:p-16 max-w-4xl mx-auto my-10 shadow-sm"
 >
   <img
@@ -28,7 +28,7 @@
     height="616"
     data-speed="clamp(0.5)"
     data-lag="0"
-    class="absolute blob -left-[10vw] h-auto max-w-[500px] max-h-[500px] transform translate-x-0 translate-y-0 rotate-0 scale-100 opacity-100 will-change-[transform]"
+    class="absolute blob1 -left-[10vw] h-auto max-w-[500px] max-h-[500px] transform translate-x-0 translate-y-0 rotate-0 scale-100 opacity-100 will-change-[transform]"
   />
   <img
     src="https://www.stableapp.cloud/app/themes/shape/assets/dist/img/svg/stable-shape-1.svg"
@@ -37,7 +37,7 @@
     height="616"
     data-speed="clamp(0.5)"
     data-lag="0"
-    class="block blob absolute -right-[7vw] w-full h-auto max-w-[500px] max-h-[500px] transform translate-x-0 translate-y-0 rotate-0 scale-100 opacity-100 will-change-[transform]"
+    class="block blob1 absolute -right-[7vw] w-full h-auto max-w-[500px] max-h-[500px] transform translate-x-0 translate-y-0 rotate-0 scale-100 opacity-100 will-change-[transform]"
   />
   <h2
     class="text-[2.5rem] z-30 lg:text-[4rem] leading-[4.25rem] font-medium text-center mb-6 text-[#474747]"
@@ -164,29 +164,29 @@
 
   gsap.registerPlugin(ScrollTrigger);
 
-  const blob = document.querySelectorAll(".blob");
-  const hero = document.querySelector("#hero");
+  const blob = document.querySelectorAll(".blob1");
+  const hero = document.querySelector("#hero-root");
 
   if (blob && hero) {
     gsap.fromTo(
       blob,
       {
         // FROM state
-        y: 0,
+        y: 1,
         opacity: 1,
         scale: 1,
       },
       {
         // TO state (Using clearer visibility settings)
-        y: 200,
-        opacity: 0,
+        y: 3,
+        opacity: 0.2,
         scale: 0.8,
-        duration: 2,
-        ease: "power1.out",
+        duration: 1,
+        ease: "power3.out",
 
         scrollTrigger: {
           trigger: hero,
-          start: "top mid",
+          start: "top top",
           end: "bottom top",
           markers: true,
           toggleActions: "play none none reverse",

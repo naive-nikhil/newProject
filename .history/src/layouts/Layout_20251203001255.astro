@@ -25,9 +25,10 @@ import "../styles/global.css";
       <slot />
     </div>
   </body>
-  <script>
+  <script client:load>
     import gsap from "gsap";
     import { ScrollTrigger } from "gsap/ScrollTrigger";
+
     gsap.registerPlugin(ScrollTrigger);
 
     // fake smooth-ish effect

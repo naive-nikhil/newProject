@@ -1,5 +1,7 @@
 ---
 import "../styles/global.css";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 ---
 
 <!doctype html>
@@ -26,8 +28,6 @@ import "../styles/global.css";
     </div>
   </body>
   <script>
-    import gsap from "gsap";
-    import { ScrollTrigger } from "gsap/ScrollTrigger";
     gsap.registerPlugin(ScrollTrigger);
 
     // fake smooth-ish effect

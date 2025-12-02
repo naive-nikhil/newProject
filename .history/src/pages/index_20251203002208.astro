@@ -1,0 +1,75 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Welcome from "../components/Welcome.astro";
+import Features from "../components/Features.astro";
+import Trail from "../components/Trail.astro";
+import Contact from "../components/Contact.astro";
+import FAQ from "../components/FAQ.astro";
+import Clients from "../components/Clients.astro";
+import Grid from "../components/Grid3.astro";
+import Bills from "../components/Bills.astro";
+import Work from "../components/Work.astro";
+import Unicorn from "../components/Unicorn.astro";
+import Footer from "../components/Footer.astro";
+import Services from "../components/Services.astro";
+
+// Pricing Options Type
+type PricingOption = {
+  title: string;
+  description: string;
+  priceHtml: string;
+};
+
+// Contact Card Type
+type ContactCard = {
+  iconPath: string;
+  iconColorClass: string;
+  iconBgClass: string;
+  linkText: string;
+  linkHref: string;
+};
+
+// Data
+const options = [
+  {
+    description:
+      "At Technovel, we bridge the worlds of digital marketing and public relations to offer a holistic suite of services that build brands, drive visibility, and foster lasting audience connections. From    strategic content creation and SEO to high-impact social media management and paid ad campaigns, we ensure your brand not only reaches the right audience but resonates deeply.",
+  },
+  {
+    description:
+      "We also specialize in media outreach, brand positioning, andreputation management aligning your digital presence with meaningful public perception. Backed by data-driven analytics and creative storytelling, Technovel delivers results that are measurable, memorable, and made to grow",
+
+    priceHtml:
+      'Price: Opt for a <a href="/services" class="text-indigo-600 hover:underline">Unicorne Cloud Managed Services package</a>.',
+  },
+];
+
+const contact: ContactCard = {
+  iconPath: "M13 1.01L6 17h6v6l7-16h-6V1.01z",
+  iconColorClass: "text-purple-600",
+  iconBgClass: "bg-purple-100",
+  linkText: "Contact us for more information",
+  linkHref: "/contact",
+};
+---
+
+<Layout>
+  <Header />
+  <Welcome />
+  <Unicorn />
+  <Grid title="Our Services" pricingOptions={options} contactCard={contact} />/
+  <Features />
+  <!-- <Services /> -->
+  <!-- 
+  <Trail /> -->
+  <!-- <Grid title="Pricing" pricingOptions={options} contactCard={contact} /> -->
+  <Bills />
+  <Clients />
+  <!-- <Grid title="Pricing" pricingOptions={options} contactCard={contact} /> -->
+  <Work />
+
+  <!-- <FAQ /> -->
+  <Contact />
+  <Footer />
+</Layout>

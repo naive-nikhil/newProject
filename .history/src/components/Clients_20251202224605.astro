@@ -1,0 +1,116 @@
+---
+// src/components/ClientMarquee.astro
+
+// Define the client logos (as objects containing image paths, alt text, or names)
+// NOTE: Replace the 'src' values with your actual image paths!
+const clients = [
+  {
+    name: "Université Laval",
+    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzQSwkTxmCMoR0MBexDqg__i9DEF1bJNwylA&s",
+    alt: "Université Laval Logo",
+  },
+  {
+    name: "4th Whale",
+    src: "data:image/png;base64,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",
+    alt: "4th Whale Logo",
+  },
+  { name: "axify", src: "/logos/axify.svg", alt: "axify Logo" },
+  { name: "ILLUXI", src: "/logos/illuxi.svg", alt: "ILLUXI Logo" },
+  { name: "KOLORTRAK", src: "/logos/kolortrak.svg", alt: "KOLORTRAK Logo" },
+  { name: "MUUTI", src: "/logos/muuti.svg", alt: "MUUTI Logo" },
+  // Add more clients here if needed
+];
+
+// Duplicating the list is essential to create a seamless infinite loop
+const doubledClients = [...clients, ...clients];
+
+// Define the duration for the animation (adjust this for speed)
+const scrollDuration = "60s"; // Time it takes for the entire doubled list to scroll once
+---
+
+<style>
+  @media (min-width: 780px) {
+    .mainDiv h2 {
+      font-size: 2.75rem;
+      line-height: 4.25rem;
+      text-align: left;
+    }
+    @media (min-width: 1200px) {
+      .mainDiv h2 {
+        font-size: 2rem;
+        text-align: center;
+      }
+    }
+    @media (min-width: 1400px) {
+      .mainDiv h2 {
+        font-size: 4rem;
+        text-align: center;
+      }
+    }
+  }
+</style>
+<section
+  class="py-16 md:py-24 bg-white"
+  data-scroll-speed="1"
+  data-scroll
+  data-scroll-offset="100"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 mainDiv lg:px-8 overflow-hidden">
+    <h2
+      class="text-[2.75rem] lg:text-[4rem] leading-[4.25rem] text-center text-[#474747] mb-12"
+    >
+      Clients
+    </h2>
+
+    <div class="relative w-full">
+      <div
+        class="marquee-content flex"
+        style={`animation-duration: ${scrollDuration};`}
+      >
+        {
+          doubledClients.map((client) => (
+            <div class="flex-shrink-0 w-[160px] md:w-[200px] mx-8 flex items-center justify-center h-16 opacity-60 hover:opacity-100 transition duration-300">
+              <img
+                src={client.src}
+                alt={client.alt}
+                class="max-h-full max-w-full object-contain"
+              />
+            </div>
+          ))
+        }
+      </div>
+
+      <div
+        class="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white to-transparent pointer-events-none"
+      >
+      </div>
+      <div
+        class="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white to-transparent pointer-events-none"
+      >
+      </div>
+    </div>
+  </div>
+</section>
+
+<style define:vars={{ scrollDuration }}>
+  /* Define the keyframes for the infinite scroll */
+  @keyframes scroll-left {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      /* Scroll the width of the original, undoubled list */
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Apply the animation to the marquee content div */
+  .marquee-content {
+    animation: scroll-left var(--scrollDuration) linear infinite;
+    /* Pause the animation when the user hovers over the container */
+    animation-play-state: running;
+  }
+  .marquee-content:hover {
+    animation-play-state: paused;
+  }
+</style>

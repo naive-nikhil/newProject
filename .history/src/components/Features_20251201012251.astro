@@ -1,0 +1,178 @@
+---
+const features = [
+  {
+    title: "Prioritized recommendations for cost optimization",
+    description:
+      "Stable categorizes fixes into Easy, Medium and Hard, along with the cold hard numbers of the dollars you can save.",
+    iconSrc:
+      "https://www.stableapp.cloud/app/uploads/2025/07/icon-recommandations-for-cost-2x.png.webp",
+    alt: "Optimization icon",
+    layout: "default",
+  },
+  {
+    title: "Impact assessment",
+    description:
+      "Stable will give you the details on the impact of a change you'll make to reduce a service- or resource-specific cost.",
+    iconSvg: `<path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"></path>`,
+    alt: "Impact icon",
+    layout: "reversed",
+  },
+];
+---
+
+<style>
+  @media (max-width: 780px) {
+    .mainDiv h2 {
+      font-size: 1.5rem;
+    }
+  }
+
+  /* A small hint: if user prefers reduced motion we will not rely on heavy scroll-based movement */
+  @media (prefers-reduced-motion: reduce) {
+    [data-scroll] { transition: none !important; }
+    .feature-animate { transform: none !important; }
+  }
+
+
+    @media (min-width: 1200px) {
+      .mainDiv h2 {
+        font-size: 2rem;
+      }
+    }
+      @media (min-width: 1400px) {
+      .mainDiv h2 {
+        font-size: 4rem;
+      }
+    }
+</style>
+
+<section
+id="hero"
+  data-scroll
+  data-scroll-speed="1"
+  data-scroll-offset="100"
+  class="min-h-screen py-20 rounded-b-4xl bg-gradient-to-b from-[#07040b] via-[#10071a] to-[#0b0720]"
+>
+  <div class="max-w-7xl mainDiv mx-auto px-6">
+    <h2
+      class="text-[2.75rem] lg:text-[4rem]  leading-[4.25rem] w-full text-center text-[#b6a8e1] font-semibold mb-12"
+      data-scroll
+      data-scroll-speed="1.5"
+    >
+      Features
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-x-16 lg:gap-x-20">
+      {features.map((feature, idx) => (
+        <article
+          class="flex items-start gap-8 px-[1.87rem] lg:px-[3.5rem] feature-animate"
+          data-scroll
+          data-scroll-offset="50"
+          data-scroll-delay={(idx * 0.08).toString()} 
+          data-scroll-speed="0.2"
+          role="article"
+          aria-labelledby={`feature-title-${idx}`}
+        >
+          <!-- Icon Block -->
+          <div class="relative flex items-center justify-center mb-0 md:mb-0">
+            <div class="icon-card w-24 h-24 md:w-28 md:h-28 rounded-2xl border-2 border-zinc-600 flex items-center justify-center bg-gradient-to-tr from-[#261e33] to-[#9d90c3]">
+              {feature.iconSrc ? (
+                <img
+                  src={feature.iconSrc}
+                  alt={feature.alt}
+                  class="w-10 h-10 md:w-14 md:h-14 object-contain rounded-2xl"
+                  onload="window.dispatchEvent(new Event('locomotive:update'))"
+                  onerror="window.dispatchEvent(new Event('locomotive:update'))"
+                />
+              ) : (
+                 <></>
+              )}
+            </div>
+          </div>
+
+          <!-- Text Block -->
+          <div class="">
+            <h3
+              id={`feature-title-${idx}`}
+              class="text-[1rem] lg:text-[1.50rem] wrap-normal leading-[1.5rem] md:text-2xl text-white/90 mb-3"
+              data-scroll
+              data-scroll-speed="0.6"
+            >
+              {feature.title}
+            </h3>
+
+            <p
+              class={`text-[0.75rem] md:text-base text-white/60 leading-relaxed max-w-prose mx-auto ${feature.layout === "reversed" ? "md:ml-auto md:mr-0" : "md:mx-0"}`}
+              data-scroll
+              data-scroll-delay={(idx * 0.12 + 0.05).toString()}
+            >
+              {feature.description}
+            </p>
+          </div>
+        </article>
+      ))}
+<!-- <img
+  src="https://www.stableapp.cloud/app/themes/shape/assets/dist/img/svg/stable-shape-1.svg"
+  alt=""
+  width="602"
+  height="616"
+  data-speed="clamp(0.5)"
+  data-lag="0"
+  class="absolute blob 
+         -left-[12vw] sm:-left-[10vw] md:-left-[7vw] lg:-left-[5vw] xl:-left-[3vw]
+         w-[70%] sm:w-[55%] md:w-[45%] lg:w-[40%] xl:w-[35%]
+         h-auto
+         max-w-none
+         opacity-100 
+         will-change-transform 
+         pointer-events-none"
+  /> -->
+
+      <!-- Placeholder to balance the grid (if features.length is odd) -->
+      <article class="hidden md:block" aria-hidden="true"></article>
+    </div>
+  </div>
+</section>
+
+
+<!-- <script type="module" defer>
+  import gsap from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/index.js";
+  import { ScrollTrigger } from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/ScrollTrigger.min.js";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const blob = document.querySelector(".blob");
+  const hero = document.querySelector("#hero");
+
+  if (blob && hero) {
+    gsap.fromTo(
+      blob,
+      {
+        // FROM state
+        y: 0,
+        opacity: 1,
+        scale: 1,
+      },
+      {
+        // TO state (Using clearer visibility settings)
+        y: 100,
+        opacity: 0,
+        scale: 0.8,
+        duration: 3,
+        ease: "power1.out",
+
+        scrollTrigger: {
+          trigger: hero,
+          start: "top mid",
+          end: "bottom top",
+         scurb:true,
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+  } else {
+    console.warn(
+      "GSAP/ScrollTrigger failed: 'blob' or 'hero' element not found."
+    );
+  }
+</script> -->

@@ -1,0 +1,37 @@
+import LocomotiveScroll from "locomotive-scroll";
+
+let scrollInstance = null;
+
+export function Locomotive() {
+    const el = document.querySelector('[data-scroll-container]'); // Added semicolon
+    if (!el) {
+        return null; // Added semicolon
+    }
+
+    if (scrollInstance) {
+        scrollInstance.update(); // Added semicolon
+        return scrollInstance; // Added semicolon
+    }
+
+    // FIX: Corrected capitalization from Locomotivescroll to LocomotiveScroll
+    scrollInstance = new LocomotiveScroll({
+        el,
+        smooth: true,
+        multiplier: 1,
+        smartphone: { smooth: true },
+        tablet: { smooth: true }
+    }); // Added semicolon after constructor call
+
+    return scrollInstance; // Added semicolon
+}
+
+
+export function destroyLocomotive() {
+    if (!scrollInstance) return; // Note: Linter might still flag this as missing semicolon, use 'return;'
+    try {
+        scrollInstance.destroy(); // Added semicolon
+    } catch (e) {
+        // ignore
+    }
+    scrollInstance = null; // Added semicolon
+}

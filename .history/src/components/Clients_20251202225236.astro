@@ -1,0 +1,120 @@
+---
+// src/components/ClientMarquee.astro
+
+// Define the client logos (as objects containing image paths, alt text, or names)
+// NOTE: Replace the 'src' values with your actual image paths!
+const clients = [
+  {
+    name: "Université Laval",
+    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzQSwkTxmCMoR0MBexDqg__i9DEF1bJNwylA&s",
+    alt: "Université Laval Logo",
+  },
+  {
+    name: "4th Whale",
+    src: "data:image/png;base64,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",
+    alt: "4th Whale Logo",
+  },
+  {
+    name: "axify",
+    src: "data:image/png;base64,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",
+    alt: "axify Logo",
+  },
+  { name: "ILLUXI", src: "/logos/illuxi.svg", alt: "ILLUXI Logo" },
+  { name: "KOLORTRAK", src: "/logos/kolortrak.svg", alt: "KOLORTRAK Logo" },
+  { name: "MUUTI", src: "/logos/muuti.svg", alt: "MUUTI Logo" },
+  // Add more clients here if needed
+];
+
+// Duplicating the list is essential to create a seamless infinite loop
+const doubledClients = [...clients, ...clients];
+
+// Define the duration for the animation (adjust this for speed)
+const scrollDuration = "60s"; // Time it takes for the entire doubled list to scroll once
+---
+
+<style>
+  @media (min-width: 780px) {
+    .mainDiv h2 {
+      font-size: 2.75rem;
+      line-height: 4.25rem;
+      text-align: left;
+    }
+    @media (min-width: 1200px) {
+      .mainDiv h2 {
+        font-size: 2rem;
+        text-align: center;
+      }
+    }
+    @media (min-width: 1400px) {
+      .mainDiv h2 {
+        font-size: 4rem;
+        text-align: center;
+      }
+    }
+  }
+</style>
+<section
+  class="py-16 md:py-24 bg-white"
+  data-scroll-speed="1"
+  data-scroll
+  data-scroll-offset="100"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 mainDiv lg:px-8 overflow-hidden">
+    <h2
+      class="text-[2.75rem] lg:text-[4rem] leading-[4.25rem] text-center text-[#474747] mb-12"
+    >
+      Clients
+    </h2>
+
+    <div class="relative w-full">
+      <div
+        class="marquee-content flex"
+        style={`animation-duration: ${scrollDuration};`}
+      >
+        {
+          doubledClients.map((client) => (
+            <div class="flex-shrink-0 w-[160px] md:w-[200px] mx-8 flex items-center justify-center h-16 opacity-60 hover:opacity-100 transition duration-300">
+              <img
+                src={client.src}
+                alt={client.alt}
+                class="max-h-full max-w-full object-contain"
+              />
+            </div>
+          ))
+        }
+      </div>
+
+      <div
+        class="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white to-transparent pointer-events-none"
+      >
+      </div>
+      <div
+        class="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white to-transparent pointer-events-none"
+      >
+      </div>
+    </div>
+  </div>
+</section>
+
+<style define:vars={{ scrollDuration }}>
+  /* Define the keyframes for the infinite scroll */
+  @keyframes scroll-left {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      /* Scroll the width of the original, undoubled list */
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Apply the animation to the marquee content div */
+  .marquee-content {
+    animation: scroll-left var(--scrollDuration) linear infinite;
+    /* Pause the animation when the user hovers over the container */
+    animation-play-state: running;
+  }
+  .marquee-content:hover {
+    animation-play-state: paused;
+  }
+</style>

@@ -1,0 +1,59 @@
+---
+import "../styles/global.css";
+// NOTE: Since we are using GSAP for scrolling, we do not need to import any Locomotive Scroll files/components.
+---
+<!doctype html>
+<html lang="en">
+  <head>
+ <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    
+        <style>
+      .logo-hidden {
+        opacity: 0;
+        transform: scale(0);
+      }
+    </style>
+
+    <title>Technovel</title>
+  </head>
+  <body>
+      
+     
+    
+    <slot />
+
+
+
+ </body>
+</html>
+
+---
+
+## 🎨 Styling Notes
+
+Since you are no longer using the `[data-scroll-container]` element, you should update your styling block.
+
+```astro
+<style>
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+  /* ❌ REMOVE THIS RULE as it's no longer needed:
+  [data-scroll-container] {
+    will-change: transform;
+  }
+  */
+</style>

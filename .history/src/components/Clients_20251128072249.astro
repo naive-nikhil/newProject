@@ -1,0 +1,112 @@
+---
+// src/components/ClientMarquee.astro
+
+// Define the client logos (as objects containing image paths, alt text, or names)
+// NOTE: Replace the 'src' values with your actual image paths!
+const clients = [
+  {
+    name: "Université Laval",
+    src: "/logos/laval.svg",
+    alt: "Université Laval Logo",
+  },
+  { name: "4th Whale", src: "/logos/4thwhale.svg", alt: "4th Whale Logo" },
+  { name: "axify", src: "/logos/axify.svg", alt: "axify Logo" },
+  { name: "ILLUXI", src: "/logos/illuxi.svg", alt: "ILLUXI Logo" },
+  { name: "KOLORTRAK", src: "/logos/kolortrak.svg", alt: "KOLORTRAK Logo" },
+  { name: "MUUTI", src: "/logos/muuti.svg", alt: "MUUTI Logo" },
+  // Add more clients here if needed
+];
+
+// Duplicating the list is essential to create a seamless infinite loop
+const doubledClients = [...clients, ...clients];
+
+// Define the duration for the animation (adjust this for speed)
+const scrollDuration = "60s"; // Time it takes for the entire doubled list to scroll once
+---
+
+<style>
+  @media (min-width: 780px) {
+    .mainDiv h2 {
+      font-size: 2.75rem;
+      line-height: 4.25rem;
+      text-align: left;
+    }
+    @media (min-width: 1200px) {
+      .mainDiv h2 {
+        font-size: 2rem;
+        text-align: center;
+      }
+    }
+    @media (min-width: 1400px) {
+      .mainDiv h2 {
+        font-size: 4rem;
+        text-align: center;
+      }
+    }
+  }
+</style>
+<section
+  class="py-16 md:py-24 bg-white"
+  data-scroll-speed="1"
+  data-scroll
+  data-scroll-offset="100"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 mainDiv lg:px-8 overflow-hidden">
+    <h2
+      class="text-[2.75rem] lg:text-[4rem] leading-[4.25rem] text-center text-[#474747] mb-12"
+    >
+      Clients
+    </h2>
+
+    <div class="relative w-full">
+      <div
+        class="marquee-content flex"
+        style={`animation-duration: ${scrollDuration};`}
+      >
+        {
+          doubledClients.map((client) => (
+            <div class="flex-shrink-0 w-[160px] md:w-[200px] mx-8 flex items-center justify-center h-16 opacity-60 hover:opacity-100 transition duration-300">
+              <img
+                src={client.src}
+                alt={client.alt}
+                class="max-h-full max-w-full object-contain"
+              />
+            </div>
+          ))
+        }
+      </div>
+
+      <div
+        class="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white to-transparent pointer-events-none"
+      >
+      </div>
+      <div
+        class="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white to-transparent pointer-events-none"
+      >
+      </div>
+    </div>
+  </div>
+</section>
+
+<style define:vars={{ scrollDuration }}>
+  /* Define the keyframes for the infinite scroll */
+  @keyframes scroll-left {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      /* Scroll the width of the original, undoubled list */
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Apply the animation to the marquee content div */
+  .marquee-content {
+    animation: scroll-left var(--scrollDuration) linear infinite;
+    /* Pause the animation when the user hovers over the container */
+    animation-play-state: running;
+  }
+  .marquee-content:hover {
+    animation-play-state: paused;
+  }
+</style>

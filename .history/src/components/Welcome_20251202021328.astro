@@ -1,0 +1,167 @@
+---
+import technovel from "../assets/technovel_logo.png";
+---
+
+<style>
+  @media (min-width: 780px) {
+    .mainDiv h2 {
+      font-size: 2.75rem;
+      line-height: 4.25rem;
+    }
+    @media (min-width: 1200px) {
+      .mainDiv h2 {
+        font-size: 2rem;
+      }
+    }
+  }
+</style>
+
+<div
+  id="hero-root"
+  class="flex justify-center h-[97vh] items-center w-full rounded-b-4xl flex-col pb-5 overflow-x-hidden"
+>
+  <div
+    class="w-full lg:h-[55vh] flex justify-center mx-auto items-center flex-col px-4"
+  >
+    <img
+      src="https://www.stableapp.cloud/app/themes/shape/assets/dist/img/svg/stable-shape-1.svg"
+      alt=""
+      width="682"
+      height="616"
+      data-speed="clamp(0.5)"
+      data-lag="0"
+      class="absolute blob1
+         -left-[20vw] sm:-left-[18vw] md:-left-[14vw] lg:-left-[10vw] xl:-left-[8vw]
+         w-[80%] sm:w-[60%] md:w-[50%] lg:w-[42%] xl:w-[38%]
+         h-auto
+         max-w-none
+         opacity-100
+         will-change-transform pointer-events-none"
+    />
+
+    <img
+      class="max-w-[538px] z-30 h-auto lg:w-[25vw]"
+      src={technovel.src}
+      alt="Stable Logo"
+    />
+
+    <h1
+      class="text-[1.75rem] z-30 leading-[2.375rem] max-w-[900px] sm:text-4xl py-2 mt-[23px] font-medium text-center"
+    >
+      Grow Your Brand with Technovel’s Next-Gen Digital Solutions
+    </h1>
+  </div>
+  <!-- Make hero image responsive with max-width so it won't overflow -->
+  <!-- <img
+    class="max-w-[1020px] w-[95%] sm:w-[80%] md:w-[70%] h-auto"
+    src="https://www.stableapp.cloud/app/uploads/2025/07/hero-laptop-asset.png.webp"
+    alt="Stable App Dashboard Preview"
+  /> -->
+
+  <!-- <section class="w-[95vw] lg:w-[80vw] flex justify-center">
+    <div
+      class="w-full lg:max-w-[1400px] py-10 lg:py-20 flex flex-col lg:flex-row items-start gap-8 lg:gap-48"
+    >
+      <div class="w-full lg:w-2/5 px-2">
+        <h2
+          class="text-[1.5rem] text-[#474747]
+           leading-[2.50rem] lg:leading-[5rem]
+           lg:text-[4rem]
+           whitespace-nowrap lg:whitespace-normal"
+        >
+          Crush your AWS cost creep
+        </h2>
+      </div>
+
+      <div class="w-full px-4 lg:w-3/5 flex flex-col gap-8">
+        <p
+          class="w-full lg:text-[1.25rem] lg:max-w-[95%] text-[0.8rem] text-zinc-500 leading-8"
+        >
+          Discover <strong>Stable</strong>, your go-to solution for AWS cloud
+          savings. Stable slashes runaway spend and resource sprawl across every
+          layer of your AWS ecosystems—delivering the kind of <strong
+            >FinOps-level savings</strong
+          >
+          straight to your bottom line.
+        </p>
+
+        <div
+          class="relative flex justify-between w-full max-w-[400px] h-[250px] rounded-4xl bg-[rgba(231,226,244,0.8)] p-6 items-center gap-6 mx-auto lg:mx-0"
+        >
+          <div
+            class="w-[180px] h-[200px] rounded-4xl bg-gradient-to-b from-[#2b0f4a] to-[#7441d6] flex items-center justify-center overflow-hidden shadow-lg"
+          >
+            <img
+              class="w-[80%] h-[80%] rounded-4xl object-contain"
+              src="https://www.stableapp.cloud/app/uploads/2025/07/hero-laptop-asset.png.webp"
+              alt="preview"
+            />
+          </div>
+
+          <div class="absolute right-2.5 top-2.5">
+            <span class="text-zinc-500 text-xl">See how</span>
+          </div>
+
+          <button
+            aria-label="Play"
+            class="absolute right-6 bottom-6 w-16 h-14 rounded-2xl rounded-br-4xl bg-gradient-to-b from-[#6b3bd1] to-[#3b146a] flex items-center justify-center shadow-xl"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M7 5v14l11-7L7 5z" fill="white"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section> -->
+</div>
+
+<script type="module" defer>
+  import gsap from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/index.js";
+  import { ScrollTrigger } from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/ScrollTrigger.min.js";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const blob = document.querySelectorAll(".blob1");
+  const hero = document.querySelector("#hero-root"); // The trigger element
+  // CRITICAL FIX: Check that BOTH elements exist before calling gsap.fromTo
+
+  if (blob && hero) {
+    gsap.fromTo(
+      blob,
+      {
+        // FROM state
+        y: 0,
+        opacity: 1,
+        scale: 1,
+      },
+      {
+        // TO state (Using clearer visibility settings)
+        y: 120, // Move 250px down
+        opacity: 0, // Fully fade out
+        scale: 0.2, // Scale down noticeably
+        duration: 1,
+        ease: "power2.out",
+
+        scrollTrigger: {
+          trigger: hero,
+          start: "top top", // Starts when the top of the container hits the top of the viewport
+          end: "bottom top", // Ends when the bottom of the container leaves the top of the viewport
+          scrub: true,
+
+          toggleActions: "play none none reverse", // The default actions for a scrubbed timeline
+        },
+      }
+    );
+  } else {
+    console.warn(
+      "GSAP/ScrollTrigger failed: 'blob' or 'hero' element not found."
+    );
+  }
+</script>

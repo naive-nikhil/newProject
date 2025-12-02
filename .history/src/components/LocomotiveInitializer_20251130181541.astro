@@ -1,0 +1,40 @@
+---
+// Import the functions so they are bundled with this component's script.
+import { Locomotive } from "../scripts/locomotive.js";
+---
+
+<script>
+  import { Locomotive } from "../scripts/locomotive.js";
+
+  const startLoco = () => {
+    // Use a small timeout for safety, ensuring DOM is fully ready
+    setTimeout(() => {
+      const scroll = Locomotive();
+
+      if (scroll) {
+        // Attach window resize listener ONLY when the instance is successfully created
+        const updateOnResize = () => scroll.update();
+        window.addEventListener("resize", updateOnResize);
+
+        // Check and update on image load
+        const container = document.querySelector("[data-scroll-container]");
+        if (container) {
+          container.querySelectorAll("img").forEach((img) => {
+            if (!img.complete) {
+              img.addEventListener("load", updateOnResize);
+              img.addEventListener("error", updateOnResize);
+            }
+          });
+        }
+
+        // You might need to unbind these listeners if the component were destroyed.
+      }
+    }, 30);
+  };
+
+  // Initial Page Load
+  startLoco();
+
+  // Handle Astro client-side navigation (View Transitions)
+  document.addEventListener("astro:page-load", startLoco);
+</script>

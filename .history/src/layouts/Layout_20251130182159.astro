@@ -1,0 +1,130 @@
+---
+import "../styles/global.css";
+// Import the initializer component
+import LocomotiveInitializer from "../components/LocomotiveInitializer.astro";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      .logo-hidden {
+        opacity: 0;
+        transform: scale(0);
+      }
+    </style>
+
+    <title>Technovel</title>
+  </head>
+  <body>
+    <div data-scroll-container>
+      <div
+        class="flex hero justify-between items-center text-sm font-bold p-4 mx-12
+                sticky top-0 z-50"
+        data-scroll-speed="1"
+      >
+        <div>
+          <img
+            src="https://www.stableapp.cloud/app/themes/shape/assets/src/img/svg/tag-stable.svg"
+            alt="Stable logo"
+            class="w-[36px] logo logo-hidden"
+          />
+        </div>
+
+        <div
+          class="hidden lg:flex items-center gap-7.5 text-zinc-800 bg-gray-100/80 pl-7 px-1 rounded-lg border border-gray-300 backdrop-blur-sm py-1 shadow-sm"
+        >
+          <h2
+            class="cursor-pointer transition hover:text-[#a797db] duration-300"
+          >
+            About Us
+          </h2>
+
+          <button
+            class="px-7 py-4 rounded-lg bg-gradient-to-r from-[#614ab1] to-[#2C104C]
+                    text-white font-medium shadow-lg shadow-purple-500/20
+                    hover:shadow-purple-500/30 hover:scale-105 transition"
+          >
+            Contact Us
+          </button>
+        </div>
+
+        <div class="lg:hidden">
+          <button
+            class="px-5 py-2 rounded-lg bg-gradient-to-r from-[#614ab1] to-[#2C104C]
+                    text-white font-medium shadow-lg shadow-purple-500/20 transition"
+          >
+            Menu
+          </button>
+        </div>
+      </div>
+
+      <slot />
+    </div>
+
+    <LocomotiveInitializer client:idle />
+
+    <script type="module" defer>
+      import gsap from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/index.js";
+      import { ScrollTrigger } from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/ScrollTrigger.min.js";
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      // We will now rely on the component (LocomotiveInitializer.astro) to create the instance.
+
+      // We wait for the Astro page load event to ensure all components have mounted.
+      document.addEventListener("astro:page-load", () => {
+        // CRUCIAL: Since Locomotive Scroll takes over scrolling, we must check if
+        // the GSAP scroll proxy is needed.
+        // For simple scroll-down animations, you might get away without the full proxy,
+        // but if you experience buggy animations, you'll need a global hook.
+
+        const logo = document.querySelector(".logo");
+        gsap.fromTo(
+          logo,
+          {
+            scale: 0,
+            opacity: 0,
+          },
+          {
+            scale: 1,
+            opacity: 1,
+            duration: 0.5,
+            scrollTrigger: {
+              // If LocomotiveScroll is working, this animation should trigger.
+              trigger: document.body,
+              start: "top -=10", // Triggers after 10px of scroll
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      });
+    </script>
+  </body>
+</html>
+
+<style>
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    /* ⚠️ Optional: Hiding the native scrollbar for Locomotive Scroll */
+    overflow: hidden;
+  }
+  [data-scroll-container] {
+    will-change: transform;
+  }
+</style>

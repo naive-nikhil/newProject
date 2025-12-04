@@ -1,0 +1,237 @@
+---
+/ / src/components/ClientMarquee.astro
+
+// Define the client logos (as objects containing image paths, alt text, or names)
+// NOTE: Replace the 'src' values with your actual image paths!
+const clients = [
+  {
+    name: "Université Laval",
+    src: "https://media.licdn.com/dms/image/v2/D5622AQFW4gTQFuuPOg/feedshare-shrink_800/B56ZaReK.1GUAo-/0/1746197331461?e=2147483647&v=beta&t=t95myTZcxVbmfqAYbJoeZJvFdm7Z2SRDeB-XE8rJPLk",
+    alt: "Université Laval Logo",
+  },
+  {
+    name: "4th Whale",
+    src: "data:image/png;base64,iVBORw0K...",
+    alt: "4th Whale Logo",
+  },
+  {
+    name: "axify",
+    src: "data:image/png;base64,iVBORw0K...",
+    alt: "axify Logo",
+  },
+  {
+    name: "ILLUXI",
+    src: "data:image/png;base64,iVBORw0K...",
+    alt: "ILLUXI Logo",
+  },
+  {
+    name: "KOLORTRAK",
+    src: "data:image/png;base64,iVBORw0K...",
+    alt: "KOLORTRAK Logo",
+  },
+  {
+    name: "MUUTI",
+    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE4aAneOBqZNm6K2eKaajbeCxriMnZJHlErw&s",
+    alt: "MUUTI Logo",
+  },
+  {
+    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzCc2kGj_ZlazQlzyDHAmNjFxj4RXbjoheDQ&s",
+    alt: "Client",
+  },
+  {
+    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJn0lVhKk5c4gsf9EWHE3KtR15Cc6R9YiB9Q&s",
+    alt: "Client",
+  },
+  // Add more clients here if needed
+];
+
+// Duplicating the list is essential to create a seamless infinite loop
+const doubledClients = [...clients, ...clients];
+
+// Define the duration for the animation (adjust this for speed)
+const scrollDuration = "30s"; // Time it takes for the entire doubled list to scroll once
+---
+
+<style>
+  /* Layout + page */
+  :root {
+    --card-bg: rgba(255,255,255,0.65);
+    --accent: #006ab2;
+    --muted: #6b7280;
+  }
+
+  section.client-marquee {
+    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 40%);
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+
+  .main-title {
+    font-weight: 800;
+    color: #374151; /* slate-700 */
+    margin-bottom: 2.25rem;
+    text-align: center;
+    letter-spacing: -0.02em;
+  }
+
+  /* Marquee wrapper */
+  .marquee-wrap {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    padding: 1.25rem 0;
+    background: linear-gradient(90deg, rgba(2,6,23,0.02), rgba(2,6,23,0.01));
+    border: 1px solid rgba(15,23,42,0.04);
+    box-shadow: 0 10px 30px rgba(15,23,42,0.04);
+  }
+
+  /* Fading edges */
+  .edge-left,
+  .edge-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 3.5rem;
+    pointer-events: none;
+    z-index: 30;
+  }
+  .edge-left { left: 0; background: linear-gradient(90deg, white, rgba(255,255,255,0)); }
+  .edge-right { right: 0; background: linear-gradient(270deg, white, rgba(255,255,255,0)); }
+
+  /* Marquee content */
+
+  .marquee-content {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-left: 3.5rem;  /* leave room for the left fade */
+    padding-right: 3.5rem; /* and right fade */
+    will-change: transform;
+    animation: scroll-left var(--scrollDuration) linear infinite;
+    animation-play-state: running;
+  }
+
+  /* Individual logo card */
+  .logo-card {
+    flex: 0 0 auto;
+    width: 170px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-inline: 0.5rem;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    background: var(--card-bg);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: 0 6px 18px rgba(2,6,23,0.04);
+    transition: transform 220ms cubic-bezier(.2,.9,.3,1), box-shadow 220ms, filter 220ms;
+    border: 1px solid rgba(2,6,23,0.04);
+  }
+
+  .logo-card:focus,
+  .logo-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 14px 32px rgba(2,6,23,0.08);
+    z-index: 20;
+  }
+
+  /* Logo appearance: grayscale to color on hover */
+  .logo-card img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: grayscale(100%) contrast(0.9) brightness(1.05);
+    transition: filter 240ms ease, transform 240ms ease;
+    transform-origin: center;
+  }
+
+  .logo-card:hover img,
+  .logo-card:focus img {
+    filter: none;
+    transform: scale(1.03);
+  }
+
+  /* Accessibility: keyboard focus ring */
+  .logo-card:focus {
+    outline: 3px solid rgba(2,106,178,0.16);
+    outline-offset: 3px;
+  }
+
+  /* Slightly larger on medium screens */
+  @media (min-width: 768px) {
+    .logo-card { width: 200px; height: 86px; }
+    .marquee-content { gap: 2rem; }
+  }
+
+  @media (min-width: 1024px) {
+    .logo-card { width: 230px; height: 96px; }
+  }
+
+  /* Keyframes */
+  @keyframes scroll-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); } /* move half because we duplicated the list */
+  }
+
+  /* Pause on hover */
+  .marquee-wrap:hover .marquee-content,
+  .marquee-wrap:focus-within .marquee-content {
+    animation-play-state: paused;
+  }
+
+  /* Reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-content { animation: none !important; }
+    .logo-card, .logo-card img { transition: none !important; transform: none !important; }
+  }
+
+  /* Small helper: descriptive line under title */
+  .subtitle {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+</style>
+
+<section class="client-marquee">
+  <div class="container mainDiv">
+    <h2 class="main-title text-[2.75rem] lg:text-[4rem] leading-[4.25rem]">Clients</h2>
+    <p class="subtitle">Trusted by teams across industries — logos are interactive (hover or focus).</p>
+
+    <div class="marquee-wrap" aria-label="Client logos scrolling marquee">
+      <div class="marquee-content" style={`--scrollDuration: ${scrollDuration};`}>
+        {
+          doubledClients.map((client, idx) => (
+            // Keep element structure — make each card keyboard-focusable with tabindex
+            <div class="logo-card" role="img" aria-label={client.alt ?? client.name ?? `client-${idx}`} tabindex="0">
+              <img
+                src={client.src}
+                alt={client.alt ?? client.name ?? `Client logo ${idx + 1}`}
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="edge-left" aria-hidden="true"></div>
+      <div class="edge-right" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+<style define:vars={{ scrollDuration }}>
+  /* legacy fallback: ensure the animation is set using CSS variable */
+  :root { --scrollDuration: 30s; }
+</style>

@@ -1,0 +1,112 @@
+---
+import technovel from "../assets/technovel_logo.png";
+---
+
+<style>
+  @media (min-width: 780px) {
+    .mainDiv h2 {
+      font-size: 2.75rem;
+      line-height: 4.25rem;
+    }
+    @media (min-width: 1200px) {
+      .mainDiv h2 {
+        font-size: 2rem;
+      }
+    }
+  }
+</style>
+
+<div
+  id="hero-root"
+  class="flex justify-center h-[80vh] items-center w-full rounded-b-4xl flex-col pb-5 overflow-x-hidden"
+>
+  <div
+    class="w-full lg:h-[55vh] flex justify-center mx-auto items-center flex-col px-4"
+  >
+    <!-- <img
+      src="https://www.stableapp.cloud/app/themes/shape/assets/dist/img/svg/stable-shape-1.svg"
+      alt=""
+      width="682"
+      height="616"
+      data-speed="clamp(0.5)"
+      data-lag="0"
+      class="absolute blob1
+         -left-[20vw] sm:-left-[18vw] md:-left-[14vw] lg:-left-[10vw] xl:-left-[8vw]
+         w-[80%] sm:w-[60%] md:w-[50%] lg:w-[42%] xl:w-[38%]
+         h-auto
+         max-w-none
+         opacity-100
+         will-change-transform pointer-events-none"
+    /> -->
+    <div
+      class="blob1 pointer-events-none absolute top-1/2 left-0 w-[20vw] h-[20vw] bg-[#047bca] opacity-20 -translate-y-1/2 blur-3xl rounded-full z-0"
+    >
+    </div>
+
+    <img
+      class="max-w-[538px] h-auto lg:w-[25vw]"
+      src={technovel.src}
+      alt="Stable Logo"
+    />
+
+    <h1
+      class="text-[1.75rem] z-30 leading-[2.375rem] max-w-[900px] sm:text-4xl py-2 mt-[23px] font-bold text-center"
+    >
+      Next-Gen Digital Solutions
+    </h1>
+  </div>
+  <div
+    class="blob1 pointer-events-none absolute top-[70%] right-0 w-[20vw] h-[20vw] bg-[#047bca] opacity-20 -translate-y-1/2 blur-3xl rounded-full z-0"
+  >
+  </div>
+  <!-- Make hero image responsive with max-width so it won't overflow -->
+  <!-- <img
+    class="max-w-[1020px] w-[95%] sm:w-[80%] md:w-[70%] h-auto"
+    src="https://www.stableapp.cloud/app/uploads/2025/07/hero-laptop-asset.png.webp"
+    alt="Stable App Dashboard Preview"
+  /> -->
+</div>
+
+<script type="module" defer>
+  import gsap from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/index.js";
+  import { ScrollTrigger } from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/ScrollTrigger.min.js";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const blob = document.querySelectorAll(".blob1");
+  const hero = document.querySelector("#hero-root"); // The trigger element
+  // CRITICAL FIX: Check that BOTH elements exist before calling gsap.fromTo
+
+  if (blob && hero) {
+    gsap.fromTo(
+      blob,
+      {
+        // FROM state
+        y: 0,
+        opacity: 1,
+        scale: 1,
+      },
+      {
+        // TO state (Using clearer visibility settings)
+        y: 120, // Move 250px down
+        opacity: 0, // Fully fade out
+        scale: 0.2, // Scale down noticeably
+        duration: 1,
+        ease: "power2.out",
+
+        scrollTrigger: {
+          trigger: hero,
+          start: "top top", // Starts when the top of the container hits the top of the viewport
+          end: "bottom top", // Ends when the bottom of the container leaves the top of the viewport
+          scrub: true,
+
+          toggleActions: "play none none reverse", // The default actions for a scrubbed timeline
+        },
+      }
+    );
+  } else {
+    console.warn(
+      "GSAP/ScrollTrigger failed: 'blob' or 'hero' element not found."
+    );
+  }
+</script>

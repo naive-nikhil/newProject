@@ -1,0 +1,97 @@
+---
+import technovel from "../assets/technovel_logo.png";
+---
+
+<style>
+  @media (min-width: 765px) {
+    .mainDiv2 h1 {
+      font-size: 1.5rem;
+      line-height: 2.75rem;
+    }
+
+    @media (min-width: 1200px) {
+      .mainDiv h2 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (min-width: 1400px) {
+      .mainDiv2 h1 {
+        font-size: 3.25rem;
+
+        line-height: 5rem;
+      }
+    }
+    @media (max-width: 700px) {
+      .imageLogo {
+        margin-top: 5vh;
+      }
+    }
+  }
+</style>
+
+<section
+  class="bg-gray-50/50"
+  data-scroll-speed="1"
+  data-scroll
+  data-scroll-offset="100"
+>
+  <div class="max-w-4xl mx-auto px-4 text-center mainDiv2">
+    <h1 class="text-5xl md:text-6xl font-semibold text-gray-900 mb-10">
+      Start your
+      <span
+        class="text-transparent"
+        style="background-image: linear-gradient(to right, #006ab2, #013456); /* Purple Gradient */
+                   -webkit-background-clip: text;
+                   background-clip: text;"
+      >
+        free trial
+      </span>
+      now
+    </h1>
+
+    <button
+      class="px-7 py-4 rounded-lg bg-gradient-to-r from-[#006ab2] to-[#013456]
+             text-white font-medium shadow-lg shadow-purple-500/20
+             hover:shadow-purple-500/30 hover:scale-105 transition"
+    >
+      Free Trial
+    </button>
+  </div>
+
+  <div class="max-w-screen flex flex-col">
+    <div
+      class="flex justify-between mx-[4.5rem] py-[9vh] order-2 xl:order-1 xl:text-[1.4rem] text-[1rem]"
+    >
+      <div class="flex gap-6 items-center">
+        <h1>Resources</h1>
+        <h1>Help Center</h1>
+        <h1>Login</h1>
+      </div>
+      <div class="flex gap-6">
+        <h1>Resources</h1>
+        <h1>Help Center</h1>
+        <h1>Login</h1>
+      </div>
+    </div>
+    <img
+      class="order-1 xl:order-2 imageLogo mx-[9.5rem]"
+      src={technovel.src}
+      alt=""
+    />
+    <div
+      class="flex order-3 xl:order-3 justify-between py-[8vh] mx-[4.5rem] xl:text-[1.4rem] text-[1rem]"
+    >
+      <div class="flex flex-col gap-6 xl:flex-row">
+        <h1>Resources</h1>
+        <h1>Help Center</h1>
+        <h1>Login</h1>
+      </div>
+      <div class="flex flex-col gap-6 xl:flex-row">
+        <h1>Resources</h1>
+        <h1>Help Center</h1>
+        <h1>Login</h1>
+      </div>
+    </div>
+  </div>
+</section>

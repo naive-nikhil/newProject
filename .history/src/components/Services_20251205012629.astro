@@ -1,0 +1,108 @@
+---
+// src/components/PricingSection.astro
+
+export interface PricingOption {
+  title: string;
+
+}
+
+export interface ContactCard {
+  iconPath: string;
+  iconColorClass: string;
+  iconBgClass: string;
+  linkText: string;
+  linkHref: string;
+}
+
+export interface Props {
+  title: string;
+  pricingOptions: PricingOption[];
+  contactCard: ContactCard;
+}
+
+const { title, pricingOptions, contactCard } = Astro.props;
+---
+
+<style>
+  /* flat media queries — valid CSS */
+  @media (min-width: 780px) {
+    .mainDiv h2 {
+      font-size: 2.75rem;
+      line-height: 4.25rem;
+      text-align: left;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .mainDiv h2 {
+      font-size: 2rem;
+      text-align: left;
+    }
+  }
+
+  @media (min-width: 1400px) {
+    .mainDiv h2 {
+      font-size: 4rem;
+    }
+  }
+</style>
+
+<section class="h-screen rounded-b-4xl w-screen">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mainDiv">
+    <h2
+      class="text-[2.5rem] lg:text-[4rem] leading-[1.1] text-[#474747] mb-16 md:mb-20"
+     
+    >
+     Our Services
+    </h2>
+
+    <div class="flex">
+<div class="h-[40vh] w-full flex flex-col justify-between   ">
+  <img
+            class="w-full h-[50%] rounded-4xl object-cover"
+            src="https://themexriver.com/wp/choicy-wp/wp-content/uploads/2024/06/ab1.webp"
+            alt="Bolt icon"
+          />
+           <p class="text-lg w-[40%] h-[50%] text-gray-600 leading-relaxed">
+             At Technovel, we bridge the worlds of digital marketing and public
+relations to offer a holistic suite of services that build brands,
+drive visibility, and foster lasting audience connections. From
+strategic content creation and SEO to high-impact social media
+management and paid ad campaigns, we ensure your brand not
+only reaches the right audience but resonates deeply.
+
+            </p>
+</div>
+       
+      
+        
+          <div class="h-[40vh] w-full flex flex-col justify-between mt-3">   
+
+        <p class="text-lg w-full h-[40%] text-gray-600 leading-relaxed">
+            We also specialize in media outreach, brand positioning, and
+reputation management aligning your digital presence with
+meaningful public perception. Backed by data-driven analytics
+and creative storytelling, Technovel delivers results that are
+measurable, memorable, and made to grow.
+
+
+            </p>
+             <img
+            class="h-[60%] w-full rounded-4xl object-cover"
+            src="https://themexriver.com/wp/choicy-wp/wp-content/uploads/2024/06/ab1.webp"
+            alt="Bolt icon"
+          />
+          
+          
+          </div>
+      
+      
+
+     
+   
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

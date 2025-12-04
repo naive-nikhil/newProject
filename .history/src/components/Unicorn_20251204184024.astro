@@ -1,0 +1,100 @@
+<style>
+  @media (max-width: 760px) {
+    .mainDiv2 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .mainDiv h2 {
+      font-size: 1.75rem;
+    }
+  }
+
+  @media (min-width: 780px) {
+    .mainDiv h2 {
+      font-size: 2.75rem;
+      line-height: 4.25rem;
+    }
+    .mainDiv p {
+      font-size: 0.87rem;
+      line-height: 1.3rem;
+    }
+    @media (min-width: 1200px) {
+      .mainDiv h2 {
+        font-size: 2rem;
+      }
+    }
+    @media (min-width: 1400px) {
+      .mainDiv h2 {
+        font-size: 4rem;
+      }
+    }
+  }
+</style>
+
+<section
+  class="px-4 md:p-8"
+  data-scroll-speed="1"
+  data-scroll
+  data-scroll-offset="100"
+>
+  <div class="max-w-7xl mx-auto mainDiv2 flex items-center lg:space-x-12">
+    <div class="p-6 md:p-10 mainDiv w-full lg:w-3/5">
+      <h2
+        class="text-[1.5rem] lg:text-[4rem] leading-[4.25rem] text-[#474747] mb-6"
+      >
+        About Technovel
+      </h2>
+
+      <div class="max-w-4xl mx-auto py-12 px-6">
+        <div class="text-gray-700 text-lg leading-relaxed space-y-6">
+          <p class="text-2xl font-light text-gray-800 italic">
+            <a
+              href="#"
+              class="font-semibold text-2xl text-gradient-to-r from-[#006ab2] to-[#013456]
+             font-medium"
+              >Technovel
+            </a>
+
+            We blend **creativity, strategy, and technology** to drive your
+            business towards exceptional growth.
+          </p>
+
+          <p>
+            With **over five years of industry experience**, we have
+            consistently empowered brands to enhance their performance and
+            strengthen their digital presence. Our tailored strategies have been
+            pivotal in helping clients succeed across diverse markets.
+          </p>
+
+          <p
+            class="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg shadow-sm"
+          >
+            We don't just deliver services—**we deliver results.** Our team of
+            specialists crafts custom digital strategies designed for measurable
+            growth, lasting brand visibility, and sustained market relevance.
+          </p>
+        </div>
+      </div>
+
+      <!-- <button
+        class="px-7 py-4 rounded-lg bg-gradient-to-r from-[#006ab2] to-[#013456]
+             text-white font-medium shadow-lg shadow-purple-500/20
+             hover:shadow-purple-500/30 hover:scale-105 transition"
+      >
+        Discover
+      </button> -->
+    </div>
+
+    <div
+      class="w-full mainDiv3 rounded-4xl lg:w-2/5 max-w-[90%] bg-gradient-to-r from-[#006ab2] to-[#013456] lg:max-w-none p-6 md:p-10"
+    >
+      <img
+        src="https://www.technovel.co.jp/wp/wp-content/uploads/2022/05/ogp_img.jpg"
+        alt=""
+        class="rounded-4xl w-full"
+      />
+    </div>
+  </div>
+</section>

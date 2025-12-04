@@ -1,0 +1,86 @@
+---
+// src/components/PricingSection.astro
+
+export interface PricingOption {
+  title: string;
+
+}
+
+export interface ContactCard {
+  iconPath: string;
+  iconColorClass: string;
+  iconBgClass: string;
+  linkText: string;
+  linkHref: string;
+}
+
+export interface Props {
+  title: string;
+  pricingOptions: PricingOption[];
+  contactCard: ContactCard;
+}
+
+const { title, pricingOptions, contactCard } = Astro.props;
+---
+
+<style>
+  /* flat media queries — valid CSS */
+  @media (min-width: 780px) {
+    .mainDiv h2 {
+      font-size: 2.75rem;
+      line-height: 4.25rem;
+      text-align: left;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .mainDiv h2 {
+      font-size: 2rem;
+      text-align: left;
+    }
+  }
+
+  @media (min-width: 1400px) {
+    .mainDiv h2 {
+      font-size: 4rem;
+    }
+  }
+</style>
+
+<section class="h-screen rounded-b-4xl w-screen">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mainDiv">
+    <h2
+      class="text-[2.5rem] lg:text-[4rem] leading-[1.1] text-[#474747] mb-16 md:mb-20"
+     
+    >
+      {title}
+    </h2>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-start">
+
+
+       <img
+            class="w-[85%] h-[85%] object-contain"
+            src="https://www.upeducators.com/wp-content/uploads/2022/08/Digital-Marketing-for-educators-upeducators-568.png"
+            alt="Bolt icon"
+          />
+      
+        
+          <div class="space-y-4">
+          
+            <p class="text-lg text-gray-600 leading-relaxed">
+             
+            </p>
+          
+          </div>
+      
+      
+
+     
+   
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

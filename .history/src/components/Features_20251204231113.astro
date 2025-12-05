@@ -104,13 +104,13 @@ id="hero"
         >
           <!-- Icon Block -->
           <div class="relative flex items-center justify-center mb-0 md:mb-0">
-            <div class="icon-card w-24 h-24 md:w-28 md:h-28 rounded-2xl border-2 border-zinc-500 flex items-center justify-center bg-gradient-to-tr from-[#0e3047] via-gray-500 to-[#001725]">
+            <div class="icon-card w-24 h-24 md:w-28 md:h-28 rounded-2xl border-2 border-zinc-600 flex items-center justify-center bg-gradient-to-tr from-[#0e3047] to-[#001725]">
               {feature.src ? (
                 
                 <img
                   src={feature.src}
                   alt={feature.alt}
-                  class="w-14 h-14 md:w-20 md:h-20 object-contain rounded-2xl "
+                  class="w-10 h-10 md:w-14 md:h-14 object-contain rounded-2xl"
                   onload="window.dispatchEvent(new Event('locomotive:update'))"
                   onerror="window.dispatchEvent(new Event('locomotive:update'))"
                 />

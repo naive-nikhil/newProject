@@ -44,9 +44,9 @@ import { Icon } from "astro-icon/components";
     >
     </div> -->
     <div
-      class="blob1 absolute top-[30%] left-0 -translate-y-1/2
-         sm:w-[18vw] sm:h-[18vw] md:w-[25vw] md:h-[25vw] lg:w-[34vw] lg:h-[34vw]
-         bg-[#047bca]/40 opacity-7 blur-3xl rounded-full z-0"
+      class="blob1 absolute top-[20%] left-0 -translate-y-1/2
+         w-[25vw] h-[25vw] md:w-[20vw] md:h-[20vw] lg:w-[24vw] lg:h-[24vw]
+         bg-[#047bca] opacity-10 blur-3xl rounded-full z-0"
     >
     </div>
 
@@ -74,11 +74,30 @@ import { Icon } from "astro-icon/components";
     class="blob1 pointer-events-none absolute top-[70%] right-0 w-[20vw] h-[20vw] bg-[#047bca] opacity-20 -translate-y-1/2 blur-3xl rounded-full z-0"
   >
   </div> -->
-  <div
-    class="blob1 absolute top-[50%] right-0 -translate-y-1/2
-         w-[25vw] h-[25vw] md:w-[20vw] md:h-[20vw] lg:w-[24vw] lg:h-[24vw]
-         bg-[#047bca]/40 opacity-7 blur-3xl rounded-full z-0"
-  >
+  <div class="absolute top-1/2 right-0 -translate-y-1/2 pointer-events-none">
+    <svg viewBox="0 0 1100 800" class="w-[55vw] h-[55vw]">
+      <defs>
+        <filter id="auroraBlur">
+          <feGaussianBlur stdDeviation="110"></feGaussianBlur>
+        </filter>
+
+        <!-- Blue Aurora Gradient -->
+        <linearGradient id="auroraGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#d2e8ff" stop-opacity="0.9"></stop>
+          <!-- very light baby blue -->
+          <stop offset="45%" stop-color="#86b4ff" stop-opacity="0.8"></stop>
+          <!-- soft sky-blue -->
+          <stop offset="100%" stop-color="#3f6fd6" stop-opacity="0.55"></stop>
+          <!-- rich deep blue -->
+        </linearGradient>
+      </defs>
+
+      <path
+        d="M180 320 C80 480 260 740 580 740 C900 740 1080 440 940 240 C820 80 500 60 280 180 Z"
+        fill="url(#auroraGrad)"
+        filter="url(#auroraBlur)"
+        opacity="0.75"></path>
+    </svg>
   </div>
 
   <div

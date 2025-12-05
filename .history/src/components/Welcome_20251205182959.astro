@@ -44,9 +44,9 @@ import { Icon } from "astro-icon/components";
     >
     </div> -->
     <div
-      class="blob1 absolute top-[30%] left-0 -translate-y-1/2
-         sm:w-[18vw] sm:h-[18vw] md:w-[25vw] md:h-[25vw] lg:w-[34vw] lg:h-[34vw]
-         bg-[#047bca]/40 opacity-7 blur-3xl rounded-full z-0"
+      class="blob1 absolute top-[20%] left-0 -translate-y-1/2
+         w-[25vw] h-[25vw] md:w-[20vw] md:h-[20vw] lg:w-[24vw] lg:h-[24vw]
+         bg-[#047bca] opacity-10 blur-3xl rounded-full z-0"
     >
     </div>
 
@@ -74,11 +74,34 @@ import { Icon } from "astro-icon/components";
     class="blob1 pointer-events-none absolute top-[70%] right-0 w-[20vw] h-[20vw] bg-[#047bca] opacity-20 -translate-y-1/2 blur-3xl rounded-full z-0"
   >
   </div> -->
-  <div
-    class="blob1 absolute top-[50%] right-0 -translate-y-1/2
-         w-[25vw] h-[25vw] md:w-[20vw] md:h-[20vw] lg:w-[24vw] lg:h-[24vw]
-         bg-[#047bca]/40 opacity-7 blur-3xl rounded-full z-0"
-  >
+  <div class="absolute top-1/2 right-0 -translate-y-1/2 pointer-events-none">
+    <svg viewBox="0 0 900 900" class="w-[45vw] h-[45vw]">
+      <defs>
+        <filter id="circleBlur" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="120"></feGaussianBlur>
+        </filter>
+
+        <!-- Bluish aurora gradient -->
+        <radialGradient id="circleAurora" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="1"></stop>
+          <!-- white core -->
+          <stop offset="40%" stop-color="#d7ecff" stop-opacity="0.9"></stop>
+          <!-- soft baby blue -->
+          <stop offset="75%" stop-color="#8bb9ff" stop-opacity="0.8"></stop>
+          <!-- sky blue -->
+          <stop offset="100%" stop-color="#3e6fd6" stop-opacity="0.55"></stop>
+          <!-- deep blue -->
+        </radialGradient>
+      </defs>
+
+      <circle
+        cx="450"
+        cy="450"
+        r="350"
+        fill="url(#circleAurora)"
+        filter="url(#circleBlur)"
+        opacity="0.85"></circle>
+    </svg>
   </div>
 
   <div

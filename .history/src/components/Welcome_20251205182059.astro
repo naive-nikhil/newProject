@@ -44,9 +44,9 @@ import { Icon } from "astro-icon/components";
     >
     </div> -->
     <div
-      class="blob1 absolute top-[30%] left-0 -translate-y-1/2
-         sm:w-[18vw] sm:h-[18vw] md:w-[25vw] md:h-[25vw] lg:w-[34vw] lg:h-[34vw]
-         bg-[#047bca]/40 opacity-7 blur-3xl rounded-full z-0"
+      class="blob1 absolute top-[20%] left-0 -translate-y-1/2
+         w-[25vw] h-[25vw] md:w-[20vw] md:h-[20vw] lg:w-[24vw] lg:h-[24vw]
+         bg-[#047bca] opacity-10 blur-3xl rounded-full z-0"
     >
     </div>
 
@@ -75,10 +75,37 @@ import { Icon } from "astro-icon/components";
   >
   </div> -->
   <div
-    class="blob1 absolute top-[50%] right-0 -translate-y-1/2
-         w-[25vw] h-[25vw] md:w-[20vw] md:h-[20vw] lg:w-[24vw] lg:h-[24vw]
-         bg-[#047bca]/40 opacity-7 blur-3xl rounded-full z-0"
+    class="absolute top-1/2 right-0 -translate-y-1/2 pointer-events-none z-0"
   >
+    <svg class="w-[52vw] h-[52vw]" viewBox="0 0 1000 1000">
+      <defs>
+        <filter id="triBlur" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="95"></feGaussianBlur>
+        </filter>
+
+        <radialGradient id="triCore" cx="40%" cy="45%" r="45%">
+          <stop offset="0%" stop-color="#fff" stop-opacity="1"></stop>
+          <stop offset="45%" stop-color="#e4d7ff" stop-opacity="0.8"></stop>
+          <stop offset="100%" stop-color="#7d5de2" stop-opacity="0.0"></stop>
+        </radialGradient>
+      </defs>
+
+      <!-- Triangle-ish organic blob -->
+      <path
+        d="M200 300 C120 520 260 780 520 820 C760 860 880 560 780 360 C680 160 360 80 240 180 Z"
+        fill="#9c7df4"
+        opacity="0.55"
+        filter="url(#triBlur)"></path>
+
+      <!-- White glowing center -->
+      <circle
+        cx="370"
+        cy="380"
+        r="200"
+        fill="url(#triCore)"
+        filter="url(#triBlur)"
+        opacity="0.95"></circle>
+    </svg>
   </div>
 
   <div

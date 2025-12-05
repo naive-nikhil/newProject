@@ -25,7 +25,13 @@ const slides = [
   {
     id: "s4",
 
-    imageHtml: `<div class="text-5xl select-none" aria-hidden="true"></div>`,
+    imageHtml: `<div
+  class="w-64 h-64 rounded-full overflow-hidden relative 
+         before:content-[''] before:absolute before:inset-0
+         before:bg-[radial-gradient(circle_at_30%_30%,#7cc4ff,#3c7ce8,#1e3d73)]
+         before:animate-spin-slow before:blur-2xl before:opacity-90">
+</div>
+`,
     title: "“Multichannel Activation”",
     text: "Build a strong presence across websites, social media, Google, and LinkedIn.",
   },

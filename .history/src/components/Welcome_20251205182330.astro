@@ -44,9 +44,9 @@ import { Icon } from "astro-icon/components";
     >
     </div> -->
     <div
-      class="blob1 absolute top-[30%] left-0 -translate-y-1/2
-         sm:w-[18vw] sm:h-[18vw] md:w-[25vw] md:h-[25vw] lg:w-[34vw] lg:h-[34vw]
-         bg-[#047bca]/40 opacity-7 blur-3xl rounded-full z-0"
+      class="blob1 absolute top-[20%] left-0 -translate-y-1/2
+         w-[25vw] h-[25vw] md:w-[20vw] md:h-[20vw] lg:w-[24vw] lg:h-[24vw]
+         bg-[#047bca] opacity-10 blur-3xl rounded-full z-0"
     >
     </div>
 
@@ -74,11 +74,47 @@ import { Icon } from "astro-icon/components";
     class="blob1 pointer-events-none absolute top-[70%] right-0 w-[20vw] h-[20vw] bg-[#047bca] opacity-20 -translate-y-1/2 blur-3xl rounded-full z-0"
   >
   </div> -->
-  <div
-    class="blob1 absolute top-[50%] right-0 -translate-y-1/2
-         w-[25vw] h-[25vw] md:w-[20vw] md:h-[20vw] lg:w-[24vw] lg:h-[24vw]
-         bg-[#047bca]/40 opacity-7 blur-3xl rounded-full z-0"
-  >
+  <div class="absolute top-1/2 right-0 -translate-y-1/2 pointer-events-none">
+    <svg viewBox="0 0 1200 900" class="w-[60vw] h-[60vw]">
+      <defs>
+        <filter id="fog" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="130"></feGaussianBlur>
+        </filter>
+      </defs>
+
+      <ellipse
+        cx="400"
+        cy="380"
+        rx="260"
+        ry="230"
+        fill="#b9a2ff"
+        opacity="0.5"
+        filter="url(#fog)"></ellipse>
+      <ellipse
+        cx="650"
+        cy="420"
+        rx="320"
+        ry="260"
+        fill="#8365dd"
+        opacity="0.4"
+        filter="url(#fog)"></ellipse>
+      <ellipse
+        cx="300"
+        cy="500"
+        rx="260"
+        ry="200"
+        fill="#d2c2ff"
+        opacity="0.35"
+        filter="url(#fog)"></ellipse>
+      <ellipse
+        cx="450"
+        cy="350"
+        rx="200"
+        ry="180"
+        fill="#ffffff"
+        opacity="0.85"
+        filter="url(#fog)"></ellipse>
+    </svg>
   </div>
 
   <div

@@ -109,7 +109,7 @@ id="hero"
                 <img
                   src={feature.src}
                   alt={feature.alt}
-                  class="w-14 hover:rotate-y-120 hover:scale-150 transition-transform duration-500  h-14 md:w-20 md:h-20 object-contain rounded-2xl "
+                  class="w-14 h-14 md:w-20 md:h-20 object-contain rounded-2xl "
                   onload="window.dispatchEvent(new Event('locomotive:update'))"
                   onerror="window.dispatchEvent(new Event('locomotive:update'))"
                 />
@@ -121,7 +121,7 @@ id="hero"
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
-        class="w-10hover:rotate-y-120 hover:scale-150 transition-transform duration-500 h-10 md:w-14 md:h-14"
+        class="w-10 h-10 md:w-14 md:h-14"
         set:html={feature.iconSvg}
       ></svg>
               )}

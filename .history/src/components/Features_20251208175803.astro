@@ -121,7 +121,7 @@ id="hero"
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
-        class="w-10hover:rotate-y-180 z-10 hover:scale-150 transition-transform duration-500 h-10 md:w-14 md:h-14"
+        class="w-10hover:rotate-y-180 hover:scale-150 transition-transform duration-500 h-10 md:w-14 md:h-14"
         set:html={feature.iconSvg}
       ></svg>
               )}
@@ -166,33 +166,43 @@ id="hero"
 
    <script type="module" defer>
     
-import gsap from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/index.js";
-import { ScrollTrigger } from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/ScrollTrigger.min.js";
+  import gsap from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/index.js";
+  import { ScrollTrigger } from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/ScrollTrigger.min.js";
 
-gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger);
 
-const hero = document.querySelector("#hero");
-const blobs = document.querySelectorAll(".blob");
+  const blob = document.querySelector(".blob");
+  const hero = document.querySelector("#hero");
 
-if (hero && blobs.length > 0) {
-  blobs.forEach((blob, i) => {
+  if (blob && hero) {
     gsap.fromTo(
       blob,
-      { y: 0, opacity: 1, scale: 1 },
       {
-        y: 200,
+        // FROM state
+        y: 0,
+        opacity: 1,
+        scale: 1,
+      },
+      {
+        // TO state (Using clearer visibility settings)
+        y: 160,
         opacity: 0,
-        scale: 0.4,
-        ease: "power2.out",
+        scale: 0.8,
+        duration: 1,
+        ease: "power1.out",
+
         scrollTrigger: {
           trigger: hero,
           start: "top mid",
           end: "bottom top",
-          scrub: 1,
+          scrub: 0.6, 
+          toggleActions: "play none none reverse",
         },
       }
     );
-  });
-}
-
+  } else {
+    console.warn(
+      "GSAP/ScrollTrigger failed: 'blob' or 'hero' element not found."
+    );
+  }
 </script>   

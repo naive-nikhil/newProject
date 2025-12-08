@@ -1,0 +1,224 @@
+---
+// src/components/ContactBlobsFixed.astro
+---
+
+<div id="hero" class="w-screen min-h-screen relative overflow-visible">
+  <!-- Blob: Tailwind-only classes (filter + blur utilities).
+       motion-reduce classes provide reduced-motion fallback. -->
+  <div
+    class="blob absolute right-8 top-8
+           w-[36vw] h-[36vw] md:w-[28vw] md:h-[28vw] lg:w-[24vw] lg:h-[24vw]
+           bg-[#047bca]/40 opacity-70 z-0
+           filter blur-2xl
+           transition-transform transition-opacity duration-300
+           motion-reduce:blur-sm motion-reduce:transition-none motion-reduce:transform-none"
+    aria-hidden="true"
+  >
+  </div>
+
+  <!-- Card -->
+  <div
+    class="mainDiv p-6 md:p-12 lg:p-16 max-w-4xl mx-auto my-10 shadow-sm relative z-20 bg-white/70 rounded-xl"
+  >
+    <h2
+      class="text-[2.5rem] lg:text-[4rem] leading-[4.25rem] font-medium text-center mb-6 text-[#474747]"
+    >
+      Got questions?
+    </h2>
+
+    <form id="contactForm" class="space-y-6" novalidate>
+      <div>
+        <label
+          for="full-name"
+          class="block text-base font-medium text-gray-700 mb-1"
+          >Full name</label
+        >
+        <input
+          id="full-name"
+          name="full-name"
+          required
+          type="text"
+          class="block w-full rounded-[8px] border border-[#e1e1e1] px-4 py-2"
+        />
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label
+            for="email"
+            class="block text-base font-medium text-gray-700 mb-1">Email</label
+          >
+          <input
+            id="email"
+            name="email"
+            required
+            type="email"
+            class="block w-full rounded-[8px] border border-[#e1e1e1] px-4 py-2"
+          />
+        </div>
+
+        <div>
+          <label
+            for="telephone"
+            class="block text-base font-medium text-gray-700 mb-1"
+            >Telephone</label
+          >
+          <input
+            id="telephone"
+            name="telephone"
+            type="tel"
+            class="block w-full rounded-[8px] border border-[#e1e1e1] px-4 py-2"
+          />
+        </div>
+      </div>
+
+      <div>
+        <label
+          for="message"
+          class="block text-base font-medium text-gray-700 mb-1">Message</label
+        >
+        <textarea
+          id="message"
+          name="message"
+          rows="6"
+          required
+          class="block w-full rounded-[8px] border border-[#e1e1e1] px-4 py-2"
+        ></textarea>
+      </div>
+
+      <div class="flex items-start pt-1">
+        <input
+          id="terms"
+          name="terms"
+          type="checkbox"
+          required
+          class="h-6 w-6 mr-3 mt-1"
+        />
+        <label for="terms" class="text-sm text-gray-600 leading-6">
+          I accept the <a href="#" class="text-indigo-600 underline">terms</a>.
+        </label>
+      </div>
+
+      <div class="pt-4">
+        <button
+          id="submitBtn"
+          type="submit"
+          disabled
+          class="w-full py-4 rounded-xl text-white bg-[#83c3ee] disabled:opacity-60"
+        >
+          Send Message
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script type="module">
+  // enable submit when checkbox checked
+  (function () {
+    const terms = document.getElementById("terms");
+    const submitBtn = document.getElementById("submitBtn");
+    if (terms && submitBtn) {
+      const update = () => {
+        submitBtn.disabled = !terms.checked;
+      };
+      terms.addEventListener("change", update, { passive: true });
+      update();
+    }
+  })();
+
+  // Attempt GSAP + ScrollTrigger; fallback to requestAnimationFrame scroll animation.
+  (async function () {
+    if (typeof window === "undefined") return;
+    const blob = document.querySelector(".blob");
+    const hero = document.querySelector("#hero");
+    if (!blob || !hero) return;
+
+    let gsap = null;
+    let ScrollTrigger = null;
+
+    try {
+      const gsapModule = await import(
+        "https://cdn.jsdelivr.net/npm/gsap@3.12.5/index.js"
+      );
+      // module shapes differ between builds
+      gsap = gsapModule?.default || gsapModule?.gsap || gsapModule;
+
+      const stMod = await import(
+        "https://cdn.jsdelivr.net/npm/gsap@3.12.5/ScrollTrigger.min.js"
+      );
+      ScrollTrigger =
+        stMod?.default ||
+        stMod?.ScrollTrigger ||
+        window?.ScrollTrigger ||
+        stMod;
+
+      if (gsap && ScrollTrigger) {
+        try {
+          gsap.registerPlugin(ScrollTrigger);
+        } catch (e) {
+          if (window?.ScrollTrigger) {
+            gsap.registerPlugin(window.ScrollTrigger);
+          } else {
+            ScrollTrigger = null;
+          }
+        }
+      }
+    } catch (e) {
+      gsap = null;
+      ScrollTrigger = null;
+    }
+
+    if (gsap && ScrollTrigger) {
+      // smooth scrubbed GSAP animation
+      gsap.fromTo(
+        blob,
+        { y: -20, opacity: 0.85, scale: 1.05 },
+        {
+          y: 140,
+          opacity: 0.55,
+          scale: 0.92,
+          ease: "none",
+          scrollTrigger: {
+            trigger: hero,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        }
+      );
+      return;
+    }
+
+    // Fallback: lightweight rAF scroll-driven animation (no deps)
+    (function fallbackScroll() {
+      let ticking = false;
+      function onScroll() {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            const rect = hero.getBoundingClientRect();
+            // progress 0..1 as hero passes the viewport
+            const progress = Math.min(
+              1,
+              Math.max(
+                0,
+                (window.innerHeight - rect.top) /
+                  (window.innerHeight + rect.height)
+              )
+            );
+            const y = -20 + progress * 160; // -20 -> 140
+            const scale = 1.05 - progress * 0.13;
+            const opacity = 0.85 - progress * 0.3;
+            blob.style.transform = `translateY(${y}px) scale(${scale})`;
+            blob.style.opacity = String(opacity);
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }
+      window.addEventListener("scroll", onScroll, { passive: true });
+      // init
+      onScroll();
+    })();
+  })();
+</script>

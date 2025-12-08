@@ -1,0 +1,97 @@
+<section class="relative w-screen bg-[#f2f9ff]">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-20">
+    <h2
+      class="text-[1.5rem] lg:text-[4rem] leading-[4.25rem] text-[#474747] mb-6"
+    >
+      Our Services
+    </h2>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-30 items-start">
+      <!-- LEFT: large image (top) + description + bullets (bottom) -->
+      <div
+        class="space-y-8 order-2 md:order-1 bg-[#f2f9ff] flex flex-col justify-center items-center"
+      >
+        <!-- big image with rounded corners and small overlay card -->
+        <div class="relative rounded-3xl shadow-lg">
+          <img
+            src="https://leaddigital.in/wp-content/uploads/2020/01/img3post.jpg"
+            alt="Service preview"
+            class="w-[90%] h-[520px] shadow-xl shadow-[#013456]/30 rounded-3xl object-cover block"
+            loading="lazy"
+            decoding="async"
+          />
+
+          <div
+            class="absolute bottom-0 -right-8 z-30 w-56 h-40 rounded-2xl shadow-xl"
+          >
+            <img
+              class="object-cover rounded-2xl w-full h-full"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-g2Z1euAoRcWy0W_rpKdDT3D9hGPdYgW35w&s"
+              alt=""
+            />
+          </div>
+        </div>
+
+        <!-- short description under the image (keeps original lines as-is) -->
+        <div class="mt-8 text-slate-700 text-lg leading-relaxed">
+          We also specialize in media outreach, brand positioning, and
+          reputation management aligning your digital presence with meaningful
+          public perception. Backed by data-driven analytics and creative
+          storytelling, Technovel delivers results that are measurable,
+          memorable, and made to grow
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="flex order-1 md:order-2 flex-col gap-8">
+        <div>
+          <p class="text-sm font-extrabold text-slate-500">Why choose us</p>
+
+          <p class="mt-6 text-slate-600 text-lg leading-relaxed max-w-xl">
+            At Technovel, we bridge the worlds of digital marketing and public
+            relations to offer a holistic suite of services that build brands,
+            drive visibility, and foster lasting audience connections. From
+            strategic content creation and SEO to high-impact social media
+            management and paid ad campaigns, we ensure your brand not only
+            reaches the right audience but resonates deeply.
+          </p>
+        </div>
+
+        <!-- bottom-right image -->
+        <div
+          class="mt-6 rounded-3xl overflow-hidden shadow-xl shadow-[#013456]/30 h-[360px]"
+        >
+          <img
+            src="https://themexriver.com/wp/choicy-wp/wp-content/uploads/2024/06/wc1.webp"
+            alt="Service preview 2"
+            class="w-full rightImg h-full object-cover block"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script type="module" defer>
+  import { Schema } from "astro:schema";
+  import gsap from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/index.js";
+  import { ScrollTrigger } from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/ScrollTrigger.min.js";
+  import { start } from "repl";
+
+  const rightImg = document.querySelector(".rightImg");
+  gsap.fromTo(
+    rightImg,
+    {
+      x: -30,
+    },
+    {
+      x: 0,
+      duration: 1,
+      ease: "power2.out",
+      ScrollTrigger: {
+        start: "top bottom",
+        end: "bottom mid",
+      },
+    }
+  );
+</script>

@@ -1,0 +1,74 @@
+---
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Plus Jakarta Sans Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Technovel</title>
+  </head>
+  <body class="bg-white/50 backdrop-blur-sm">
+    <div id="content-wrapper">
+      <slot />
+    </div>
+  </body>
+  <script type="module" defer>
+    import gsap from "gsap";
+    // We need ScrollSmoother for the advanced virtual scroll logic
+    import { ScrollSmoother } from "gsap/ScrollSmoother";
+    gsap.registerPlugin(ScrollSmoother);
+
+    // 1. Get the total scrollable height (the height of the content wrapper)
+    const contentWrapper = document.getElementById("content-wrapper");
+    const body = document.body;
+
+    let maxScrollY = contentWrapper.offsetHeight - window.innerHeight;
+
+    // 2. Initialize the ScrollSmoother
+    // It handles the virtual scroll logic for you
+    ScrollSmoother.create({
+      wrapper: body, // The element that defines the viewport/container
+      content: contentWrapper, // The element that holds the content and moves
+      smooth: 1.5, // How long the animation should take (in seconds)
+      effects: true, // Enables nested scroll-triggered effects if you add them later
+      // The ScrollSmoother automatically handles the clamping and animation based on scroll input
+    });
+
+    // Re-calculate the maximum scroll height if the window size changes
+    window.addEventListener("resize", () => {
+      maxScrollY = contentWrapper.offsetHeight - window.innerHeight;
+      // ScrollSmoother automatically handles the internal resizing, but this is good practice
+    });
+  </script>
+</html>
+
+<style>
+  /* Disable native scrolling */
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* Crucial: Prevents browser's native scroll */
+    /* Remove 'scroll-behavior: smooth;' as it's no longer relevant */
+  }
+
+  /* This will be the element we move to simulate scrolling */
+  #content-wrapper {
+    width: 100%;
+    /* No specific height needed here, as the height is determined by its content */
+  }
+</style>

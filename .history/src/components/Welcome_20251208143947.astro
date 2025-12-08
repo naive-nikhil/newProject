@@ -1,0 +1,137 @@
+---
+import technovel from "../assets/technovel_logo.png";
+import { Icon } from "astro-icon/components";
+---
+
+<style>
+  @media (min-width: 780px) {
+    .mainDiv h2 {
+      font-size: 2.75rem;
+      line-height: 4.25rem;
+    }
+    @media (min-width: 1200px) {
+      .mainDiv h2 {
+        font-size: 2rem;
+      }
+    }
+  }
+</style>
+
+<div
+  id="hero-root"
+  class="flex bg-white/70 shadow-zinc-400 justify-center items-center w-full rounded-b-4xl flex-col"
+>
+  <div
+    class="w-full lg:h-[55vh] flex justify-center mx-auto items-center flex-col px-4"
+  >
+    <div
+      class="blob1 absolute top-[20%] left-0 -translate-y-1/2
+         sm:w-[18vw] sm:h-[18vw] md:w-[25vw] md:h-[25vw] lg:w-[34vw] lg:h-[34vw]
+         bg-[#047bca]/50 opacity-70 blur-3xl rounded-full z-0 transition"
+    >
+    </div>
+
+    <img
+      class="max-w-[538px] h-auto lg:w-[25vw] logo"
+      src={technovel.src}
+      alt="technovel Logo"
+    />
+
+    <h1
+      class="text-[1.75rem] z-30 leading-[2.375rem] max-w-[900px] sm:text-4xl py-2 mt-[23px] font-bold text-center"
+    >
+      Next-Gen Digital Solutions
+    </h1>
+    <button
+      class="px-7 py-4 mt-5 rounded-lg bg-gradient-to-r from-[#006ab2] to-[#013456]
+         text-white font-medium shadow-lg shadow-[#006ab2]/20
+         hover:shadow-[#006ab2]/30 hover:scale-105 transition
+         flex items-center gap-3"
+    >
+      Join Now
+
+      <span class="flex items-center justify-center">
+        <span
+          class="w-7 h-7 animate-bounce rounded-full border border-white/30 flex items-center justify-center"
+        >
+          ➜
+        </span>
+      </span>
+    </button>
+  </div>
+
+  <!-- <div
+    class="blob1 pointer-events-none absolute top-[70%] right-0 w-[20vw] h-[20vw] bg-[#047bca] opacity-20 -translate-y-1/2 blur-3xl rounded-full z-0"
+  >
+  </div> -->
+  <div
+    class="blob1 absolute top-[50%] right-0 -translate-y-1/2
+         w-[25vw] h-[25vw] md:w-[20vw] md:h-[20vw] lg:w-[24vw] lg:h-[24vw]
+         bg-[#047bca]/50 opacity-7 blur-3xl rounded-full z-0"
+  >
+  </div>
+
+  <div
+    class="h-screen md:h-screen w-full flex justify-center items-center mt-[5vh]"
+  >
+    <div
+      class="w-[80%] rounded-3xl sm:-h[20%] md:-[40%] bg-gradient-to-t from- zinc-300/30 to-[#047bca]/30 lg:h-[50%] border-zinc-200 border-2 flex justify-center items-end"
+    >
+      <img
+        class="max-w-[1020px] shadow-2xl shadow-zinc-500 rounded-3xl w-[95%] sm:w-[70%] lg:h-[70vh] md:h-[60vh] sm:h-[50vh] object-cover md:w-[70%]"
+        src="https://www.sivilsayfalar.org/wp-content/uploads/2020/01/7e86ee8cf65b4e7eb1979f90d557af6a-e1578640341576.jpg"
+        alt="Stable App Dashboard Preview"
+      />
+    </div>
+  </div>
+</div>
+
+<script type="module" defer>
+  import gsap from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/index.js";
+  import { ScrollTrigger } from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/ScrollTrigger.min.js";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const blob = document.querySelectorAll(".blob1");
+  const hero = document.querySelector("#hero-root");
+  const logo = document.querySelector(".logo");
+
+  if (blob && hero) {
+    // SCROLLTRIGGER ANIMATION (movement + shrink + fade)
+    gsap.to(blob, {
+      y: 160,
+      scale: 0.4,
+      opacity: 0.4,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: hero,
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+      },
+    });
+
+    // LOOPING BOUNCE ANIMATION (tiny pulse only)
+    gsap.to(blob, {
+      scale: 0.95,
+      duration: 1.5,
+      ease: "power1.inOut",
+      yoyo: true,
+      repeat: -1,
+    });
+  } else {
+    console.warn("GSAP/ScrollTrigger failed: 'blob' or 'hero' not found.");
+
+    // Logo fallback animation
+    gsap.fromTo(
+      logo,
+      { y: -20, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1.2,
+        ease: "power2.out",
+      }
+    );
+  }
+</script>

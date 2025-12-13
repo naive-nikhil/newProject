@@ -40,11 +40,7 @@ const clients = [
   {
     src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJn0lVhKk5c4gsf9EWHE3KtR15Cc6R9YiB9Q&s",
   },
-  // Add more clients here if needed
 ];
-
-// Duplicating the list is essential to create a seamless infinite loop
-const doubledClients = [...clients, ...clients];
 
 // Define the duration for the animation (adjust this for speed)
 const scrollDuration = "30s"; // Time it takes for the entire doubled list to scroll once
@@ -90,7 +86,7 @@ const scrollDuration = "30s"; // Time it takes for the entire doubled list to sc
               <img
                 src={client.src}
                 alt={client.alt}
-                class="max-h-full grayscale hover:grayscale-25 hover:scale-90  rounded-3xl max-w-full object-cover"
+                class="max-h-full grayscale hover:grayscale-0 hover:scale-90  rounded-3xl max-w-full object-cover"
               />
             </div>
           ))

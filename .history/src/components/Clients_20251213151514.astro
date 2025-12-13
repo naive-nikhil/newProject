@@ -40,11 +40,7 @@ const clients = [
   {
     src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJn0lVhKk5c4gsf9EWHE3KtR15Cc6R9YiB9Q&s",
   },
-  // Add more clients here if needed
 ];
-
-// Duplicating the list is essential to create a seamless infinite loop
-const doubledClients = [...clients, ...clients];
 
 // Define the duration for the animation (adjust this for speed)
 const scrollDuration = "30s"; // Time it takes for the entire doubled list to scroll once
@@ -81,16 +77,17 @@ const scrollDuration = "30s"; // Time it takes for the entire doubled list to sc
 
     <div class="relative w-full">
       <div
+        id="seamless-marquee-content"
         class="marquee-content flex"
         style={`animation-duration: ${scrollDuration};`}
       >
         {
-          doubledClients.map((client) => (
+          clients.map((client) => (
             <div class="flex-shrink-0 rounded-3xl m-5 shadow-gray-500 shadow-md w-[170px] md:w-[230px] mx-8 flex items-center justify-center h-36  hover:opacity-100 transition duration-300">
               <img
                 src={client.src}
                 alt={client.alt}
-                class="max-h-full grayscale hover:grayscale-25 hover:scale-90  rounded-3xl max-w-full object-cover"
+                class="max-h-full grayscale hover:grayscale-0 hover:scale-90  rounded-3xl max-w-full object-cover"
               />
             </div>
           ))
@@ -108,6 +105,13 @@ const scrollDuration = "30s"; // Time it takes for the entire doubled list to sc
     </div>
   </div>
 </section>
+<script>
+  const marqueeContent = document.getElementById("seamless-marquee-content");
+  if (marqueeContent) {
+    const cloneContent = marqueeContent.cloneNode(true);
+    cloneContent.id = "";
+  }
+</script>
 
 <style define:vars={{ scrollDuration }}>
   /* Define the keyframes for the infinite scroll */

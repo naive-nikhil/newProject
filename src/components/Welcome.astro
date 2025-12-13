@@ -2,17 +2,18 @@
 import heroImage from "../assets/hero_image.webp";
 import blobShape1 from "../assets/blob_shape1.svg";
 import blobShape2 from "../assets/blob_shape2.svg";
+import technovelLogo from "../assets/technovel_logo.png";
 ---
 
 <div
   id="hero-root"
-  class="flex shadow-zinc-400 justify-between h-[55vh] sm:h-[75vh] md:h-screen lg:h-[110vh] items-center w-full flex-col relative overflow-x-clip px-4 lg:px-10"
+  class="flex shadow-zinc-400 justify-between h-[55vh] sm:h-[75vh] md:h-screen lg:h-[120vh] items-center w-full flex-col relative overflow-x-clip px-4 lg:px-10"
 >
   <!-- Hero Heading & Subheading -->
-  <div class="w-full flex justify-center mx-auto items-center flex-col md:gap-5 mt-[10%]">
-    <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-black/80 font-black font-press-start-2p uppercase">Technovel</h2>
+  <div class="w-full flex justify-center mx-auto items-center flex-col md:gap-5 mt-10">
+    <img src={technovelLogo.src} alt="Technovel Logo" class="w-60 sm:w-80 md:w-100 lg:w-120">
 
-    <h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl max-w-[900px] py-2 font-bold text-center text-black/80">
+    <h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl max-w-[900px] py-2 font-bold text-center text-black">
       Next-Gen Digital Solutions
     </h1>
   </div>
@@ -24,7 +25,7 @@ import blobShape2 from "../assets/blob_shape2.svg";
     >
       <img
         id="hero-image"
-        class="max-w-[1250px] shadow-2xl shadow-zinc-500 rounded-md md:rounded-xl lg:rounded-3xl rounded-b-none lg:rounded-b-none h-[140%] w-full border-b-0 lg:border-b-0 object-cover border-8 lg:border-14 border-black/90 brightness-90 blur-[.5px]"
+        class="max-w-[1250px] shadow-2xl shadow-zinc-500 rounded-md md:rounded-xl lg:rounded-3xl rounded-b-none lg:rounded-b-none h-[140%] w-full border-b-0 lg:border-b-0 object-cover border-8 lg:border-14 border-black brightness-90 blur-[.5px]"
         src={heroImage.src}
         alt="Hero Image"
       />
@@ -62,7 +63,7 @@ import blobShape2 from "../assets/blob_shape2.svg";
       heroImage,
       { height: "140%"},
       {
-        height: "70%",
+        height: "80%",
         duration: 3,
         scrollTrigger: {
           trigger: hero,

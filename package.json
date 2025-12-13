@@ -10,12 +10,14 @@
   },
   "dependencies": {
     "@splidejs/splide": "^4.1.4",
+    "@studio-freight/lenis": "^1.0.42",
     "@tailwindcss/vite": "^4.1.17",
     "astro": "^5.15.9",
     "astro-icon": "^1.1.5",
     "astro-splide": "^2.0.1",
-    "gsap": "^3.13.0",
+    "gsap": "^3.14.2",
     "imagesloaded": "^5.0.0",
+    "lenis": "^1.3.16",
     "locomotive-scroll": "^4.1.4",
     "tailwindcss": "^4.1.17"
   }

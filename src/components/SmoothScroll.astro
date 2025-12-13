@@ -1,0 +1,86 @@
+---
+
+---
+
+<script>
+  import Lenis from '@studio-freight/lenis';
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  // Register GSAP plugins
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Initialize Lenis
+  const lenis = new Lenis({
+    duration: 1.5,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    orientation: 'vertical',
+    gestureOrientation: 'vertical',
+    smoothWheel: true,
+    wheelMultiplier: 1,
+    smoothTouch: false,
+    touchMultiplier: 2,
+    infinite: false,
+  });
+
+  // Connect Lenis with GSAP ScrollTrigger
+  lenis.on('scroll', ScrollTrigger.update);
+
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000);
+  });
+
+  gsap.ticker.lagSmoothing(0);
+
+  // Example GSAP ScrollTrigger animations
+  gsap.utils.toArray('.fade-in').forEach((element: any) => {
+    gsap.from(element, {
+      scrollTrigger: {
+        trigger: element,
+        start: 'top 80%',
+        end: 'top 20%',
+        scrub: true,
+      },
+      opacity: 0,
+      y: 50,
+    });
+  });
+
+  // Smooth scroll to anchor links
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(
+        this.getAttribute('href') as string
+      );
+      if (target) {
+        lenis.scrollTo(target as HTMLElement, {
+          offset: 0,
+          duration: 1.5,
+        });
+      }
+    });
+  });
+</script>
+
+<style is:global>
+  html.lenis {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
+</style>

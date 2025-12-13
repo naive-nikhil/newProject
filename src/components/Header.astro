@@ -1,33 +1,18 @@
----
-import technovel from "../assets/technovel_logo.png";
----
-
-<style>
-  .logo {
-    opacity: 0;
-    transform: scale(0);
-  }
-</style>
-
 <div
-  class="flex rounded-b-3xl bg-white/0 hero justify-between items-center text-sm font-bold p-4 mx-4 lg:mx-12 md:mx-8
-         sticky top-0 z-50"
+  class="flex rounded-b-3xl bg-white/0 hero justify-between items-center text-sm font-bold p-4 mx-4 lg:mx-12 md:mx-8 sticky top-0 z-50"
 >
-  <div>
-    <img src={technovel.src} alt="Stable logo" class="w-[8rem] h-11 logo" />
-  </div>
+  <h2 id="logo" class="text-4xl font-black font-goblin uppercase opacity-0">Technovel</h2>
 
   <div
-    class="hidden lg:flex items-center gap-7.5 text-zinc-800 bg-gray-100/80 pl-7 px-1 rounded-lg border border-gray-300 backdrop-blur-sm py-1 shadow-sm"
+    class="hidden lg:flex items-center gap-7.5 text-zinc-800 bg-gray-100/10 pl-7 px-1 rounded-lg backdrop-blur-sm py-1 shadow-lg"
   >
     <h2 class="cursor-pointer transition hover:text-[#006ab2] duration-300">
       About Us
     </h2>
 
     <button
-      class="px-7 py-4 rounded-lg bg-gradient-to-r from-[#006ab2] to-[#013456]
-             text-white font-medium shadow-lg shadow-[#006ab2]/20
-             hover:shadow-[#006ab2]/30 hover:scale-105 transition"
+      class="px-7 py-4 rounded-lg bg-linear-to-b from-10% from-violet-500/90 to-violet-900/90
+             text-white font-medium hover:-translate-y-px duration-300 transition cursor-pointer"
     >
       Contact Us
     </button>
@@ -49,26 +34,17 @@ import technovel from "../assets/technovel_logo.png";
 
   gsap.registerPlugin(ScrollTrigger);
 
-  const logo = document.querySelector(".logo");
-  const hero = document.querySelector(".hero");
-  gsap.fromTo(
+  const logo = document.querySelector("#logo");
+  gsap.to(
     logo,
     {
-      y: -20,
-      scale: 0,
-      opacity: 0,
-    },
-    {
-      y: 0,
-      scale: 1,
       opacity: 1,
-      duration: 0.5,
+      duration: 1,
+      ease: "power2.out",
       scrollTrigger: {
         trigger: document.body,
-        start: "top -=40",
-
-        toggleActions: "play none none none",
+        start: "top+=320",
+        toggleActions: "play reverse play reverse",
       },
-    }
-  );
+    });
 </script>

@@ -1,0 +1,216 @@
+---
+import blobShape2 from "../assets/blob_shape2.svg";
+const features = [
+  {
+    title: "Proven Expertise",
+    description:
+      "Years of experience delivering reliable, high-impact digital solutions.",
+    src:
+      "https://cdn3d.iconscout.com/3d/premium/thumb/business-team-3d-icon-png-download-12841781.png",
+    alt: "Expertise icon",
+    layout: "default",
+  },
+
+  {
+    title: "Creativity Meets Technology",
+    description:
+      "Smart tech blended with bold, innovative design.",
+    src:'https://static.vecteezy.com/system/resources/thumbnails/068/541/375/small/stylish-blue-black-design-icons-creative-png.png',
+    alt: "Creativity icon",
+    layout: "reversed",
+  },
+
+  {
+    title: "Dedicated expert teams",
+    description:
+      "Skilled teams focused on your goals from start to finish.",
+   src: 
+      
+     'https://cdn3d.iconscout.com/3d/premium/thumb/affiliate-3d-icon-png-download-12174002.png',
+    alt: "Team icon",
+    layout: "reversed",
+  },
+
+  {
+    title: "Multichannel brand activation",
+    description:
+      "Engaging your audience across every platform for maximum brand impact.",
+   src: `
+     https://static.vecteezy.com/system/resources/thumbnails/021/617/063/small/innovation-3d-render-icon-illustration-png.png
+    `,
+    alt: "Multichannel icon",
+    layout: "reversed",
+  },
+
+  {
+    title: "Innovation at Core",
+    description:
+      "Constantly evolving ideas to keep your business ahead.",
+   src: `
+      https://cdn3d.iconscout.com/3d/premium/thumb/expert-settings-3d-icon-png-download-8502611.png
+    `,
+    alt: "Innovation icon",
+    layout: "reversed",
+  },
+];
+
+---
+
+<style>
+  @media (max-width: 780px) {
+    .mainDiv h2 {
+      font-size: 1.5rem;
+    }
+  }
+
+  /* A small hint: if user prefers reduced motion we will not rely on heavy scroll-based movement */
+  @media (prefers-reduced-motion: reduce) {
+    [data-scroll] { transition: none !important; }
+    .feature-animate { transform: none !important; }
+  }
+
+
+    @media (min-width: 1200px) {
+      .mainDiv h2 {
+        font-size: 2rem;
+      }
+    }
+      @media (min-width: 1400px) {
+      .mainDiv h2 {
+        font-size: 4rem;
+      }
+    }
+</style>
+
+<section
+id="hero"
+  
+  class="min-h-screen hero py-20 relative rounded-b-4xl bg-gradient-to-r from-[#1c103f] to-[#07040F]"
+>
+  <div class="max-w-7xl mainDiv mx-auto px-6">
+    <h2
+      class="text-[2.75rem] lg:text-[4rem]  leading-[4.25rem] w-full text-center text-[#b6a8e1]  font-semibold mb-12"
+     
+    >
+      Features
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-x-16 lg:gap-x-20">
+      {features.map((feature, idx) => (
+        <article
+          class="flex items-start gap-8 px-[1.87rem] lg:px-[3.5rem] feature-animate"
+          
+         
+        >
+          <!-- Icon Block -->
+          <div class="relative flex items-center justify-center mb-0 md:mb-0">
+            <div class="icon-card w-24 h-24 md:w-28 md:h-28 rounded-2xl border-2 border-zinc-500 flex items-center justify-center bg-gradient-to-t from-[#271f42]  to-[#413C50]">
+              {feature.src ? (
+                
+                <img
+                  src={feature.src}
+                  alt={feature.alt}
+                  class="w-14 hover:rotate-y-180 hover:scale-150 transition-transform duration-500  h-14 md:w-20 md:h-20 object-contain rounded-2xl "
+                  onload="window.dispatchEvent(new Event('locomotive:update'))"
+                  onerror="window.dispatchEvent(new Event('locomotive:update'))"
+                />
+              ) : (
+                <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="white"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="w-10hover:rotate-y-180 z-10 hover:scale-150 transition-transform duration-500 h-10 md:w-14 md:h-14"
+        set:html={feature.iconSvg}
+      ></svg>
+              )}
+            </div>
+          </div>
+          {/* <div
+  class="blob  absolute top-1/2 left-8 -translate-y-1/2
+         w-[25vw] h-[25vw] md:w-[20vw] md:h-[20vw] lg:w-[24vw] lg:h-[24vw]
+         bg-[#047bca]/50 opacity-8 blur-3xl rounded-full z-0"
+  
+></div> */}
+  <img
+    id="blob-shape2"
+    src={blobShape2.src}
+    alt="Blob Style 2"
+    class="absolute -top-10 right-10 h-180 w-[35vw] max-w-180 min-w-25 rotate-10 pointer-events-none"
+  />
+
+          <!-- Text Block -->
+          <div class="">
+            <h3
+              id={`feature-title-${idx}`}
+              class="text-[1rem] lg:text-[1.50rem] wrap-normal leading-[1.5rem] md:text-2xl text-white/90 mb-3"
+             
+            >
+              {feature.title}
+            </h3>
+
+            <p
+              class={`text-[0.75rem] md:text-base text-[#b6a8e1]/60 leading-relaxed max-w-prose mx-auto ${feature.layout === "reversed" ? "md:ml-auto md:mr-0" : "md:mx-0"}`}
+              data-scroll
+              data-scroll-delay={(idx * 0.12 + 0.05).toString()}
+            >
+              {feature.description} </p> 
+           
+          </div>
+        </article>
+      ))}
+
+
+      <!-- Placeholder to balance the grid (if features.length is odd) -->
+      <article class="hidden md:block" aria-hidden="true"></article>
+    </div>
+  
+  </div>
+</section>
+
+
+   <script type="module" defer>
+    
+import gsap from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/index.js";
+import { ScrollTrigger } from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/ScrollTrigger.min.js";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const hero = document.querySelector("#hero");
+const blobShape2 = document.querySelectorAll("#blob-shape2");
+
+if (hero && blobs.length > 0) {
+  blobs.forEach((blob, i) => {
+    gsap.fromTo(
+      blob,
+      { y: 0, opacity: 1, scale: 1 },
+      {
+        y: 200,
+        opacity: 0,
+        scale: 0.4,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: hero,
+          start: "top mid",
+          end: "bottom top",
+          scrub: 1,
+        },
+      }
+    );
+  });
+}
+  gsap.to(blobShape2, {
+      y: 600,
+      opacity: 0.1,
+      duration: 4,
+      scrollTrigger: {
+        trigger: hero,
+        start: "top-=90px",
+        end: "bottom",
+        scrub: true,
+      },
+    });
+
+</script>   

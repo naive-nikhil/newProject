@@ -1,0 +1,130 @@
+---
+import clients1 from "../assets/clients1.webp";
+import client2 from "../assets/client2.webp";
+import client3 from "../assets/client3.png";
+import client4 from "../assets/client4.png";
+const clients = [
+  {
+    name: "Université Laval",
+    src: "https://media.licdn.com/dms/image/v2/D5622AQFW4gTQFuuPOg/feedshare-shrink_800/B56ZaReK.1GUAo-/0/1746197331461?e=2147483647&v=beta&t=t95myTZcxVbmfqAYbJoeZJvFdm7Z2SRDeB-XE8rJPLk",
+    alt: "Université Laval Logo",
+  },
+  {
+    name: "4th Whale",
+    src: client2.src,
+    alt: "4th Whale Logo",
+  },
+  {
+    name: "axify",
+    src: clients1.src,
+    alt: "axify Logo",
+  },
+  {
+    name: "ILLUXI",
+    src: client3.src,
+    alt: "ILLUXI Logo",
+  },
+  {
+    name: "KOLORTRAK",
+    src: client4.src,
+    alt: "KOLORTRAK Logo",
+  },
+  {
+    name: "MUUTI",
+    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE4aAneOBqZNm6K2eKaajbeCxriMnZJHlErw&s",
+    alt: "MUUTI Logo",
+  },
+  {
+    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzCc2kGj_ZlazQlzyDHAmNjFxj4RXbjoheDQ&s",
+  },
+  {
+    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJn0lVhKk5c4gsf9EWHE3KtR15Cc6R9YiB9Q&s",
+  },
+  // Add more clients here if needed
+];
+
+// Duplicating the list is essential to create a seamless infinite loop
+const doubledClients = [...clients, ...clients];
+
+// Define the duration for the animation (adjust this for speed)
+const scrollDuration = "30s"; // Time it takes for the entire doubled list to scroll once
+---
+
+<style>
+  @media (min-width: 780px) {
+    .mainDiv h2 {
+      font-size: 2.75rem;
+      line-height: 4.25rem;
+      text-align: left;
+    }
+    @media (min-width: 1200px) {
+      .mainDiv h2 {
+        font-size: 2rem;
+        text-align: center;
+      }
+    }
+    @media (min-width: 1400px) {
+      .mainDiv h2 {
+        font-size: 4rem;
+        text-align: center;
+      }
+    }
+  }
+</style>
+<section class="py-16 md:py-24 bg-white">
+  <div class="max-w-7xl mx-auto mainDiv overflow-hidden">
+    <h2
+      class="text-[1.5rem] mx-5 text-[#474747] text-left lg:text-center mb-10"
+    >
+      Clients
+    </h2>
+
+    <div class="relative w-full">
+      <div
+        class="marquee-content flex"
+        style={`animation-duration: ${scrollDuration};`}
+      >
+        {
+          doubledClients.map((client) => (
+            <div class="flex-shrink-0 rounded-3xl m-5 shadow-gray-500 shadow-md w-[170px] md:w-[230px] mx-8 flex items-center justify-center h-36  hover:opacity-100 transition duration-300">
+              <img
+                src={client.src}
+                alt={client.alt}
+                class="max-h-full grayscale hover:grayscale-25 hover:scale-90  rounded-3xl max-w-full object-cover"
+              />
+            </div>
+          ))
+        }
+      </div>
+
+      <div
+        class="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white to-transparent pointer-events-none"
+      >
+      </div>
+      <div
+        class="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white to-transparent pointer-events-none"
+      >
+      </div>
+    </div>
+  </div>
+</section>
+
+<style define:vars={{ scrollDuration }}>
+  /* Define the keyframes for the infinite scroll */
+  @keyframes scroll-left {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      /* Scroll the width of the original, undoubled list */
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Apply the animation to the marquee content div */
+  .marquee-content {
+    animation: scroll-left var(--scrollDuration) linear infinite;
+
+    animation-play-state: running;
+  }
+</style>

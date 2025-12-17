@@ -34,27 +34,11 @@ const clients = [
     src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE4aAneOBqZNm6K2eKaajbeCxriMnZJHlErw&s",
     alt: "MUUTI Logo",
   },
-
+  {
+    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzCc2kGj_ZlazQlzyDHAmNjFxj4RXbjoheDQ&s",
+  },
   {
     src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJn0lVhKk5c4gsf9EWHE3KtR15Cc6R9YiB9Q&s",
-  },
-  {
-    name: "vishwaguru academy",
-    src: "https://i.ytimg.com/vi/ANrtY3Q4_Vw/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AGKCYAC0AWKAgwIABABGCEgQSh_MA8=&rs=AOn4CLCgWeDkNm7HPN9XXWNnPzHZgiWCvw",
-    alt: "vishwaguru Logo",
-  },
-  {
-    name: "Caprize",
-    src: "https://cdn.prod.website-files.com/65f95dd2dc04cb6fb9ef34e0/6603d405282f2b2acbf761a2_Open_Graph_Image.jpg",
-    alt: "Caprize Logo",
-  },
-  {
-    src: "https://media.licdn.com/dms/image/v2/D4D0BAQFBujmKLHXJWA/company-logo_200_200/company-logo_200_200/0/1688118224899/edubrainbytes_logo?e=2147483647&v=beta&t=DeiSji_IDIEs-88USf_JFVpdufAzkdxjS6VspwD79dg",
-    alt: "Brain Bytes",
-  },
-  {
-    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTf7o5A3B2muKzJI64_UAttVrkNAkK6acI3bQ&s",
-    alt: "united world martial arts",
   },
 ];
 
@@ -99,11 +83,11 @@ const scrollDuration = "40s";
         >
           {
             clients.map((client, index) => (
-              <div class="marquee-item flex-shrink-0   m-5  w-[200px] md:w-[270px] mx-8 flex items-center justify-center h-36 hover:opacity-100 transition duration-300">
+              <div class="marquee-item flex-shrink-0  m-5  w-[170px] md:w-[230px] mx-8 flex items-center justify-center h-36 hover:opacity-100 transition duration-300">
                 <img
                   src={client.src}
                   alt={client.alt || `Client ${index + 1}`}
-                  class="max-h-full grayscale  hover:scale-90  max-w-full object-cover"
+                  class="max-h-full grayscale  hover:scale-90 rounded-3xl max-w-full object-cover"
                 />
               </div>
             ))
@@ -117,11 +101,11 @@ const scrollDuration = "40s";
         >
           {
             clients.map((client, index) => (
-              <div class="marquee-item flex-shrink-0  m-5  w-[200px] md:w-[270px] mx-8 flex items-center justify-center h-40 hover:opacity-100 transition duration-300">
+              <div class="marquee-item flex-shrink-0  m-3   w-[200px] md:w-[270px] mx-8 flex items-center justify-center h-40 hover:opacity-100 transition duration-300">
                 <img
                   src={client.src}
                   alt={client.alt || `Client ${index + 1}`}
-                  class="max-h-full grayscale  hover:scale-90  max-w-full object-cover"
+                  class="max-h-[95%] grayscale hover:scale-90 rounded-3xl max-w-[95%] object-cover"
                 />
               </div>
             ))

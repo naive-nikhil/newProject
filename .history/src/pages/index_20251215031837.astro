@@ -3,9 +3,9 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Welcome from "../components/Welcome.astro";
 import Features from "../components/Features.astro";
-import "../styles/global.css";
+import Trail from "../components/Trail.astro";
 import Contact from "../components/Contact.astro";
-
+import FAQ from "../components/FAQ.astro";
 import Clients from "../components/Clients.astro";
 import Services from "../components/Services.astro";
 import Roles from "../components/Roles.astro";
@@ -54,15 +54,18 @@ const contact: ContactCard = {
   <Header />
   <Welcome />
   <About />
-
+  <!-- <Grid title="Our Services" pricingOptions={options} contactCard={contact} /> -->
   <Features />
   <Services />
-
+  <!-- 
+  <Trail /> -->
+  <!-- <Grid title="Pricing" pricingOptions={options} contactCard={contact} /> -->
   <Roles />
   <Clients />
-
+  <!-- <Grid title="Pricing" pricingOptions={options} contactCard={contact} /> -->
   <Value />
 
+  <!-- <FAQ /> -->
   <Contact />
   <Footer />
 </Layout>

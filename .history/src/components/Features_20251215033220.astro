@@ -86,7 +86,7 @@ const features = [
 <section
 id="hero"
   
-  class="min-h-screen  py-20 relative rounded-b-4xl bg-gradient-to-r from-[#1c103f] to-[#07040F]"
+  class="min-h-screen hero py-20 relative rounded-b-4xl bg-gradient-to-r from-[#1c103f] to-[#07040F]"
 >
   <div class="max-w-7xl mainDiv mx-auto px-6">
     <h2
@@ -183,9 +183,28 @@ gsap.registerPlugin(ScrollTrigger);
 const hero = document.querySelector("#hero");
 const blobShape2 = document.querySelectorAll("#blob-shape2");
 
-
+// if (hero && blobs.length > 0) {
+//   blobs.forEach((blob, i) => {
+//     gsap.fromTo(
+//       blob,
+//       { y: 0, opacity: 1, scale: 1 },
+//       {
+//         y: 200,
+//         opacity: 0,
+//         scale: 0.4,
+//         ease: "power2.out",
+//         scrollTrigger: {
+//           trigger: hero,
+//           start: "top mid",
+//           end: "bottom top",
+//           scrub: 1,
+//         },
+//       }
+//     );
+//   });
+// }
   gsap.to(blobShape2, {
-      y: 250,
+      y: 100,
       opacity: 0.1,
       duration: 2,
       scrollTrigger: {

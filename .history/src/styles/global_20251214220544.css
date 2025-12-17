@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import "tailwindcss";
+
+body {
+  font-family: "DM Sans", sans-serif;
+}
+
+* {
+  /* outline: 1px solid #000; */
+}
+
+
+.font-righteous {
+  font-family: "Righteous", cursive;
+}
+
+.font-press-start-2p {
+  font-family: "Press Start 2P", cursive;
+}

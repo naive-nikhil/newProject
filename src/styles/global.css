@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "TT Ricordi Greto Trial Variable";
-  src: url("../assets/TTFont/Ricordi Greto Trial Variable.ttf") format("truetype");
+  font-family: "TT Ricordi Greto Variable";
+  src: url("/fonts/TTRicordiGretoVariable.ttf") format("truetype");
 }
 
 body {
@@ -12,9 +12,5 @@ body {
 h1,
 h2,
 h3 {
-  font-family: "TT Ricordi Greto Trial Variable", serif;
-}
-
-* {
-  /* outline: 1px solid #000; */
+  font-family: "TT Ricordi Greto Variable", serif;
 }

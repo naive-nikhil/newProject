@@ -10,17 +10,21 @@
   // Register GSAP plugins
   gsap.registerPlugin(ScrollTrigger);
 
-  // Initialize Lenis
+  // Detect mobile devices
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+
+  // Initialize Lenis with better mobile support
   const lenis = new Lenis({
-    duration: 4,
+    duration: isMobile ? 1.5 : 2,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     orientation: 'vertical',
     gestureOrientation: 'vertical',
     smoothWheel: true,
-    wheelMultiplier: 1,
-    smoothTouch: true,
-    touchMultiplier: 2,
+    wheelMultiplier: isMobile ? 0.8 : 1,
+    touchMultiplier: isMobile ? 1.5 : 2,
     infinite: false,
+    syncTouch: true,
+    syncTouchLerp: 0.075,
   });
 
   // Connect Lenis with GSAP ScrollTrigger
@@ -31,6 +35,50 @@
   });
 
   gsap.ticker.lagSmoothing(0);
+
+  // Handle scrollbar track clicks smoothly
+  let isScrolling = false;
+  let scrollTimeout: ReturnType<typeof setTimeout>;
+
+  const handleScrollbarClick = (e: MouseEvent) => {
+    if (isScrolling) return;
+    
+    // Check if click is on scrollbar track area
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    const clickX = e.clientX;
+    
+    // Only handle if click is in the scrollbar area (right side of viewport)
+    if (scrollbarWidth > 0 && clickX >= window.innerWidth - scrollbarWidth) {
+      const scrollContainer = document.documentElement;
+      const clickY = e.clientY;
+      const viewportHeight = window.innerHeight;
+      const scrollPercentage = clickY / viewportHeight;
+      const maxScroll = scrollContainer.scrollHeight - viewportHeight;
+      const targetScroll = scrollPercentage * maxScroll;
+      
+      isScrolling = true;
+      lenis.scrollTo(targetScroll, {
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        onComplete: () => {
+          clearTimeout(scrollTimeout);
+          scrollTimeout = setTimeout(() => {
+            isScrolling = false;
+          }, 100);
+        }
+      });
+      
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  };
+
+  // Handle scrollbar track clicks
+  document.addEventListener('mousedown', (e: MouseEvent) => {
+    if (e.button === 0) { // Left click only
+      handleScrollbarClick(e);
+    }
+  }, { passive: false });
 
   // Example GSAP ScrollTrigger animations
   gsap.utils.toArray('.fade-in').forEach((element: any) => {
@@ -48,18 +96,24 @@
 
   // Smooth scroll to anchor links
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener('click', function (e) {
+    anchor.addEventListener('click', (e: Event) => {
       e.preventDefault();
-      const target = document.querySelector(
-        this.getAttribute('href') as string
-      );
-      if (target) {
-        lenis.scrollTo(target as HTMLElement, {
-          offset: 0,
-          duration: 1.5,
-        });
+      const href = (anchor as HTMLAnchorElement).getAttribute('href');
+      if (href) {
+        const target = document.querySelector(href);
+        if (target) {
+          lenis.scrollTo(target as HTMLElement, {
+            offset: 0,
+            duration: 1.5,
+          });
+        }
       }
     });
+  });
+
+  // Cleanup on page unload
+  window.addEventListener('beforeunload', () => {
+    lenis.destroy();
   });
 </script>
 
@@ -69,7 +123,7 @@
   }
 
   .lenis.lenis-smooth {
-    scroll-behavior: auto;
+    scroll-behavior: auto !important;
   }
 
   .lenis.lenis-smooth [data-lenis-prevent] {
@@ -82,5 +136,45 @@
 
   .lenis.lenis-scrolling iframe {
     pointer-events: none;
+  }
+
+  /* Improve scrollbar behavior */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    transition: background-color 0.2s;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+
+  /* Prevent scrollbar click jank */
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  @media (max-width: 768px) {
+    * {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    *::-webkit-scrollbar {
+      display: none;
+    }
   }
 </style>

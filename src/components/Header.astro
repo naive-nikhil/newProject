@@ -1,40 +1,25 @@
+---
+import technovelLogo from "../assets/technovel_logo.png";
+import colorLogo from "../assets/colored-logo.png";
+---
+
 <div
   class="flex justify-between items-center text-sm font-bold sticky top-0 z-50 py-2 px-5 lg:px-10"
 >
-  <h2 id="logo" class="text-md sm:text-lg md:text-xl lg:text-2xl text-black/80 font-black font-press-start-2p uppercase opacity-0">Technovel</h2>
+  <img src={technovelLogo.src} alt="Technovel Logo" class="w-30" />
 
   <div
     class="flex items-center gap-4 md:gap-7 text-zinc-800 bg-gray-100/10 pl-4 md:pl-7 px-1 rounded-lg backdrop-blur-sm py-1 shadow-lg"
   >
-    <h2 class="cursor-pointer transition hover:text-[#006ab2] duration-300">
+    <h2 class="cursor-pointer transition duration-300">
       About
     </h2>
 
     <button
-      class="px-4 md:px-7 py-2 md:py-4 rounded-lg bg-linear-to-b from-10% from-violet-500/90 to-violet-900/90
-             text-white font-medium hover:-translate-y-px duration-300 transition cursor-pointer"
+      class="group px-4 md:px-7 py-2 md:py-4 rounded-lg bg-linear-to-b from-10% from-violet-500/90 to-violet-900/90
+             text-white font-medium duration-300 transition cursor-pointer"
     >
-      Contact
+    <span class="group-hover:-translate-y-px duration-50 transition inline-block">Contact</span>
     </button>
   </div>
 </div>
-<script type="module" defer>
-  import gsap from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/index.js";
-  import { ScrollTrigger } from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/ScrollTrigger.min.js";
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  const logo = document.querySelector("#logo");
-  gsap.to(
-    logo,
-    {
-      opacity: 1,
-      duration: .5,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: document.body,
-        start: "top+=320",
-        toggleActions: "play reverse play reverse",
-      },
-    });
-</script>

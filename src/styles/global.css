@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "TT Ricordi Greto Trial Variable";
+  src: url("..\assets\TTFont\ Ricordi\ Greto\ Trial\ Variable.ttf") format("truetype");
+}
+
 body {
   font-family: "DM Sans", sans-serif;
 }

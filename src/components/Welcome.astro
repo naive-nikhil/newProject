@@ -5,14 +5,14 @@ import blobShape2 from "../assets/blob_shape2.svg";
 
 <div
   id="hero-root"
-  class="flex align-center justify-center h-[75vh] items-center w-full relative overflow-x-clip px-4 lg:px-10"
+  class="flex align-center justify-center h-[60vh] lg:h-[75vh] items-center w-full relative overflow-x-clip px-4"
 >
   <!-- Hero Image -->
   <div class="w-full flex justify-center items-center">
     <div
-      class="w-full max-w-7xl rounded-md md:rounded-xl lg:rounded-3xl backdrop-blur-[1px] h-[50vh] border-2 border-white flex justify-center px-5"
+      class="w-full max-w-sm sm:max-w-3xl lg:max-w-7xl rounded-xl lg:rounded-3xl backdrop-blur-[1px] h-[25vh] lg:h-[50vh] border-2 border-white flex justify-center px-5"
     >
-      <h1 class="text-xl sm:text-2xl md:text-3xl lg:text-8xl max-w-[1000px] m-auto h-full w-full py-2 font-bold text-center text-black/80 flex flex-col items-center justify-center">
+      <h1 class="text-3xl sm:text-6xl lg:text-8xl max-w-[1000px] m-auto h-full w-full py-2 font-bold text-center text-black/80 flex flex-col items-center justify-center">
         <span class="mr-auto">Next-Gen</span>
         <span class="ml-auto">Digital Solutions</span>
       </h1>
@@ -24,13 +24,13 @@ import blobShape2 from "../assets/blob_shape2.svg";
     id="blob-shape1"
     src={blobShape1.src}
     alt="Blob Style 1"
-    class="absolute -top-10 -left-10 w-[35vw] max-w-150 min-w-20 rotate-10 -z-1 pointer-events-none"
+    class="absolute top-0 sm:-top-10 -left-10 max-w-62 sm:max-w-150 rotate-10 -z-1 pointer-events-none"
   />
   <img
     id="blob-shape2"
     src={blobShape2.src}
     alt="Blob Style 2"
-    class="absolute -top-10 right-10 h-180 w-[35vw] max-w-180 min-w-25 rotate-10 pointer-events-none z-3"
+    class="absolute top-25 sm:-top-10 -right-5 sm:right-10 max-w-65 sm:max-w-180 rotate-10 pointer-events-none z-3"
   />
 </div>
 

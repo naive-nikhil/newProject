@@ -41,7 +41,7 @@ const features = [
 <section
 id="features"
   
-  class="py-20 relative rounded-b-4xl bg-linear-to-b from-10% from-black/89 to-violet-900 -mt-8 pb-30"
+  class="py-20 relative rounded-b-4xl bg-linear-to-b from-10% from-black/89 to-violet-900 -mt-8 pb-30 px-4"
 >
   <div class="max-w-7xl mx-auto">
     <h2
@@ -71,14 +71,14 @@ id="features"
           <div class="">
             <h3
               id={`feature-title-${idx}`}
-              class="text-[1rem] lg:text-[1.50rem] wrap-normal leading-[1.5rem] md:text-2xl text-white/90 mb-3"
+              class="text-lg md:text-xl wrap-normal text-white/90 mb-3"
              
             >
               {feature.title}
             </h3>
 
             <p
-              class={`text-[0.75rem] md:text-base text-white/60 leading-relaxed max-w-prose mx-auto ${feature.layout === "reversed" ? "md:ml-auto md:mr-0" : "md:mx-0"}`}
+              class={`md:text-lg text-white/60 leading-relaxed max-w-prose mx-auto ${feature.layout === "reversed" ? "md:ml-auto md:mr-0" : "md:mx-0"}`}
               data-scroll
               data-scroll-delay={(idx * 0.12 + 0.05).toString()}
             >

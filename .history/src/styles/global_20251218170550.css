@@ -1,0 +1,35 @@
+<<<<<<< HEAD
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Righteous&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+=======
+>>>>>>> a779d581ffbef3005eddba2f69bbe7abceab0056
+@import "tailwindcss";
+
+@font-face {
+  font-family: "TT Ricordi Greto Variable";
+  src: url("/fonts/TTRicordiGretoVariable.ttf") format("truetype");
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  overflow-x: "hidden";
+}
+
+<<<<<<< HEAD
+* {
+  /* outline: 1px solid #000; */
+}
+
+.font-righteous {
+  font-family: "Righteous", cursive;
+}
+
+.font-press-start-2p {
+  font-family: "Press Start 2P", cursive;
+=======
+h1,
+h2,
+h3 {
+  font-family: "TT Ricordi Greto Variable", serif;
+>>>>>>> a779d581ffbef3005eddba2f69bbe7abceab0056
+}

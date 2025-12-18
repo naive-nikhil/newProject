@@ -33,6 +33,10 @@ const features = [
     title: "Innovation at Core",
     description:
       "Constantly evolving ideas to keep your business ahead.",
+   src: `
+      https://cdn3d.iconscout.com/3d/premium/thumb/expert-settings-3d-icon-png-download-8502611.png
+    `,
+    alt: "Innovation icon",
     layout: "reversed",
   },
 ];
@@ -46,7 +50,7 @@ id="features"
 >
   <div class="max-w-7xl mx-auto">
     <h2
-      class="text-[2.75rem] lg:text-[4rem] w-full text-center text-white mb-20"
+      class="text-[2.75rem] lg:text-[4rem]  leading-[4.25rem] w-full text-center text-[#75a3c2]  font-semibold mb-12"
      
     >
       Why Us ?
@@ -67,6 +71,12 @@ id="features"
             <h3 class="text-4xl text-white font-medium relative z-10">{ idx + 1 }</h3>
             </div>
           </div>
+          <div
+  class="blob  absolute top-1/2 left-8 -translate-y-1/2
+         w-[25vw] h-[25vw] md:w-[20vw] md:h-[20vw] lg:w-[24vw] lg:h-[24vw]
+         bg-[#047bca]/50 opacity-8 blur-3xl rounded-full z-0"
+  
+></div>
 
           <!-- Text Block -->
           <div class="">
@@ -79,7 +89,7 @@ id="features"
             </h3>
 
             <p
-              class={`md:text-lg text-white/60 leading-relaxed max-w-prose mx-auto ${feature.layout === "reversed" ? "md:ml-auto md:mr-0" : "md:mx-0"}`}
+              class={`text-[0.75rem] md:text-base text-white/60 leading-relaxed max-w-prose mx-auto ${feature.layout === "reversed" ? "md:ml-auto md:mr-0" : "md:mx-0"}`}
               data-scroll
               data-scroll-delay={(idx * 0.12 + 0.05).toString()}
             >
@@ -121,34 +131,28 @@ id="features"
 
   gsap.registerPlugin(ScrollTrigger);
 
-  const features = document.querySelector("#features");
+const hero = document.querySelector("#hero");
+const blobs = document.querySelectorAll(".blob");
 
-  const effect = document.querySelectorAll(".effect");
-
-  if (effect) {
-    gsap.to(effect, {
-      x: 115,
-      y: 115,
-      opacity: 1,
-      duration: 1.2,
-      scrollTrigger: {
-        trigger: features,
-        start: "top 40%",
-        once: true,
-      },
-    });
-  }
-
-  // Border shine animation - animate gradient angle
-  gsap.to(".border-shine", {
-    "--angle": "360deg",
-    duration: 2.8,
-    opacity: 0,
-    scrollTrigger: {
-        trigger: features,
-        start: "top 40%",
-        once: true,
-      },
+if (hero && blobs.length > 0) {
+  blobs.forEach((blob, i) => {
+    gsap.fromTo(
+      blob,
+      { y: 0, opacity: 1, scale: 1 },
+      {
+        y: 200,
+        opacity: 0,
+        scale: 0.4,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: hero,
+          start: "top mid",
+          end: "bottom top",
+          scrub: 1,
+        },
+      }
+    );
   });
-</script>
+}
 
+</script>   

@@ -1,5 +1,4 @@
 ---
-
 ---
 
 <script>
@@ -7,57 +6,32 @@
   import { gsap } from 'gsap';
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-  // Register GSAP plugins
   gsap.registerPlugin(ScrollTrigger);
 
-  // Initialize Lenis
   const lenis = new Lenis({
-    duration: 1.5,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    orientation: 'vertical',
-    gestureOrientation: 'vertical',
     smoothWheel: true,
-    wheelMultiplier: 1,
-    smoothTouch: false,
-    touchMultiplier: 2,
-    infinite: false,
+    syncTouch: true,
   });
 
-  // Connect Lenis with GSAP ScrollTrigger
   lenis.on('scroll', ScrollTrigger.update);
 
-  gsap.ticker.add((time) => {
-    lenis.raf(time * 1000);
-  });
+  function raf(time: number) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
 
-  gsap.ticker.lagSmoothing(0);
-
-  // Example GSAP ScrollTrigger animations
-  gsap.utils.toArray('.fade-in').forEach((element: any) => {
-    gsap.from(element, {
-      scrollTrigger: {
-        trigger: element,
-        start: 'top 80%',
-        end: 'top 20%',
-        scrub: true,
-      },
-      opacity: 0,
-      y: 50,
-    });
-  });
+  requestAnimationFrame(raf);
 
   // Smooth scroll to anchor links
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener('click', function (e) {
+    anchor.addEventListener('click', (e: Event) => {
       e.preventDefault();
-      const target = document.querySelector(
-        this.getAttribute('href') as string
-      );
-      if (target) {
-        lenis.scrollTo(target as HTMLElement, {
-          offset: 0,
-          duration: 1.5,
-        });
+      const href = (anchor as HTMLAnchorElement).getAttribute('href');
+      if (href) {
+        const target = document.querySelector(href);
+        if (target) {
+          lenis.scrollTo(target as HTMLElement);
+        }
       }
     });
   });
@@ -69,18 +43,10 @@
   }
 
   .lenis.lenis-smooth {
-    scroll-behavior: auto;
-  }
-
-  .lenis.lenis-smooth [data-lenis-prevent] {
-    overscroll-behavior: contain;
+    scroll-behavior: auto !important;
   }
 
   .lenis.lenis-stopped {
     overflow: hidden;
-  }
-
-  .lenis.lenis-scrolling iframe {
-    pointer-events: none;
   }
 </style>

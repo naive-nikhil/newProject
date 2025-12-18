@@ -7,17 +7,44 @@ import blobShape2 from "../assets/blob_shape2.svg";
   id="hero-root"
   class="flex align-center justify-center h-[60vh] lg:h-[75vh] items-center w-full relative overflow-x-clip px-4"
 >
+<<<<<<< HEAD
+  <!-- Hero Heading & Subheading -->
+  <div
+    class="w-full flex justify-center mx-auto items-center flex-col md:gap-5 mt-10"
+  >
+    <img
+      src={technovelLogo.src}
+      alt="Technovel Logo"
+      class="w-60 sm:w-80 md:w-100 lg:w-120"
+    />
+
+    <h1
+      class="text-xl sm:text-2xl md:text-3xl lg:text-4xl max-w-[900px] py-2 font-bold text-center text-black"
+    >
+      Next-Gen Digital Solutions
+    </h1>
+  </div>
+
+=======
+>>>>>>> a779d581ffbef3005eddba2f69bbe7abceab0056
   <!-- Hero Image -->
   <div class="w-full flex justify-center items-center">
     <div
       class="w-full max-w-sm sm:max-w-3xl lg:max-w-7xl rounded-xl lg:rounded-3xl backdrop-blur-[1px] h-[25vh] lg:h-[50vh] border-2 border-white flex justify-center px-5"
     >
-      <h1
-        class="text-3xl sm:text-6xl lg:text-8xl max-w-[1000px] m-auto h-full w-full py-2 font-bold text-center text-black/80 flex flex-col items-center justify-center"
-      >
+<<<<<<< HEAD
+      <img
+        id="hero-image"
+        class="max-w-[1250px] mt-5 shadow-2xl shadow-zinc-500 rounded-md md:rounded-xl lg:rounded-3xl rounded-b-none lg:rounded-b-none h-[140%] w-full border-b-0 lg:border-b-0 object-cover border-8 lg:border-14 border-black brightness-90 blur-[.5px]"
+        src={heroImage.src}
+        alt="Hero Image"
+      />
+=======
+      <h1 class="text-3xl sm:text-6xl lg:text-8xl max-w-[1000px] m-auto h-full w-full py-2 font-bold text-center text-black/80 flex flex-col items-center justify-center">
         <span class="mr-auto">Next-Gen</span>
         <span class="ml-auto">Digital Solutions</span>
       </h1>
+>>>>>>> a779d581ffbef3005eddba2f69bbe7abceab0056
     </div>
   </div>
 
@@ -46,6 +73,26 @@ import blobShape2 from "../assets/blob_shape2.svg";
 
   const blobShape1 = document.querySelector("#blob-shape1");
   const blobShape2 = document.querySelector("#blob-shape2");
+<<<<<<< HEAD
+  const heroImage = document.querySelector("#hero-image");
+
+  if (blobShape1 && blobShape2 && heroImage) {
+    gsap.fromTo(
+      heroImage,
+      { height: "140%" },
+      {
+        height: "80%",
+        duration: 3,
+        scrollTrigger: {
+          trigger: hero,
+          start: "top",
+          end: "bottom",
+          scrub: true,
+        },
+      }
+    );
+=======
+>>>>>>> a779d581ffbef3005eddba2f69bbe7abceab0056
 
   if (blobShape1 && blobShape2) {
     gsap.to(blobShape1, {

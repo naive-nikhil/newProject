@@ -33,6 +33,10 @@ const features = [
     title: "Innovation at Core",
     description:
       "Constantly evolving ideas to keep your business ahead.",
+   src: `
+      https://cdn3d.iconscout.com/3d/premium/thumb/expert-settings-3d-icon-png-download-8502611.png
+    `,
+    alt: "Innovation icon",
     layout: "reversed",
   },
 ];
@@ -42,11 +46,11 @@ const features = [
 <section
 id="features"
   
-  class="py-20 relative rounded-b-4xl bg-linear-to-b from-10% from-black/89 to-violet-900 -mt-8 pb-30 px-4"
+  class="min-h-screen hero py-20 relative rounded-b-4xl bg-gradient-to-r from-[#0e3047] to-[#001725]"
 >
   <div class="max-w-7xl mx-auto">
     <h2
-      class="text-[2.75rem] lg:text-[4rem] w-full text-center text-white mb-20"
+      class="text-[2.75rem] lg:text-[4rem]  leading-[4.25rem] w-full text-center text-[#75a3c2]  font-semibold mb-12"
      
     >
       Why Us ?
@@ -60,13 +64,37 @@ id="features"
          
         >
           <!-- Icon Block -->
-          <div class="flex items-center justify-center">
-            <div class="relative icon-card w-30 h-30 rounded-3xl border border-white/30 bg-linear-to-b from-purple-500/20 to-white/5 backdrop-blur-[2px] flex items-center justify-center overflow-hidden">
-            <div class="absolute h-[140%] w-[140%] bg-white/4 backdrop-blur-[2px] rotate-45 -top-[115%] -left-[115%] effect z-0"></div>
-            <div class="border-shine absolute inset-[-2px] rounded-3xl pointer-events-none z-0" style="--angle: -30deg;"></div>
-            <h3 class="text-4xl text-white font-medium relative z-10">{ idx + 1 }</h3>
+          <div class="relative flex items-center justify-center mb-0 md:mb-0">
+            <div class="icon-card w-24 h-24 md:w-28 md:h-28 rounded-2xl border-2 border-zinc-500 flex items-center justify-center bg-gradient-to-tr from-[#0e3047] via-gray-500 to-[#001725]">
+              {feature.src ? (
+                
+                <img
+                  src={feature.src}
+                  alt={feature.alt}
+                  class="w-14 hover:rotate-y-180 hover:scale-150 transition-transform duration-500  h-14 md:w-20 md:h-20 object-contain rounded-2xl "
+                  onload="window.dispatchEvent(new Event('locomotive:update'))"
+                  onerror="window.dispatchEvent(new Event('locomotive:update'))"
+                />
+              ) : (
+                <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="white"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="w-10hover:rotate-y-180 z-10 hover:scale-150 transition-transform duration-500 h-10 md:w-14 md:h-14"
+        set:html={feature.iconSvg}
+      ></svg>
+              )}
             </div>
           </div>
+          <div
+  class="blob  absolute top-1/2 left-8 -translate-y-1/2
+         w-[25vw] h-[25vw] md:w-[20vw] md:h-[20vw] lg:w-[24vw] lg:h-[24vw]
+         bg-[#047bca]/50 opacity-8 blur-3xl rounded-full z-0"
+  
+></div>
 
           <!-- Text Block -->
           <div class="">
@@ -79,7 +107,7 @@ id="features"
             </h3>
 
             <p
-              class={`md:text-lg text-white/60 leading-relaxed max-w-prose mx-auto ${feature.layout === "reversed" ? "md:ml-auto md:mr-0" : "md:mx-0"}`}
+              class={`text-[0.75rem] md:text-base text-white/60 leading-relaxed max-w-prose mx-auto ${feature.layout === "reversed" ? "md:ml-auto md:mr-0" : "md:mx-0"}`}
               data-scroll
               data-scroll-delay={(idx * 0.12 + 0.05).toString()}
             >
@@ -121,34 +149,28 @@ id="features"
 
   gsap.registerPlugin(ScrollTrigger);
 
-  const features = document.querySelector("#features");
+const hero = document.querySelector("#hero");
+const blobs = document.querySelectorAll(".blob");
 
-  const effect = document.querySelectorAll(".effect");
-
-  if (effect) {
-    gsap.to(effect, {
-      x: 115,
-      y: 115,
-      opacity: 1,
-      duration: 1.2,
-      scrollTrigger: {
-        trigger: features,
-        start: "top 40%",
-        once: true,
-      },
-    });
-  }
-
-  // Border shine animation - animate gradient angle
-  gsap.to(".border-shine", {
-    "--angle": "360deg",
-    duration: 2.8,
-    opacity: 0,
-    scrollTrigger: {
-        trigger: features,
-        start: "top 40%",
-        once: true,
-      },
+if (hero && blobs.length > 0) {
+  blobs.forEach((blob, i) => {
+    gsap.fromTo(
+      blob,
+      { y: 0, opacity: 1, scale: 1 },
+      {
+        y: 200,
+        opacity: 0,
+        scale: 0.4,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: hero,
+          start: "top mid",
+          end: "bottom top",
+          scrub: 1,
+        },
+      }
+    );
   });
-</script>
+}
 
+</script>   

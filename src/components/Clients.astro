@@ -1,8 +1,4 @@
 ---
-// src/components/ClientMarquee.astro
-
-// Define the client logos (as objects containing image paths, alt text, or names)
-// NOTE: Replace the 'src' values with your actual image paths!
 const clients = [
   {
     name: "Université Laval",
@@ -40,11 +36,7 @@ const clients = [
   // Add more clients here if needed
 ];
 
-// Duplicating the list is essential to create a seamless infinite loop
-const doubledClients = [...clients, ...clients];
-
-// Define the duration for the animation (adjust this for speed)
-const scrollDuration = "20s"; // Time it takes for the entire doubled list to scroll once
+const scrollDuration = "20s";
 ---
 
 <style>
@@ -55,63 +47,66 @@ const scrollDuration = "20s"; // Time it takes for the entire doubled list to sc
     display: none;
   }
 </style>
+
 <section class="clients py-16 md:py-24 px-4">
   <div class="max-w-7xl mx-auto">
     <h2 class="text-3xl md:text-4xl lg:text-5xl text-black/80 mb-10">
       Clients
     </h2>
 
-    <div class="relative w-full flex items-center justify-center overflow-x-auto scrollbar-hide">
-      <div
-        class="marquee-content flex"
-        style={`animation-duration: ${scrollDuration};`}
-      >
-        {
-          clients.map((client) => (
-            <div class="shrink-0 pr-20 grow-0 basis-[220px] flex items-center justify-center">
-              <img
-                src={client.src}
-                alt={client.alt}
-                class="h-full grayscale hover:grayscale-25 w-full object-contain transition-all duration-300"
-              />
-            </div>
-          ))
-        }
-      </div>
-
-      <div
-        class="marquee-content flex"
-        style={`animation-duration: ${scrollDuration};`}
-      >
-        {
-          clients.map((client) => (
-            <div class="shrink-0 pr-20 grow-0 basis-[220px] flex items-center justify-center">
-              <img
-                src={client.src}
-                alt={client.alt}
-                class="h-full grayscale hover:grayscale-25 w-full object-contain transition-all duration-300"
-              />
-            </div>
-          ))
-        }
-      </div>
-
-      <div
-      class="marquee-content flex"
-      style={`animation-duration: ${scrollDuration};`}
+    <div
+      class="relative w-full flex items-center justify-center overflow-x-auto scrollbar-hide"
     >
-      {
-        clients.map((client) => (
-          <div class="shrink-0 pr-20 grow-0 basis-[220px] flex items-center justify-center">
-            <img
-              src={client.src}
-              alt={client.alt}
-              class="h-full grayscale hover:grayscale-25 w-full object-contain transition-all duration-300"
-            />
-          </div>
-        ))
-      }
-    </div>
+      <div
+        class="marquee-content flex"
+        style={`animation-duration: ${scrollDuration};`}
+      >
+        {
+          clients.map((client) => (
+            <div class="shrink-0 pr-20 grow-0 basis-[220px] flex items-center justify-center">
+              <img
+                src={client.src}
+                alt={client.alt}
+                class="h-full grayscale hover:grayscale-25 w-full object-contain transition-all duration-300"
+              />
+            </div>
+          ))
+        }
+      </div>
+
+      <div
+        class="marquee-content flex"
+        style={`animation-duration: ${scrollDuration};`}
+      >
+        {
+          clients.map((client) => (
+            <div class="shrink-0 pr-20 grow-0 basis-[220px] flex items-center justify-center">
+              <img
+                src={client.src}
+                alt={client.alt}
+                class="h-full grayscale hover:grayscale-25 w-full object-contain transition-all duration-300"
+              />
+            </div>
+          ))
+        }
+      </div>
+
+      <div
+        class="marquee-content flex"
+        style={`animation-duration: ${scrollDuration};`}
+      >
+        {
+          clients.map((client) => (
+            <div class="shrink-0 pr-20 grow-0 basis-[220px] flex items-center justify-center">
+              <img
+                src={client.src}
+                alt={client.alt}
+                class="h-full grayscale hover:grayscale-25 w-full object-contain transition-all duration-300"
+              />
+            </div>
+          ))
+        }
+      </div>
 
       <div
         class="absolute inset-y-0 left-0 w-16 bg-linear-to-r from-white to-transparent pointer-events-none"
@@ -126,21 +121,15 @@ const scrollDuration = "20s"; // Time it takes for the entire doubled list to sc
 </section>
 
 <style define:vars={{ scrollDuration }}>
-  /* Define the keyframes for the infinite scroll */
   @keyframes scroll-left {
     from {
-      transform: translateX(0);
+      translatex: 0;
     }
     to {
-      /* Scroll the width of the original, undoubled list */
-      transform: translateX(-100%);
+      translatex: -100%;
     }
   }
-
-  /* Apply the animation to the marquee content div */
   .marquee-content {
     animation: scroll-left var(--scrollDuration) linear infinite;
-
-    animation-play-state: running;
   }
 </style>

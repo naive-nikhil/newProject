@@ -123,13 +123,14 @@ const scrollDuration = "20s";
 <style define:vars={{ scrollDuration }}>
   @keyframes scroll-left {
     from {
-      translatex: 0;
+      transform: translateX(0);
     }
     to {
-      translatex: -100%;
+      transform: translateX(-100%);
     }
   }
   .marquee-content {
     animation: scroll-left var(--scrollDuration) linear infinite;
+    animation-play-state: running;
   }
 </style>

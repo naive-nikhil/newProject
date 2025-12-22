@@ -12,9 +12,11 @@ import blobShape2 from "../assets/blob_shape2.svg";
     <div
       class="w-full max-w-sm sm:max-w-3xl lg:max-w-7xl rounded-xl lg:rounded-3xl backdrop-blur-[1px] h-[25vh] lg:h-[50vh] border-2 border-white flex justify-center px-5"
     >
-      <h1 class="text-3xl sm:text-6xl lg:text-8xl max-w-[1000px] m-auto h-full w-full py-2 font-bold text-center text-black/80 flex flex-col items-center justify-center">
-        <span class="mr-auto">Next-Gen</span>
-        <span class="ml-auto">Digital Solutions</span>
+      <h1
+        class="text-3xl sm:text-6xl lg:text-8xl max-w-[1000px] m-auto h-full w-full py-2 font-bold text-center text-black/80 flex flex-col items-center justify-center"
+      >
+        <span id="text1" class="mr-auto">Next-Gen</span>
+        <span id="text2" class="ml-auto">Digital Solutions</span>
       </h1>
     </div>
   </div>
@@ -47,7 +49,7 @@ import blobShape2 from "../assets/blob_shape2.svg";
 
   if (blobShape1 && blobShape2) {
     gsap.to(blobShape1, {
-      y: 200,
+      y: 300,
       opacity: 0,
       duration: 2,
       scrollTrigger: {

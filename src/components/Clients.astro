@@ -38,7 +38,6 @@ const clients = [
 
 const scrollDuration = "20s";
 ---
-
 <style>
   .scrollbar-hide {
     scrollbar-width: none;
@@ -47,87 +46,84 @@ const scrollDuration = "20s";
     display: none;
   }
 
-  /* * CSS Mask for the fade effect 
-   * This replaces the absolute positioned divs.
-   * We use -webkit- prefix for better mobile Safari/iOS support.
-   */
   .marquee-mask {
     mask-image: linear-gradient(
       to right,
       transparent,
-      black 4rem,
-      black calc(100% - 4rem),
+      black 5rem,
+      black calc(100% - 5rem),
       transparent
     );
     -webkit-mask-image: linear-gradient(
       to right,
       transparent,
-      black 4rem,
-      black calc(100% - 4rem),
+      black 5rem,
+      black calc(100% - 5rem),
       transparent
     );
   }
 </style>
 
-<section class="clients py-16 md:py-24 px-4">
+<section class="clients py-20 md:py-28 px-4 border-t border-[#006cb7]/10 bg-white">
   <div class="max-w-7xl mx-auto">
-    <h2 class="text-3xl md:text-4xl lg:text-5xl text-black/80 mb-20">
-      Clients
+    <h2 class="text-3xl md:text-5xl font-bold text-[#006cb7] mb-16 text-center">
+      Trusted By
     </h2>
 
     <div class="relative w-full flex items-center justify-center overflow-x-auto scrollbar-hide marquee-mask">
-      <div
-        class="marquee-content flex"
-        style={`animation-duration: ${scrollDuration};`}
-      >
-        {
-          clients.map((client) => (
-            <div class="shrink-0 pr-20 grow-0 basis-[220px] flex items-center justify-center">
-              <img
-                src={client.src}
-                alt={client.alt}
-                class="h-full grayscale hover:grayscale-25 w-full object-contain transition-all duration-300"
-              />
-            </div>
-          ))
-        }
-      </div>
-
-      <div
-        class="marquee-content flex"
-        style={`animation-duration: ${scrollDuration};`}
-      >
-        {
-          clients.map((client) => (
-            <div class="shrink-0 pr-20 grow-0 basis-[220px] flex items-center justify-center">
-              <img
-                src={client.src}
-                alt={client.alt}
-                class="h-full grayscale hover:grayscale-25 w-full object-contain transition-all duration-300"
-              />
-            </div>
-          ))
-        }
-      </div>
-
-      <div
-        class="marquee-content flex"
-        style={`animation-duration: ${scrollDuration};`}
-      >
-        {
-          clients.map((client) => (
-            <div class="shrink-0 pr-20 grow-0 basis-[220px] flex items-center justify-center">
-              <img
-                src={client.src}
-                alt={client.alt}
-                class="h-full grayscale hover:grayscale-25 w-full object-contain transition-all duration-300"
-              />
-            </div>
-          ))
-        }
-      </div>
       
+      <div
+        class="marquee-content flex"
+        style={`animation-duration: ${scrollDuration};`}
+      >
+        {
+          clients.map((client) => (
+            <div class="shrink-0 px-10 grow-0 basis-[200px] md:basis-[240px] flex items-center justify-center group">
+              <img
+                src={client.src}
+                alt={client.alt || "Client Logo"}
+                class="h-12 md:h-16 w-auto object-contain transition-all duration-500 grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110"
+              />
+            </div>
+          ))
+        }
       </div>
+
+      <div
+        class="marquee-content flex"
+        style={`animation-duration: ${scrollDuration};`}
+      >
+        {
+          clients.map((client) => (
+            <div class="shrink-0 px-10 grow-0 basis-[200px] md:basis-[240px] flex items-center justify-center group">
+              <img
+                src={client.src}
+                alt={client.alt || "Client Logo"}
+                class="h-12 md:h-16 w-auto object-contain transition-all duration-500 grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110"
+              />
+            </div>
+          ))
+        }
+      </div>
+
+       <div
+       class="marquee-content flex"
+       style={`animation-duration: ${scrollDuration};`}
+     >
+       {
+         clients.map((client) => (
+           <div class="shrink-0 px-10 grow-0 basis-[200px] md:basis-[240px] flex items-center justify-center group">
+             <img
+               src={client.src}
+               alt={client.alt || "Client Logo"}
+               class="h-12 md:h-16 w-auto object-contain transition-all duration-500 grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110"
+             />
+           </div>
+         ))
+       }
+     </div>
+      
+    </div>
   </div>
 </section>
 
@@ -142,6 +138,5 @@ const scrollDuration = "20s";
   }
   .marquee-content {
     animation: scroll-left var(--scrollDuration) linear infinite;
-    animation-play-state: running;
   }
 </style>

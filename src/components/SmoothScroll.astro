@@ -1,6 +1,3 @@
----
----
-
 <script>
   import Lenis from '@studio-freight/lenis';
   import { gsap } from 'gsap';
@@ -8,29 +5,42 @@
 
   gsap.registerPlugin(ScrollTrigger);
 
+  // 1. Initialize Lenis with Mobile Settings
   const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Optional: Custom easing for smoother feel
     smoothWheel: true,
-    syncTouch: true,
+    // Fix for Mobile: Enable smooth touch and adjust sensitivity
+    smoothTouch: true,
+    touchMultiplier: 2, 
   });
 
+  // 2. Sync ScrollTrigger with Lenis
   lenis.on('scroll', ScrollTrigger.update);
 
-  function raf(time: number) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
+  // 3. Fix Flickering: Hook Lenis into GSAP's Ticker
+  // This ensures physics calculations happen in perfect sync
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000); // GSAP provides time in seconds, Lenis needs ms
+  });
 
-  requestAnimationFrame(raf);
+  // 4. Disable Lag Smoothing to prevent jumps on scrollbar clicks
+  gsap.ticker.lagSmoothing(0);
 
-  // Smooth scroll to anchor links
+  // 5. Handle Anchor Links using Lenis
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener('click', (e: Event) => {
+    anchor.addEventListener('click', (e) => {
       e.preventDefault();
-      const href = (anchor as HTMLAnchorElement).getAttribute('href');
+      const href = anchor.getAttribute('href');
       if (href) {
         const target = document.querySelector(href);
         if (target) {
-          lenis.scrollTo(target as HTMLElement);
+          // Use lenis.scrollTo for the smooth animation
+          lenis.scrollTo(target, {
+            offset: 0,
+            immediate: false, 
+            duration: 1.5, // slightly slower for better visual on long jumps
+          });
         }
       }
     });
@@ -38,7 +48,8 @@
 </script>
 
 <style is:global>
-  html.lenis {
+  /* Recommended CSS for Lenis */
+  html.lenis, html.lenis body {
     height: auto;
   }
 
@@ -46,7 +57,15 @@
     scroll-behavior: auto !important;
   }
 
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
   .lenis.lenis-stopped {
     overflow: hidden;
+  }
+
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
   }
 </style>

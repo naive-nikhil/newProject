@@ -36,18 +36,18 @@ const faqs = [
   .faq-grid {
     display: grid;
     grid-template-rows: 0fr;
-    transition: grid-template-rows 300ms ease-out, padding-top 300ms ease-out;
+    transition: grid-template-rows 400ms cubic-bezier(0.16, 1, 0.3, 1), padding-top 400ms ease-out;
   }
   
   .faq-grid.open {
     grid-template-rows: 1fr;
-    padding-top: 1.5rem; /* Matches mt-6 (24px) */
+    padding-top: 1.5rem; 
   }
 
   .faq-inner {
     overflow: hidden;
     opacity: 0;
-    transition: opacity 400ms ease-out;
+    transition: opacity 500ms ease-out;
   }
 
   .faq-grid.open .faq-inner {
@@ -55,9 +55,9 @@ const faqs = [
   }
 </style>
 
-<div class="w-full bg-white py-20 px-4 sm:px-6 lg:px-8">
+<div class="w-full bg-white py-20 px-4 sm:px-6 lg:px-8 border-t border-[#006cb7]/10">
     <div class="max-w-7xl mx-auto">
-        <h2 class="text-3xl md:text-5xl text-center text-slate-800 mb-16 font-medium">
+        <h2 class="text-3xl md:text-5xl text-center text-[#006cb7] mb-16 font-bold">
             Frequently Asked Questions
         </h2>
 
@@ -65,23 +65,23 @@ const faqs = [
             {faqs.map((faq) => (
                 <div 
                     x-data="{ open: false }" 
-                    class="rounded-3xl transition-all duration-300 cursor-pointer border border-transparent shadow-sm"
-                    :class="open ? 'bg-[#0b0121] shadow-2xl scale-[1.02]' : 'bg-white'"
+                    class="rounded-3xl transition-all duration-300 cursor-pointer border group"
+                    :class="open ? 'bg-[#006cb7] border-[#006cb7] shadow-2xl shadow-[#006cb7]/30 scale-[1.02]' : 'bg-white border-[#006cb7]/10 hover:border-[#006cb7]/30 hover:shadow-lg hover:shadow-[#006cb7]/5'"
                     @click="open = !open"
                 >
-                    <div class="p-8 flex flex-col h-full justify-between min-h-[180px]">
+                    <div class="p-8 flex flex-col h-full justify-between min-h-[160px]">
                         
                         <div class="flex justify-between items-start gap-4">
                             <h3 
-                                class="text-lg font-medium leading-snug transition-colors duration-300 pr-2"
-                                :class="open ? 'text-white' : 'text-[#6b56ce]'"
+                                class="text-lg font-bold leading-snug transition-colors duration-300 pr-2 select-none"
+                                :class="open ? 'text-white' : 'text-[#001524] group-hover:text-[#f38023]'"
                             >
                                 {faq.question}
                             </h3>
 
                             <div 
                                 class="flex-shrink-0 w-8 h-8 rounded-full border flex items-center justify-center transition-colors duration-300"
-                                :class="open ? 'border-white/30 text-white' : 'border-[#6b56ce]/30 text-[#6b56ce]'"
+                                :class="open ? 'border-white/30 text-white' : 'border-[#006cb7]/20 text-[#006cb7]'"
                             >
                                 <svg x-show="!open" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
@@ -99,7 +99,7 @@ const faqs = [
                             <div class="faq-inner min-h-0">
                                 <div 
                                     class="transition-colors duration-300 text-sm leading-relaxed"
-                                    :class="open ? 'text-slate-300' : 'text-slate-600'"
+                                    :class="open ? 'text-white/90' : 'text-slate-600'"
                                     set:html={faq.answer} 
                                 />
                             </div>

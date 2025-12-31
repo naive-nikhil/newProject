@@ -25,7 +25,7 @@ import blobShape2 from "../assets/blob_shape2.svg";
 
 <div
   id="contact-root"
-  class="w-screen py-20 relative overflow-x-clip px-4 flex justify-center items-center"
+  class="w-full py-20 relative overflow-x-clip px-4 flex justify-center items-center"
 >
   <img
     id="contact-blob1"
@@ -42,10 +42,10 @@ import blobShape2 from "../assets/blob_shape2.svg";
 
   <div class="w-full max-w-4xl relative z-10">
     <div
-      class="mainDiv w-full bg-white/60 backdrop-blur-md border-2 border-white rounded-3xl p-6 md:p-12 lg:p-16 shadow-xl shadow-[#047bca]/10"
+      class="mainDiv w-full bg-white/60 backdrop-blur-md border-2 border-white rounded-3xl p-6 md:p-12 lg:p-16 shadow-xl shadow-[#006cb7]/10"
     >
       <h2
-        class="text-[2.5rem] leading-[3rem] font-bold text-center mb-8 text-black/80"
+        class="text-[2.5rem] leading-[3rem] font-bold text-center mb-8 text-[#006cb7]"
       >
         Got questions?
       </h2>
@@ -62,7 +62,7 @@ import blobShape2 from "../assets/blob_shape2.svg";
             name="full-name"
             required
             type="text"
-            class="block w-full rounded-xl border-2 border-transparent bg-white/50 px-4 py-3 text-slate-800 placeholder:text-slate-400 focus:border-[#047bca]/30 focus:bg-white focus:outline-none transition-all duration-300 shadow-sm"
+            class="block w-full rounded-xl border-2 border-transparent bg-white/70 px-4 py-3 text-slate-800 placeholder:text-slate-400 focus:border-[#006cb7]/30 focus:bg-white focus:outline-none transition-all duration-300 shadow-sm"
             placeholder="John Doe"
           />
         </div>
@@ -79,7 +79,7 @@ import blobShape2 from "../assets/blob_shape2.svg";
               name="email"
               required
               type="email"
-              class="block w-full rounded-xl border-2 border-transparent bg-white/50 px-4 py-3 text-slate-800 placeholder:text-slate-400 focus:border-[#047bca]/30 focus:bg-white focus:outline-none transition-all duration-300 shadow-sm"
+              class="block w-full rounded-xl border-2 border-transparent bg-white/70 px-4 py-3 text-slate-800 placeholder:text-slate-400 focus:border-[#006cb7]/30 focus:bg-white focus:outline-none transition-all duration-300 shadow-sm"
               placeholder="john@example.com"
             />
           </div>
@@ -94,7 +94,7 @@ import blobShape2 from "../assets/blob_shape2.svg";
               id="telephone"
               name="telephone"
               type="tel"
-              class="block w-full rounded-xl border-2 border-transparent bg-white/50 px-4 py-3 text-slate-800 placeholder:text-slate-400 focus:border-[#047bca]/30 focus:bg-white focus:outline-none transition-all duration-300 shadow-sm"
+              class="block w-full rounded-xl border-2 border-transparent bg-white/70 px-4 py-3 text-slate-800 placeholder:text-slate-400 focus:border-[#006cb7]/30 focus:bg-white focus:outline-none transition-all duration-300 shadow-sm"
               placeholder="+1 (555) 000-0000"
             />
           </div>
@@ -111,7 +111,7 @@ import blobShape2 from "../assets/blob_shape2.svg";
             name="message"
             rows="5"
             required
-            class="block w-full rounded-xl border-2 border-transparent bg-white/50 px-4 py-3 text-slate-800 placeholder:text-slate-400 focus:border-[#047bca]/30 focus:bg-white focus:outline-none transition-all duration-300 shadow-sm resize-none"
+            class="block w-full rounded-xl border-2 border-transparent bg-white/70 px-4 py-3 text-slate-800 placeholder:text-slate-400 focus:border-[#006cb7]/30 focus:bg-white focus:outline-none transition-all duration-300 shadow-sm resize-none"
             placeholder="How can we help you?"
           ></textarea>
         </div>
@@ -122,10 +122,10 @@ import blobShape2 from "../assets/blob_shape2.svg";
             name="terms"
             type="checkbox"
             required
-            class="h-5 w-5 rounded border-gray-300 text-[#047bca] focus:ring-[#047bca]"
+            class="h-5 w-5 rounded border-gray-300 text-[#006cb7] focus:ring-[#006cb7]"
           />
           <label for="terms" class="ml-3 text-sm text-slate-500">
-            I accept the <a href="#" class="text-[#047bca] font-medium hover:underline">terms</a>.
+            I accept the <a href="#" class="text-[#006cb7] font-medium hover:underline">terms</a>.
           </label>
         </div>
 
@@ -133,7 +133,7 @@ import blobShape2 from "../assets/blob_shape2.svg";
           <button
             id="submitBtn"
             type="submit"
-            class="w-full py-4 rounded-xl text-white font-bold tracking-wide bg-[#047bca] hover:bg-[#03609e] shadow-lg shadow-[#047bca]/20 transition-all duration-300 transform hover:-translate-y-1"
+            class="w-full py-4 rounded-xl text-white font-bold tracking-wide bg-[#006cb7] hover:bg-[#f38023] shadow-lg shadow-[#006cb7]/20 hover:shadow-[#f38023]/30 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
           >
             Send Message
           </button>
@@ -153,23 +153,22 @@ import blobShape2 from "../assets/blob_shape2.svg";
   const contactBlob1 = document.querySelector("#contact-blob1");
   const contactBlob2 = document.querySelector("#contact-blob2");
 
-  // Only run if elements exist to avoid null errors
   if (contactSection && contactBlob1 && contactBlob2) {
     
     // Animate Blob 1 (Left)
     gsap.to(contactBlob1, {
-      y: 200, // Moves down
+      y: 200, 
       opacity: 0,
       duration: 2,
       scrollTrigger: {
         trigger: contactSection,
-        start: "top bottom", // Starts when section top hits viewport bottom
-        end: "bottom top",   // Ends when section bottom hits viewport top
-        scrub: 1,            // Smooth scrubbing
+        start: "top bottom", 
+        end: "bottom top",  
+        scrub: 1,            
       },
     });
 
-    // Animate Blob 2 (Right) - slightly faster movement for depth
+    // Animate Blob 2 (Right)
     gsap.to(contactBlob2, {
       y: 350,
       opacity: 0,

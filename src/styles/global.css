@@ -7,10 +7,14 @@
 
 body {
   font-family: "DM Sans", sans-serif;
+  /* overflow-x: hidden; */
 }
 
 h1,
-h2,
-h3 {
+h2 {
   font-family: "TT Ricordi Greto Variable", serif;
+}
+
+*{
+  /* outline: 1px solid #000; */
 }

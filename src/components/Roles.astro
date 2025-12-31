@@ -32,11 +32,11 @@ const stats = [
 ];
 ---
 
-<section class="w-screen py-20 relative px-4" id="stats-section">
+<section class="w-full py-20 lg:py-28 relative px-4 bg-white" id="stats-section">
   <div class="max-w-7xl mx-auto">
     
     <div class="text-center mb-16 max-w-3xl mx-auto">
-      <h2 class="text-3xl md:text-4xl lg:text-5xl text-black/80 mb-6 font-bold">
+      <h2 class="text-3xl md:text-5xl font-bold text-[#006cb7] mb-6">
         Our Impact in Numbers
       </h2>
       <p class="text-lg text-slate-600 leading-relaxed">
@@ -47,18 +47,19 @@ const stats = [
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       {
         stats.map((stat) => (
-          <div class="bg-white rounded-3xl p-8 shadow-xl shadow-[#013456]/10 text-center hover:-translate-y-2 transition-transform duration-300 border border-slate-100">
-            <div class="flex items-baseline justify-center mb-2 text-violet-900">
+          <div class="bg-white rounded-3xl p-8 shadow-xl shadow-[#006cb7]/10 text-center hover:-translate-y-2 transition-all duration-300 border border-[#006cb7]/10 hover:shadow-[#006cb7]/20 group">
+            
+            <div class="flex items-baseline justify-center mb-2">
               <span 
-                class="text-5xl md:text-6xl font-extrabold counter" 
+                class="text-5xl md:text-6xl font-extrabold counter text-[#006cb7]" 
                 data-target={stat.value}
               >
                 0
               </span>
-              <span class="text-3xl font-bold ml-1">{stat.suffix}</span>
+              <span class="text-3xl font-bold ml-1 text-[#f38023]">{stat.suffix}</span>
             </div>
             
-            <h3 class="text-xl font-bold text-slate-800 mb-3">
+            <h3 class="text-xl font-bold text-[#001524] mb-3 group-hover:text-[#006cb7] transition-colors">
               {stat.label}
             </h3>
             

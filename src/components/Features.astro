@@ -35,76 +35,70 @@ const features = [
     layout: "reversed",
   },
 ];
-
 ---
 
 <section
-id="features"
-  
-  class="py-20 relative rounded-b-4xl bg-linear-to-b from-10% from-black/89 to-violet-900 -mt-8 pb-30 px-4"
+  id="features"
+  class="py-20 relative rounded-b-4xl bg-linear-to-b from-10% from-[#001524] to-[#006cb7] -mt-8 pb-30 px-4"
 >
   <div class="max-w-7xl mx-auto">
     <h2
-      class="text-[2.75rem] lg:text-[4rem] w-full text-center text-white mb-20"
-     
+      class="text-[2.75rem] lg:text-[4rem] w-full text-center text-white mb-20 font-bold"
     >
-      Why Us ?
+      Why Us?
     </h2>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-x-16 lg:gap-x-40">
       {features.map((feature, idx) => (
         <article
-          class="flex items-center gap-8 feature-animate"
-          
-         
+          class="flex items-center gap-8 feature-animate group"
         >
-          <!-- Icon Block -->
-          <div class="flex items-center justify-center">
-            <div class="relative icon-card lg:w-30 lg:h-30 w-20 h-20 rounded-3xl border border-white/30 bg-linear-to-b from-purple-500/20 to-white/5 backdrop-blur-[2px] flex items-center justify-center overflow-hidden">
-            <div class="absolute top-1/2 left-1/2 lg:h-[140%] lg:w-[140%] h-[145%] w-[145%] -translate-x-1/2 -translate-y-1/2 bg-white/4 backdrop-blur-[2px] rotate-45 effect z-0"></div>
-            <div class="border-shine absolute inset-[-2px] rounded-3xl pointer-events-none z-0" style="--angle: -30deg;"></div>
-            <h3 class="lg:text-4xl text-2xl text-white font-medium relative z-10">{ idx + 1 }</h3>
+          <div class="flex items-center justify-center shrink-0">
+            <div class="relative icon-card lg:w-30 lg:h-30 w-20 h-20 rounded-3xl border border-[#006cb7]/40 bg-linear-to-b from-[#006cb7]/20 to-white/5 backdrop-blur-[2px] flex items-center justify-center overflow-hidden shadow-lg shadow-[#006cb7]/10">
+              
+              <div class="absolute top-1/2 left-1/2 lg:h-[140%] lg:w-[140%] h-[145%] w-[145%] -translate-x-1/2 -translate-y-1/2 bg-white/5 backdrop-blur-[2px] rotate-45 effect z-0"></div>
+              
+              <div class="border-shine absolute inset-[-2px] rounded-3xl pointer-events-none z-0" style="--angle: -30deg;"></div>
+              
+              <h3 class="lg:text-4xl text-2xl text-[#f38023] font-bold relative z-10 drop-shadow-sm">
+                {String(idx + 1).padStart(2, '0')}
+              </h3>
             </div>
           </div>
 
-          <!-- Text Block -->
           <div class="">
             <h3
               id={`feature-title-${idx}`}
-              class="text-lg md:text-xl wrap-normal text-white/90 mb-3"
-             
+              class="text-lg md:text-xl font-semibold wrap-normal text-white mb-2 group-hover:text-[#f38023] transition-colors duration-300"
             >
               {feature.title}
             </h3>
 
             <p
-              class={`md:text-lg text-white/60 leading-relaxed max-w-prose mx-auto ${feature.layout === "reversed" ? "md:ml-auto md:mr-0" : "md:mx-0"}`}
+              class={`md:text-lg text-white/70 leading-relaxed max-w-prose mx-auto ${feature.layout === "reversed" ? "md:ml-auto md:mr-0" : "md:mx-0"}`}
               data-scroll
               data-scroll-delay={(idx * 0.12 + 0.05).toString()}
             >
-              {feature.description} </p> 
-           
+              {feature.description} 
+            </p> 
           </div>
         </article>
       ))}
 
-
-      <!-- Placeholder to balance the grid (if features.length is odd) -->
       <article class="hidden md:block" aria-hidden="true"></article>
     </div>
-  
   </div>
 </section> 
 
 <style>
   .border-shine {
-    background: conic-gradient(from var(--angle, 0deg), transparent 70%, rgba(255,255,255,1) 90%, transparent 110%);
+    background: conic-gradient(from var(--angle, 0deg), transparent 70%, rgba(255,255,255,0.8) 90%, transparent 110%);
     -webkit-mask: 
       linear-gradient(#fff 0 0) content-box, 
       linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
-    padding: 3px;
+    padding: 2px;
   }
 </style>
 
@@ -115,7 +109,6 @@ id="features"
   gsap.registerPlugin(ScrollTrigger);
 
   const features = document.querySelector("#features");
-
   const effect = document.querySelectorAll(".effect");
 
   if (features && effect.length) {
@@ -131,30 +124,29 @@ id="features"
         duration: 1.2,
         scrollTrigger: {
           trigger: features,
-          start: "top 40%",
+          start: "top 60%",
           once: true,
         },
       }
     );
   }
 
-  // Border shine animation - animate gradient angle
+  // Border shine animation
   if (features) {
     gsap.fromTo(
       ".border-shine",
       { opacity: 1, "--angle": "0deg" },
       {
         "--angle": "360deg",
-        duration: 2.8,
+        duration: 2.5,
         opacity: 0,
-        ease: "none",
+        ease: "power1.inOut",
         scrollTrigger: {
           trigger: features,
-          start: "top 40%",
+          start: "top 60%",
           once: true,
         },
       }
     );
   }
 </script>
-

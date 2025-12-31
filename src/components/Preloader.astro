@@ -1,0 +1,43 @@
+---
+import technovelLogo from "../assets/technovel_logo.png";
+---
+
+<div
+  id="preloader"
+  class="fixed inset-0 z-[9999] bg-[#006cb7] flex items-center justify-center w-full h-full"
+>
+  <div class="overflow-hidden">
+    <img
+      src={technovelLogo.src}
+      alt="Technovel Loading"
+      class="w-48 md:w-64 h-auto object-contain brightness-0 invert"
+    />
+  </div>
+</div>
+
+<script>
+  import { gsap } from "gsap";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const tl = gsap.timeline();
+    const preloader = document.getElementById("preloader");
+
+    // Prevent scrolling while loading
+    document.body.style.overflow = "hidden";
+
+    // Animate ONLY the background (Logo moves with it naturally)
+    tl.to(preloader, {
+      yPercent: -100, // Slide Up
+      borderBottomLeftRadius: "50% 20%", // Create the curve
+      borderBottomRightRadius: "50% 20%", // Create the curve
+      duration: 1.2,
+      delay: 0.8, // Wait 0.8s before starting so user sees the logo
+      ease: "power4.inOut",
+      onComplete: () => {
+        // Cleanup
+        document.body.style.overflow = "";
+        if (preloader) preloader.style.display = "none";
+      },
+    });
+  });
+</script>

@@ -5,29 +5,34 @@
 
   gsap.registerPlugin(ScrollTrigger);
 
-  // 1. Initialize Lenis with Mobile Settings
+  // 1. Initialize Lenis
   const lenis = new Lenis({
     duration: 1.2,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Optional: Custom easing for smoother feel
-    smoothWheel: true,
-    // Fix for Mobile: Enable smooth touch and adjust sensitivity
-    smoothTouch: true,
-    touchMultiplier: 2, 
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Exponential easing for smoother feel
+    direction: 'vertical',
+    gestureDirection: 'vertical',
+    smooth: true,
+    mouseMultiplier: 1,
+    smoothTouch: true, // IMPORTANT: Enables smooth scrolling on mobile
+    touchMultiplier: 2, // Increases mobile sensitivity
   });
 
-  // 2. Sync ScrollTrigger with Lenis
+  // 2. Connect Lenis to ScrollTrigger
+  // Tell ScrollTrigger to use Lenis's scroll info instead of the native window
   lenis.on('scroll', ScrollTrigger.update);
 
-  // 3. Fix Flickering: Hook Lenis into GSAP's Ticker
-  // This ensures physics calculations happen in perfect sync
+  // 3. The "Flicker" Fix: Sync GSAP Ticker
+  // Instead of using requestAnimationFrame, we plug Lenis into GSAP's ticker.
+  // This ensures they update in the exact same frame, preventing the "blink".
   gsap.ticker.add((time) => {
-    lenis.raf(time * 1000); // GSAP provides time in seconds, Lenis needs ms
+    lenis.raf(time * 1000); // GSAP gives time in seconds, Lenis needs ms
   });
 
-  // 4. Disable Lag Smoothing to prevent jumps on scrollbar clicks
+  // 4. Disable GSAP's lag smoothing
+  // This prevents GSAP from "jumping" when the thread is heavy (like during a scrollbar click)
   gsap.ticker.lagSmoothing(0);
 
-  // 5. Handle Anchor Links using Lenis
+  // 5. Smooth Anchor Links
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener('click', (e) => {
       e.preventDefault();
@@ -35,11 +40,10 @@
       if (href) {
         const target = document.querySelector(href);
         if (target) {
-          // Use lenis.scrollTo for the smooth animation
           lenis.scrollTo(target, {
             offset: 0,
-            immediate: false, 
-            duration: 1.5, // slightly slower for better visual on long jumps
+            immediate: false,
+            duration: 1.5, // Slower duration for visual smoothness
           });
         }
       }
@@ -48,13 +52,21 @@
 </script>
 
 <style is:global>
-  /* Recommended CSS for Lenis */
+  /* Essential CSS for Lenis & ScrollTrigger Stability */
+  
   html.lenis, html.lenis body {
     height: auto;
   }
 
   .lenis.lenis-smooth {
-    scroll-behavior: auto !important;
+    scroll-behavior: auto !important; /* Disables native smooth scroll to avoid conflicts */
+  }
+
+  /* Prevents the "white flash" on overscroll (especially on Mac/Mobile) */
+  html, body {
+    width: 100%;
+    min-height: 100%;
+    overscroll-behavior: none; 
   }
 
   .lenis.lenis-smooth [data-lenis-prevent] {
@@ -66,6 +78,6 @@
   }
 
   .lenis.lenis-scrolling iframe {
-    pointer-events: none;
+    pointer-events: none; /* Improves performance while scrolling */
   }
 </style>

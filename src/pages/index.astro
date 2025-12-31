@@ -14,6 +14,7 @@ import About from "../components/About.astro";
 import Footer from "../components/Footer.astro";
 
 import Value from "../components/Value.astro";
+import Preloader from "../components/Preloader.astro";
 
 // Pricing Options Type
 type PricingOption = {
@@ -51,6 +52,7 @@ const contact: ContactCard = {
 ---
 
 <Layout>
+  <Preloader/>
   <Header />
   <Welcome />
   <About />

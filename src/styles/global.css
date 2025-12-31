@@ -15,6 +15,10 @@ h2 {
   font-family: "TT Ricordi Greto Variable", serif;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 *{
   /* outline: 1px solid #000; */
 }

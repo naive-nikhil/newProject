@@ -5,9 +5,17 @@
   src: url("/fonts/TTRicordiGretoVariable.ttf") format("truetype");
 }
 
+/* Fix iOS horizontal scroll caused by absolutely positioned elements */
+html {
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
 body {
   font-family: "DM Sans", sans-serif;
   overflow-x: hidden;
+  position: relative;
+  width: 100%;
 }
 
 h1,
@@ -17,8 +25,4 @@ h2 {
 
 ::-webkit-scrollbar {
   display: none;
-}
-
-*{
-  outline: 1px solid #000;
 }

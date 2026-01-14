@@ -21,24 +21,37 @@ import blobShape2 from "../assets/blob_shape2.svg";
       font-size: 4rem;
     }
   }
+
+  /* iOS-safe overflow handling for blobs */
+  .contact-blob-container {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+  }
 </style>
 
 <div
   id="contact-root"
-  class="scroll-mt-20 w-full py-20 relative overflow-x-clip px-4 flex justify-center items-center"
+  class="scroll-mt-20 w-full py-20 relative px-4 flex justify-center items-center"
+  style="overflow: hidden; overflow: clip;"
 >
-  <img
-    id="contact-blob1"
-    src={blobShape1.src}
-    alt=""
-    class="absolute -top-10 -left-20 max-w-[300px] sm:max-w-[500px] rotate-10 pointer-events-none z-0 opacity-80"
-  />
-  <img
-    id="contact-blob2"
-    src={blobShape2.src}
-    alt=""
-    class="absolute top-40 -right-20 sm:top-20 sm:-right-10 max-w-[320px] sm:max-w-[550px] rotate-10 pointer-events-none z-0 opacity-80"
-  />
+  <!-- Blobs wrapped in overflow container -->
+  <div class="contact-blob-container">
+    <img
+      id="contact-blob1"
+      src={blobShape1.src}
+      alt=""
+      class="absolute -top-10 left-0 -translate-x-1/3 max-w-[300px] sm:max-w-[500px] rotate-10 pointer-events-none opacity-80"
+    />
+    <img
+      id="contact-blob2"
+      src={blobShape2.src}
+      alt=""
+      class="absolute top-40 sm:top-20 right-0 translate-x-1/3 sm:translate-x-1/6 max-w-[320px] sm:max-w-[550px] rotate-10 pointer-events-none opacity-80"
+    />
+  </div>
 
   <div class="w-full max-w-4xl relative z-10">
     <div

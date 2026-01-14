@@ -3,12 +3,24 @@ import blobShape1 from "../assets/blob_shape1.svg";
 import blobShape2 from "../assets/blob_shape2.svg";
 ---
 
+<style>
+  /* iOS-safe overflow handling for blobs */
+  .hero-blob-container {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+  }
+</style>
+
 <div
   id="hero-root"
-  class="flex align-center justify-center h-[60vh] lg:h-[95vh] items-center w-full relative overflow-x-clip px-4"
+  class="flex align-center justify-center h-[60vh] lg:h-[95vh] items-center w-full relative px-4"
+  style="overflow: hidden; overflow: clip;"
 >
   <!-- Hero Image -->
-  <div class="w-full flex justify-center items-center">
+  <div class="w-full flex justify-center items-center relative z-10">
     <div
       class="w-full max-w-sm sm:max-w-3xl lg:max-w-7xl rounded-xl lg:rounded-3xl backdrop-blur-[1px] h-[25vh] lg:h-[50vh] border-2 border-white flex justify-center px-5"
     >
@@ -21,19 +33,21 @@ import blobShape2 from "../assets/blob_shape2.svg";
     </div>
   </div>
 
-  <!-- Blobs -->
-  <img
-    id="blob-shape1"
-    src={blobShape1.src}
-    alt="Blob Style 1"
-    class="absolute top-0 sm:-top-10 -left-10 max-w-62 sm:max-w-150 rotate-10 -z-1 pointer-events-none"
-  />
-  <img
-    id="blob-shape2"
-    src={blobShape2.src}
-    alt="Blob Style 2"
-    class="absolute top-25 sm:-top-10 -right-10 sm:right-10 max-w-65 sm:max-w-180 rotate-10 pointer-events-none z-3"
-  />
+  <!-- Blobs wrapped in overflow container -->
+  <div class="hero-blob-container">
+    <img
+      id="blob-shape1"
+      src={blobShape1.src}
+      alt=""
+      class="absolute top-0 sm:-top-10 left-0 -translate-x-1/4 max-w-62 sm:max-w-150 rotate-10 pointer-events-none"
+    />
+    <img
+      id="blob-shape2"
+      src={blobShape2.src}
+      alt=""
+      class="absolute top-25 sm:-top-10 right-0 translate-x-1/4 sm:translate-x-0 max-w-65 sm:max-w-180 rotate-10 pointer-events-none"
+    />
+  </div>
 </div>
 
 <script type="module" defer>

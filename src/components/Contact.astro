@@ -181,4 +181,92 @@ import blobShape2 from "../assets/blob_shape2.svg";
       },
     });
   }
+
+  // ============================================
+  // GOOGLE SHEETS FORM SUBMISSION
+  // ============================================
+  // IMPORTANT: Replace this URL with your Google Apps Script Web App URL
+  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby4npd6eiIICOG0fo3FxLdggI00yDXhJexfNrBQt1bKIIMuqQkaisBo7AwyGkGDr3z7/exec';
+
+  const contactForm = document.getElementById('contactForm');
+  const submitBtn = document.getElementById('submitBtn');
+
+  if (contactForm && submitBtn) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Validate form
+      const fullName = document.getElementById('full-name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const telephone = document.getElementById('telephone').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const terms = document.getElementById('terms').checked;
+
+      if (!fullName || !email || !message) {
+        alert('Please fill in all required fields.');
+        return;
+      }
+
+      if (!terms) {
+        alert('Please accept the terms to continue.');
+        return;
+      }
+
+      // Update button state
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+      submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
+
+      try {
+        // Prepare form data
+        const formData = {
+          fullName: fullName,
+          email: email,
+          telephone: telephone,
+          message: message,
+          timestamp: new Date().toISOString()
+        };
+
+        // Send to Google Sheets
+        const response = await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors', // Required for Google Apps Script
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData)
+        });
+
+        // Show success message
+        submitBtn.textContent = 'Message Sent! ✓';
+        submitBtn.classList.remove('bg-[#006cb7]');
+        submitBtn.classList.add('bg-green-500');
+        
+        // Reset form
+        contactForm.reset();
+
+        // Reset button after 3 seconds
+        setTimeout(() => {
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('opacity-70', 'cursor-not-allowed', 'bg-green-500');
+          submitBtn.classList.add('bg-[#006cb7]');
+        }, 3000);
+
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        submitBtn.textContent = 'Error! Try Again';
+        submitBtn.classList.remove('bg-[#006cb7]');
+        submitBtn.classList.add('bg-red-500');
+
+        setTimeout(() => {
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('opacity-70', 'cursor-not-allowed', 'bg-red-500');
+          submitBtn.classList.add('bg-[#006cb7]');
+        }, 3000);
+      }
+    });
+  }
 </script>

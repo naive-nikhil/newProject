@@ -1,0 +1,44 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout>
+  <Header />
+  <main class="min-h-screen pt-32 pb-20 px-4">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-4xl md:text-5xl font-bold text-[#006cb7] mb-8">Cancellation & Refund Policy</h1>
+      
+      <div class="prose prose-lg max-w-none text-slate-700 space-y-6">
+        <p class="text-sm text-slate-500 mb-8">Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+        
+        <div class="space-y-6">
+          <div>
+            <h2 class="text-2xl font-bold text-[#001524] mb-3">Service Nature</h2>
+            <p>Technovel provides customized digital and professional services. Once work has commenced, payments are generally non-refundable.</p>
+          </div>
+          
+          <div>
+            <h2 class="text-2xl font-bold text-[#001524] mb-3">Refund Requests</h2>
+            <p>Refund requests, if any, will be reviewed on a case-by-case basis at the sole discretion of Technovel management.</p>
+          </div>
+          
+          <div>
+            <h2 class="text-2xl font-bold text-[#001524] mb-3">Service Cancellations</h2>
+            <p>Service cancellations must be submitted in writing. Work completed up to the cancellation date will be billed accordingly.</p>
+          </div>
+        </div>
+        
+        <div class="mt-12 p-6 bg-slate-50 rounded-lg border-l-4 border-[#006cb7]">
+          <p class="font-semibold text-[#001524] mb-2">Contact Information</p>
+          <p class="text-sm text-slate-600">
+            For cancellation or refund requests, please contact us at 
+            <a href="mailto:info@technovel.in" class="text-[#006cb7] hover:text-[#f38023]">info@technovel.in</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>

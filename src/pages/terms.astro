@@ -1,0 +1,66 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout>
+  <Header />
+  <main class="min-h-screen pt-32 pb-20 px-4">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-4xl md:text-5xl font-bold text-[#006cb7] mb-8">Terms & Conditions</h1>
+      
+      <div class="prose prose-lg max-w-none text-slate-700 space-y-6">
+        <p class="text-sm text-slate-500 mb-8">Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+        
+        <p>By using Technovel's website and services, you agree to the following:</p>
+        
+        <div class="space-y-4">
+          <div>
+            <h2 class="text-2xl font-bold text-[#001524] mb-3">1. Services</h2>
+            <p>Services are provided based on agreed scopes and timelines.</p>
+          </div>
+          
+          <div>
+            <h2 class="text-2xl font-bold text-[#001524] mb-3">2. No Guarantees</h2>
+            <p>Technovel does not guarantee results, rankings, leads, revenue, or advertising outcomes.</p>
+          </div>
+          
+          <div>
+            <h2 class="text-2xl font-bold text-[#001524] mb-3">3. Payments</h2>
+            <p>Payments are governed by agreed proposals or invoices.</p>
+          </div>
+          
+          <div>
+            <h2 class="text-2xl font-bold text-[#001524] mb-3">4. Intellectual Property</h2>
+            <p>All intellectual property remains with Technovel unless otherwise agreed in writing.</p>
+          </div>
+          
+          <div>
+            <h2 class="text-2xl font-bold text-[#001524] mb-3">5. Liability</h2>
+            <p>Technovel is not liable for indirect or consequential damages.</p>
+          </div>
+          
+          <div>
+            <h2 class="text-2xl font-bold text-[#001524] mb-3">6. Changes to Terms</h2>
+            <p>Terms may be updated without prior notice.</p>
+          </div>
+          
+          <div>
+            <h2 class="text-2xl font-bold text-[#001524] mb-3">7. Governing Law</h2>
+            <p>These terms are governed by the laws of India.</p>
+          </div>
+        </div>
+        
+        <div class="mt-12 p-6 bg-slate-50 rounded-lg border-l-4 border-[#006cb7]">
+          <p class="font-semibold text-[#001524] mb-2">Contact Information</p>
+          <p class="text-sm text-slate-600">
+            For questions about these Terms & Conditions, please contact us at 
+            <a href="mailto:info@technovel.in" class="text-[#006cb7] hover:text-[#f38023]">info@technovel.in</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>

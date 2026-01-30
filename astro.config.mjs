@@ -11,5 +11,10 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
 
-  integrations: [icon()]
+  integrations: [icon()],
+  
+  // Explicitly configure favicon to prevent Astro from looking for favicon.svg
+  build: {
+    assets: 'assets'
+  }
 });
